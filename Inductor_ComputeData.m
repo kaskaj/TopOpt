@@ -6,7 +6,7 @@ addpath(genpath('./3rd_party'));
 
 dt = 1e-4;          %Time step
 t_end = 2e-4;
-levels = 5;
+levels = 2;
 
 folder_name = 'Inductor_Data';
 
@@ -67,9 +67,9 @@ step = 2;
 B_time(:,:,step) = [-Mloc\(Clocy*A_time(:,step)),Mloc\(Clocx*A_time(:,step))];
 normB_time(:,step) = sqrt(B_time(:,1,step).^2 + B_time(:,2,step).^2);
 
-PlotData(x,y,A_time(:,step));
+PlotData(x,y,elems2nodes,A_time(:,step));
 
-PlotData(x,y,B_time(:,1,step));
+PlotData(x,y,elems2nodes,B_time(:,1,step));
 
 %hold on;
 %quiver(x,y,B_time(:,1,step),B_time(:,2,step),'color','white');
