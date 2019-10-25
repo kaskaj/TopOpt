@@ -5,13 +5,13 @@ addpath(genpath('./3rd_party'));
 %% Set parameters
 
 dt = 1e-4;          %Time step
-t_end = 50e-4;
-levels = 2;
+t_end = 2e-4;
+levels = 5;
 
 folder_name = 'Inductor_Data';
 
 load(fullfile(folder_name, 'param'));
-load(fullfile(folder_name, 'BHcurve'));
+% load(fullfile(folder_name, 'BHcurve'));
 load(fullfile(folder_name, sprintf('mesh%d.mat', levels)));
 load(fullfile(folder_name, sprintf('Matrices%d.mat', levels)));
 
@@ -64,11 +64,12 @@ end
 
 step = 2;
 
-B_time(:,:,step) = [-Mloc\(Slocy*A_time(:,step)),Mloc\(Slocx*A_time(:,step))];
+B_time(:,:,step) = [-Mloc\(Clocy*A_time(:,step)),Mloc\(Clocx*A_time(:,step))];
 normB_time(:,step) = sqrt(B_time(:,1,step).^2 + B_time(:,2,step).^2);
 
-save = 0;
 PlotData(x,y,A_time(:,step));
+
+PlotData(x,y,B_time(:,1,step));
 
 %hold on;
 %quiver(x,y,B_time(:,1,step),B_time(:,2,step),'color','white');

@@ -13,6 +13,10 @@ gamma_fe = 9e6;      %Electric conductivity
 gamma0 = 10e-9;
 f0 = 50;            %Freqency
 
-file_name = fullfile('Inductor_Data', 'param.mat');
+folder_name = 'Inductor_Data';
+if ~exist(folder_name, 'dir')
+    mkdir(folder_name);
+end
+file_name = fullfile(folder_name, 'param.mat');
 save(file_name,'d1','d2','d3','h3','L','I','S','J_coil','mu0',...
     'mur','gamma_fe','gamma0','f0');

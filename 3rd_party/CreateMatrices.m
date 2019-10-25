@@ -18,13 +18,12 @@ edet_aa   = zeros(nelement,1);
 mloc_aa   = zeros(nelement,9);
 slocxx_aa = zeros(nelement,9);
 slocyy_aa = zeros(nelement,9);
-slocx_aa  = zeros(nelement,9);
-slocy_aa  = zeros(nelement,9);
-
+clocx_aa  = zeros(nelement,9);
+clocy_aa  = zeros(nelement,9);
 
 for k = 1:nelement
     [edet,dFinv] = GenerateTransformation(k,elems2nodes,x,y);
-    [slocxx,slocyy,mloc,slocx,slocy] = LocalMatrices(edet,dFinv);
+    [~,slocxx,~,slocyy,~,mloc,clocx,clocy] = LocalMatrices(edet,dFinv);
     
     e2pRow1 = repmat(elems2nodes(k,:), 1, 3);
     e2pRow2 = kron(elems2nodes(k,:), ones(1, 3));
@@ -35,17 +34,17 @@ for k = 1:nelement
     mloc_aa(k,:)     = mloc(:);
     slocxx_aa(k,:)   = slocxx(:);
     slocyy_aa(k,:)   = slocyy(:);
-    slocx_aa(k,:)    = kron(slocx(:), [1;1;1]);
-    slocy_aa(k,:)    = kron(slocy(:), [1;1;1]);
+    clocx_aa(k,:)    = clocx(:);
+    clocy_aa(k,:)    = clocy(:);
 end
 
 Mloc  = sparse(ii(:),jj(:),mloc_aa(:));
 Sloc  = sparse(ii(:),jj(:),(slocxx_aa(:)+slocyy_aa(:)));
-Slocx = sparse(ii(:),jj(:),slocx_aa(:));
-Slocy = sparse(ii(:),jj(:),slocy_aa(:));
+Clocx = sparse(ii(:),jj(:),clocx_aa(:));
+Clocy = sparse(ii(:),jj(:),clocy_aa(:));
 
 save(file_name_mesh,'nodes2coord','bedges2nodes','elems2nodes','id','x','y','x_mid','y_mid','npoint','nelement');
-save(file_name_matrix,'ii','jj','Mloc','Sloc','Slocx','Slocy','mloc_aa','slocxx_aa','slocyy_aa','slocx_aa','slocy_aa');
+save(file_name_matrix,'ii','jj','Mloc','Sloc','Clocx','Clocy','mloc_aa','slocxx_aa','slocyy_aa','clocx_aa','clocy_aa');
 
 end
 

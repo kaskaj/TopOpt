@@ -11,6 +11,8 @@ view(2);
 colorbar;
 xlim([min(x), max(x)]);
 ylim([min(y), max(y)]);
+shading interp;
+colormap jet;
 
 if save
     saveas(fig1, file_name);
