@@ -5,3 +5,4 @@
 \contentsline {section}{\numberline {1.3}Initial condition}{4}% 
 \contentsline {section}{\numberline {1.4}Force}{4}% 
 \contentsline {section}{\numberline {1.5}Weak formulation}{5}% 
+\contentsline {section}{\numberline {1.6}Magnetostatic case}{6}% 
