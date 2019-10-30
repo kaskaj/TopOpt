@@ -1,68 +1,186 @@
+%% Set parameters
 
-cx = 0.0075; %chamfer
-cy = 0.0175; %chamfer
-I1 = 2; %supply current - coil 1
-I2 = 2; %supply current - coil 2
-N = 900; %number of turns
-t = 0.001; %technological size
-w_m = 0.0025; %width of magnet
-x_channel = 0.01; %diameter of fluid pipe
-x1 = 0.0086; %width of inner MO part
-x2 = 0.0135; %width of coil
-x3 = 0.005; %width of outer MO part
-x4 = 0.012; %placement of magnet
-y1 = 0.02; %heigth of head
-y2 = 0.0246; %heigth of coil
-y3 = 0.0104; %heigth of middle MO part
-y4 = 0.0210; %heigth of inner MO part
-y_gap = 0.008; %length of air gap
-y_gap2 =  0.00795;
-y_gap1 = y_gap - y_gap2;
-y_piston = 2*y2 + y3 + 2*t - y_gap - 2*y4; %height of piston
-
-Vc = y2*pi*x2*(2*(x_channel + x1 + 2*t) + x2); %Volume of coil
-Vm = y1*pi*w_m*(2*(x_channel + x1 + x4) + w_m); %Volume of magnet
-
-x_air = 8*x4;
-y_air = 20*x4;
-
-x_fe_min = x_channel;
-x_fe_max = x_channel + x1 + 3*t + x2 + x3;
-y_fe_min = -(y3/2 +2*t + y2 + y1);
-y_fe_max = y3/2 +2*t + y2 + y1;
-
-x_c_min = x_channel + x1;
-x_c_max = x_channel + x1 + 3*t + x2;
-y_c_min = y3/2;
-y_c_max = y3/2 + 2*t + y2;
-
-x_gap_min = x_channel;
-x_gap_max = x_channel + x1;
-y_gap_min = -(y3/2 + 2*t + y2 - y4 - t) + y_piston;
-y_gap_max = y3/2 + 2*t + y2 - y4 - t;
-
-x_t_min = x_channel;
-x_t_max = x_channel + x1;
-y_t_min = -(y3/2 + 2*t + y2 - y4);
-y_t_max = -(y3/2 + 2*t + y2 - y4) + t;
-
-x_t2_min = x_channel + x1;
-x_t2_max = x_channel + x1 + t;
-y_t2_min = -y3/2;
-y_t2_max = y3/2;
-
+I1  = 2;         % supply current - coil 1
+I2  = 2;         % supply current - coil 2
+N   = 900;       % number of turns
+t   = 0.001;     % technological size
 mu0 = 4*pi*1e-7;
 mur = 700;
 
-J_coil1 = (N*I1)/(x2*y2);
-J_coil2 = (N*I2)/(x2*y2);
+w_magnet  = 0.0025;   % width of magnet
+w_channel = 0.01;     % diameter of fluid pipe
+w1 = 0.0086;          % width of inner MO part
+w2 = 0.0135;          % width of coil
+w3 = 0.005;           % width of outer MO part
+w4 = 0.012;           % placement of magnet
+h1 = 0.02;            % height of head
+h2 = 0.0246;          % height of coil
+h3 = 0.0104;          % height of middle MO part
+h4 = 0.0210;          % height of inner MO part
 
-file_name = fullfile('Valve_Data', 'param.mat');
-save(file_name,'x1','y1','x2','y2','x3','y3','x4','y4','y_gap',...
-    'y_piston','x_channel','w_m','x_air','y_air','t','mur','mu0',...
-    'x_fe_min','x_fe_max','y_fe_min','y_fe_max',...
-    'x_c_min','x_c_max','y_c_min','y_c_max',...
-    'x_gap_min','x_gap_max','y_gap_min','y_gap_max',...
-    'x_t_min','x_t_max','y_t_min','y_t_max',...
-    'x_t2_min','x_t2_max','y_t2_min','y_t2_max',...
-    'J_coil1','J_coil2');
+h_gap    = 0.008;                          % height of air gap
+h_piston = 2*h2 + h3 + 2*t - h_gap - 2*h4; % height of piston
+
+params = [];
+params.I1        = I1;
+params.I2        = I2;
+params.N         = N;
+params.t         = t;
+params.mu0       = mu0;
+params.mur       = mur;
+params.w_magnet  = w_magnet;
+params.w_channel = w_channel;
+params.w1        = w1;
+params.w2        = w2;
+params.w3        = w3;
+params.w4        = w4;
+params.h1        = h1;
+params.h2        = h2;
+params.h3        = h3;
+params.h4        = h4;
+params.h_gap     = h_gap;
+params.h_piston  = h_piston;
+
+
+%% Compute the volumes and the current density
+
+params.Vc = h2*pi*w2*(2*(w_channel + w1 + 2*t) + w2);            % volume of coil
+params.Vm = h1*pi*w_magnet*(2*(w_channel + w1 + w4) + w_magnet); % volume of magnet
+
+params.J_coil1 = (N*I1)/(w2*h2);
+params.J_coil2 = (N*I2)/(w2*h2);
+
+
+%% Compute positions of various objects
+
+params.x_air = 8*w4;
+params.y_air = 20*w4;
+
+params.x_fe_min = w_channel;
+params.x_fe_max = w_channel + w1 + 3*t + w2 + w3;
+params.y_fe_min = -(h3/2 +2*t + h2 + h1);
+params.y_fe_max = h3/2 +2*t + h2 + h1;
+
+params.x_c_min = w_channel + w1;
+params.x_c_max = w_channel + w1 + 3*t + w2;
+params.y_c_min = h3/2;
+params.y_c_max = h3/2 + 2*t + h2;
+
+params.x_gap_min = w_channel;
+params.x_gap_max = w_channel + w1;
+params.y_gap_min = -(h3/2 + 2*t + h2 - h4 - t) + h_piston;
+params.y_gap_max = h3/2 + 2*t + h2 - h4 - t;
+
+params.x_t1_min = w_channel;
+params.x_t1_max = w_channel + w1;
+params.y_t1_min = -(h3/2 + 2*t + h2 - h4);
+params.y_t1_max = -(h3/2 + 2*t + h2 - h4) + t;
+
+params.x_t2_min = w_channel + w1;
+params.x_t2_max = w_channel + w1 + t;
+params.y_t2_min = -h3/2;
+params.y_t2_max = h3/2;
+
+params.x_piston_min = w_channel;
+params.x_piston_max = w_channel + w1;
+params.y_piston_min = -h3/2-2*t-h2+h4+t;
+params.y_piston_max = -h3/2-2*t-h2+h4+t+h_piston;
+
+
+%% Compute edges
+
+% Air region
+params.nod1 = [
+    0, -params.y_air/2;
+    0, params.y_air/2;
+    params.x_air, params.y_air/2;
+    params.x_air, -params.y_air/2;
+    ] ;
+params.edg1 = [
+    1 ,  2 ;  2 ,  3
+    3 ,  4 ;  4 ,  1
+    ] ;
+params.edg1(:,3) = +0;
+
+% Conductor 1 (upper)
+params.nod2 = [
+    w_channel + w1 + 2*t, (h3/2) + t + h2;
+    w_channel + w1 + 2*t, (h3/2) + t;
+    w_channel + w1 + 2*t + w2, (h3/2) + t;
+    w_channel + w1 + 2*t + w2, (h3/2) + t + h2;
+    ] ;
+params.edg2 = [
+    1 ,  2 ;  2 ,  3
+    3 ,  4 ;  4 ,  1
+    ] ;
+params.edg2(:,3) = +1;
+
+% Conductor 2 (lower)
+params.nod3 = [
+    (w_channel + w1 +2*t), -((h3/2) + t + h2);
+    (w_channel + w1 +2*t), -((h3/2) + t);
+    (w_channel + w1 +2*t + w2), -((h3/2) + t);
+    (w_channel + w1 +2*t + w2), -((h3/2) + t + h2);
+    ] ;
+params.edg3 = [
+    1 ,  2 ;  2 ,  3
+    3 ,  4 ;  4 ,  1
+    ] ;
+params.edg3(:,3) = +2;
+
+% Plunger
+params.nod4 = [
+    (w_channel),  -(h3/2 + 2*t + h2 - h4 - t);
+    (w_channel + w1),  -(h3/2 + 2*t + h2 - h4 - t);
+    (w_channel + w1),  -(h3/2 + 2*t + h2 - h4 - t - h_piston);
+    (w_channel),  -(h3/2 + 2*t + h2 - h4 - t - h_piston);
+    ] ;
+params.edg4 = [
+    1 ,  2 ;  2 ,  3
+    3 ,  4 ;  4 ,  1
+    ] ;
+params.edg4(:,3) = +3;
+
+% Iron
+params.nod5 = [
+    w_channel, (h3/2) + h2 + 2*t - h4;
+    w_channel, (h3/2) + h2 + 2*t + h1;
+    w_channel + w1 + w4 + w_magnet + t + w3, (h3/2) + h2 + 2*t + h1;
+    w_channel + w1 + w4 + w_magnet + t + w3, -((h3/2) + h2 + 2*t + h1);
+    w_channel, -((h3/2) + h2 + 2*t + h1);
+    w_channel, -((h3/2) + h2 + 2*t - h4);
+    w_channel + w1, -((h3/2) + h2 + 2*t - h4);
+    w_channel + w1, -((h3/2) + h2 + 2*t);
+    w_channel + w1 + w4 + w_magnet + 2*t , -((h3/2) + h2 + 2*t);
+    w_channel + w1 + w4 + w_magnet + 2*t , -((h3/2));
+    w_channel + w1 + w4 + w_magnet - w2 , -((h3/2));
+    w_channel + w1 + w4 + w_magnet - w2 , (h3/2);
+    w_channel + w1 + w4 + w_magnet + 2*t , (h3/2);
+    w_channel + w1 + w4 + w_magnet + 2*t , (h3/2) + 2*t + h2;
+    w_channel + w1 , (h3/2) +  2*t + h2;
+    w_channel + w1 , (h3/2) + 2*t + h2 - h4;
+    ] ;
+params.edg5 = [
+    1 ,  2 ;  2 ,  3
+    3 ,  4 ;  4 ,  5
+    5 ,  6 ;  6 ,  7
+    7 ,  8 ;  8 ,  9
+    9 ,  10 ;  10 ,  11
+    11 ,  12 ;  12 ,  13
+    13 ,  14 ;  14 ,  15
+    15 ,  16 ;  16 ,  1
+    ] ;
+params.edg5(:,3) = +4;
+
+params.edg2(:,1:2) = params.edg2(:,1:2) + size(params.nod1,1);
+params.edg3(:,1:2) = params.edg3(:,1:2) + size(params.nod1,1) + size(params.nod2,1);
+params.edg4(:,1:2) = params.edg4(:,1:2) + size(params.nod1,1) + size(params.nod2,1) + size(params.nod3,1);
+params.edg5(:,1:2) = params.edg5(:,1:2) + size(params.nod1,1) + size(params.nod2,1) + size(params.nod3,1) + size(params.nod4,1);
+
+
+%% Create the structure
+
+file_name = fullfile('Valve_Data', 'Param.mat');
+save(file_name, 'params');
+
+
