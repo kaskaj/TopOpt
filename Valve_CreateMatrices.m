@@ -34,6 +34,10 @@ function Valve_CreateMatrices(params, mesh0, refin_level, check)
             ii_refine  = ii_refine1 | ii_refine2 | ii_refine3 | ii_refine4;
         end
         [nodes2coord,bedges2nodes,elems2nodes,tnum] = tridiv2(nodes2coord,bedges2nodes,elems2nodes,tnum,ii_refine);
+        
+        if i == 3 || i == 7
+            [nodes2coord,bedges2nodes,elems2nodes,tnum] = smooth2(nodes2coord,bedges2nodes,elems2nodes,tnum);
+        end
     end
     
     %% Get data
