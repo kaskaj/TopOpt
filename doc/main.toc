@@ -1,0 +1,7 @@
+\babel@toc {english}{}
+\contentsline {chapter}{\numberline {1}Theory}{4}% 
+\contentsline {section}{\numberline {1.1}2D Magnetodynamic equations}{4}% 
+\contentsline {section}{\numberline {1.2}Boundary condition}{4}% 
+\contentsline {section}{\numberline {1.3}Initial condition}{4}% 
+\contentsline {section}{\numberline {1.4}Force}{4}% 
+\contentsline {section}{\numberline {1.5}Weak formulation}{5}% 

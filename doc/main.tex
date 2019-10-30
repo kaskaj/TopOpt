@@ -1,0 +1,58 @@
+\documentclass[12pt,a4paper]{report}
+\usepackage[english]{babel}
+%\usepackage{ucs}
+%\usepackage[utf8x]{inputenc}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,latexsym,amsfonts}
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+\usepackage{graphicx}
+\usepackage{pdfpages}
+\usepackage[top=2.25cm, left=3.5cm, right=1.5cm, bottom=2.3cm]{geometry}
+\usepackage[export]{adjustbox}
+\usepackage{wrapfig}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{siunitx}
+\usepackage{multirow}
+\usepackage{upgreek}
+\usepackage[nottoc]{tocbibind}
+\usepackage{bm}
+\usepackage{natbib}  
+\setcitestyle{numbers}   
+\setcitestyle{open={[},close={]}}   
+\usepackage{url}             
+\usepackage[strings]{underscore}
+%\DeclareUrlCommand\url{\def\UrlLeft{<}\def\UrlRight{>}\urlstyle{sf}}  
+\renewcommand{\emph}[1]{\textsl{#1}} 
+\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{4}
+%\frenchspacing
+
+\usepackage{titlesec} %zmena tridy chapter
+\titlespacing*{\chapter}{0pt}{-25pt}{30pt}
+\titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter\hspace{20pt}{}\hspace{20pt}}{0pt}{\Huge\bfseries}
+
+%\titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter\hspace{20pt}{|}\hspace{20pt}}{0pt}{\Huge\bfseries}
+
+\pagestyle{plain}
+
+%nastaveni radkovani
+%-------------------------
+\usepackage{setspace}
+%\singlespacing
+\onehalfspacing %jedna a pul radkovani
+%\doublespacing
+%--------------------------
+
+\usepackage{indentfirst} %odsazeni prvniho odstavce
+
+
+\begin{document}
+\input{title/title.tex}
+\input{contents/contents.tex}
+\input{symbols/symbols.tex}
+\input{chapter1/chapter1.tex}
+
+
+\end{document}
