@@ -4,6 +4,7 @@ function Valve_CreateMatrices(params, mesh0, refin_level, check)
         check = 0;
     end
     
+    tol0 = 0.01;   % To refine mesh around the iron
     tol1 = 0.002;  % To refine mesh around the piston
     tol2 = 0.0005; % Size of air where the force on the piston is computed
     
@@ -18,10 +19,18 @@ function Valve_CreateMatrices(params, mesh0, refin_level, check)
         x_patch = [nodes2coord(elems2nodes(:,1),1), nodes2coord(elems2nodes(:,2),1), nodes2coord(elems2nodes(:,3),1)];
         y_patch = [nodes2coord(elems2nodes(:,1),2), nodes2coord(elems2nodes(:,2),2), nodes2coord(elems2nodes(:,3),2)];
         
-        if i <= 5
+        if i <= 3
+            % Refine everywhere
             ele_size  = sum(abs(x_patch(:,:) - x_patch(:,[2 3 1])) + abs(y_patch(:,:) - y_patch(:,[2 3 1])),2);
             ii_refine = ele_size >= mean(ele_size);
+        elseif i <= 6
+            % Refine only around the iron
+            ii = min(x_patch,[],2) >= params.x_fe_min - tol0 & max(x_patch,[],2) <= params.x_fe_max + tol0 ...
+                & min(y_patch,[],2) >= params.y_fe_min - tol0 & max(y_patch,[],2) <= params.y_fe_max + tol0;
+            ele_size  = sum(abs(x_patch(:,:) - x_patch(:,[2 3 1])) + abs(y_patch(:,:) - y_patch(:,[2 3 1])),2);
+            ii_refine = ii & ele_size >= mean(ele_size(ii));
         else
+            % Refine only around the piston
             x_piston_min = params.x_piston_min;
             x_piston_max = params.x_piston_max;
             y_piston_min = params.y_piston_min;
@@ -35,7 +44,7 @@ function Valve_CreateMatrices(params, mesh0, refin_level, check)
         end
         [nodes2coord,bedges2nodes,elems2nodes,tnum] = tridiv2(nodes2coord,bedges2nodes,elems2nodes,tnum,ii_refine);
         
-        if i == 3 || i == 7
+        if i == 3 || i == 6
             [nodes2coord,bedges2nodes,elems2nodes,tnum] = smooth2(nodes2coord,bedges2nodes,elems2nodes,tnum);
         end
     end
@@ -114,7 +123,7 @@ function Valve_CreateMatrices(params, mesh0, refin_level, check)
         slocyy_aa(k,:)   = slocyy(:);
         clocx_aa(k,:)    = clocx(:);
         clocy_aa(k,:)    = clocy(:);
-
+        
         if x_mid(k) >= params.x_piston_min-tol2 && x_mid(k) <= params.x_piston_max+tol2 && y_mid(k) >= params.y_piston_min-tol2 && y_mid(k) <= params.y_piston_max+tol2
             mloc_aa_plunger(k,:)  = mloc(:);
             clocx_aa_plunger(k,:) = clocx(:);
