@@ -1,4 +1,4 @@
-load(fullfile('Valve_Data', 'Mesh7'));
+load(fullfile('Valve_Data', 'Mesh8'));
 load(fullfile('Valve_Data', 'Param'))
 
 filename = 'Valve_Data/ValveNeumann.mph';
@@ -11,9 +11,10 @@ nodes2coord1 = meshstats.dofs.coords';
 elems2nodes2 = mesh.elems2nodes;
 nodes2coord2 = mesh.nodes2coord;
 
+save = 0;
 tol = 0.003;
 zoom = [params.x_piston_min - tol, params.x_piston_max + tol; params.y_piston_min - tol, params.y_piston_max + tol];
 
-filename = 'Valve_Results/Mesh.png';
+filename = 'Valve_Results/Mesh_pos1.png';
 meshname = 'Mesh';
-SubPlotMesh(elems2nodes1,nodes2coord1,elems2nodes2,nodes2coord2,params,zoom,filename,meshname,1)
+SubPlotMesh(elems2nodes1,nodes2coord1,elems2nodes2,nodes2coord2,params,zoom,filename,meshname,save)

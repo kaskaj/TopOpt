@@ -5,7 +5,7 @@ addpath(genpath('./3rd_party'));
 
 %% Load data
 
-refin_level = 7;
+refin_level = 8;
 
 folder_name = 'Valve_Data';
 
@@ -100,14 +100,14 @@ for i=1:4
     
     T_mean  = 0.5*(T_pn(1:end-1,:) + T_pn(2:end,:));
     
-    %F_mod(i,:) = sum(xy_norm.*T_mean)';
+    F_mod(i,:) = sum(repmat(xy_norm,1,2).*T_mean)';
 end
-%F_mod = F_mod / params.mu0;
-%F_mod = sum(F_mod)';
+F_mod = F_mod / params.mu0;
+F_mod = sum(F_mod)';
 
 
-%F
-%F_mod
+F
+F_mod
 
 
 

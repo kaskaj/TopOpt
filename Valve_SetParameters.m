@@ -20,6 +20,7 @@ h4 = 0.0210;          % height of inner MO part
 
 h_gap    = 0.008;                          % height of air gap
 h_piston = 2*h2 + h3 + 2*t - h_gap - 2*h4; % height of piston
+y_move = h_piston/4;                       % displacement of piston
 
 params = [];
 params.I1        = I1;
@@ -68,13 +69,13 @@ params.y_c_max = h3/2 + 2*t + h2;
 
 params.x_gap_min = w_channel;
 params.x_gap_max = w_channel + w1;
-params.y_gap_min = -(h3/2 + 2*t + h2 - h4 - t) + h_piston;
+params.y_gap_min = -(h3/2 + 2*t + h2 - h4 - t) + h_piston + y_move;
 params.y_gap_max = h3/2 + 2*t + h2 - h4 - t;
 
 params.x_t1_min = w_channel;
 params.x_t1_max = w_channel + w1;
 params.y_t1_min = -(h3/2 + 2*t + h2 - h4);
-params.y_t1_max = -(h3/2 + 2*t + h2 - h4) + t;
+params.y_t1_max = -(h3/2 + 2*t + h2 - h4) + t + y_move;
 
 params.x_t2_min = w_channel + w1;
 params.x_t2_max = w_channel + w1 + t;
@@ -83,8 +84,8 @@ params.y_t2_max = h3/2;
 
 params.x_piston_min = w_channel;
 params.x_piston_max = w_channel + w1;
-params.y_piston_min = -h3/2-2*t-h2+h4+t;
-params.y_piston_max = -h3/2-2*t-h2+h4+t+h_piston;
+params.y_piston_min = -h3/2-2*t-h2+h4+t+y_move;
+params.y_piston_max = -h3/2-2*t-h2+h4+t+h_piston+y_move;
 
 
 %% Compute edges
@@ -130,10 +131,10 @@ params.edg3(:,3) = +2;
 
 % Plunger
 params.nod4 = [
-    (w_channel),  -(h3/2 + 2*t + h2 - h4 - t);
-    (w_channel + w1),  -(h3/2 + 2*t + h2 - h4 - t);
-    (w_channel + w1),  -(h3/2 + 2*t + h2 - h4 - t - h_piston);
-    (w_channel),  -(h3/2 + 2*t + h2 - h4 - t - h_piston);
+    (w_channel),  -(h3/2 + 2*t + h2 - h4 - t) + y_move;
+    (w_channel + w1),  -(h3/2 + 2*t + h2 - h4 - t) + y_move;
+    (w_channel + w1),  -(h3/2 + 2*t + h2 - h4 - t - h_piston) + y_move;
+    (w_channel),  -(h3/2 + 2*t + h2 - h4 - t - h_piston) + y_move;
     ] ;
 params.edg4 = [
     1 ,  2 ;  2 ,  3
