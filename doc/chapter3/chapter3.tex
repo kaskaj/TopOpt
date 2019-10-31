@@ -1,0 +1,80 @@
+\newpage
+\chapter{Topology optimization}
+
+\section{Problem formulation in continuous space}
+
+\begin{align*} 
+\mathrm{minimize}\quad  &  F_y^p \quad \mathrm{(p\,-\,plunger)} \\
+\mathrm{subject \, to}\quad  &  \nabla \times \left( \frac{1}{\mu} \left( \nabla \times A \right) \right) = J \\
+&  B_x = \partial_y A \\
+&  B_y = - \partial_x A
+\end{align*}
+
+\begin{equation} \label{eq:43} 
+F_y^p = \left(0,1\right) \int_{\Omega p} \left( \nabla \cdot \mathbb{T} \right) \,\mathrm{d}S = \int_{\Omega p} \frac{1}{\mu_0} \left( \partial_y B_y B_y - \partial_y B_x B_x + \partial_x B_x B_y + \partial_x B_y B_x \right) \,\mathrm{d}S
+\end{equation}
+
+\section{Problem formulation in discrete space}
+
+\begin{align*} 
+\mathrm{minimize}\quad  &  F_y^p \\
+\mathrm{subject \, to}\quad  &  S A = M J \\
+&  M B_x = C_y A \\
+&  M B_y = -C_x A 
+\end{align*}
+
+
+\begin{equation} \label{eq:44} 
+F_y^p = \frac{1}{\mu_0} \left(B_y^T C_y^p B_y - B_x^T C_y^p B_x + B_y^T C_x^p B_x + B_x^T C_x^p B_y \right)
+\end{equation}
+
+\noindent Lagrange multipliers are $\left(\alpha, \beta, \gamma \right)$.
+
+\begin{align*} 
+S A = M J \quad &\rightarrow \quad \alpha \\
+M B_x = C_y A \quad &\rightarrow \quad \beta \\
+M B_y = -C_x A \quad &\rightarrow \quad \gamma \\
+\end{align*}
+
+\noindent The $\theta$ is the topology function.
+
+\begin{equation} \label{eq:46} 
+J\left(\theta\right) = J_1\left(\theta\right) + J_2\left(\theta\right) + J_3\left(\theta\right) + J_4\left(\theta\right)
+\end{equation}
+
+\begin{align*} 
+J_1 &= \frac{1}{\mu_0} \left(B_y^T C_y^p B_y - B_x^T C_y^p B_x + B_y^T C_x^p B_x + B_x^T C_x^p B_y \right) \numberthis \label{eq:49} \\
+J_2 &= \alpha^T \left(S A - M J\right) = 0 \numberthis \label{eq:50} \\
+J_3 &= \beta^T \left(M B_x - C_y A\right) = 0 \numberthis \label{eq:51} \\ 
+J_4 &= \gamma^T \left(M B_y + C_x A\right) = 0 \numberthis \label{eq:51}
+\end{align*}
+
+
+\begin{equation} \label{eq:48} 
+\partial_\theta J\left(\theta\right) = \partial_\theta J_1\left(\theta\right) + \partial_\theta J_2\left(\theta\right) + \partial_\theta J_3\left(\theta\right) + \partial_\theta J_4\left(\theta\right)
+\end{equation}
+
+
+\begin{align*} 
+\mu_0 \partial_\theta J_1 = &\partial_\theta \left( \left( B_y \circ A \right)^T C_y^p  \left( B_y \circ A \right) \right) - \partial_\theta \left( \left( B_x \circ A \right)^T C_y^p \left( B_x \circ A \right) \right)  \\
+&+ \partial_\theta \left( \left( B_y \circ A \right)^T C_x^p \left( B_x \circ A \right) \right) + \partial_\theta \left( \left( B_x \circ A \right)^T C_x^p \left( B_y \circ A \right) \right)
+\end{align*}
+
+\begin{align*} 
+\partial_\theta \left( \left( B_y \circ A \right)^T C_y^p  \left( B_y \circ A \right) \right) = \partial_\theta \left( B_y \circ A \right)^T C_y^p \left( B_y \circ A \right) +  \left( B_y \circ A \right)^T C_y^p \partial_\theta \left( B_y \circ A \right) \\
+\end{align*}
+
+
+\begin{align*} 
+\partial_\theta J_2 &= \alpha^T \partial_\theta \left(S A\right) - \alpha^T \partial_\theta \left( M J \right) = \alpha^T \partial_\theta S A + \alpha^T S \partial_\theta A \numberthis \label{eq:50} \\
+\partial_\theta J_3 &= \beta^T M \partial_\theta \left( B_x \circ A \right) - \beta^T C_y \partial_\theta A \numberthis \label{eq:51} \\ 
+\partial_\theta J_4 &= \gamma^T M \partial_\theta \left( B_y \circ A \right) + \gamma^T C_x \partial_\theta A \numberthis \label{eq:51}
+\end{align*}
+
+\begin{align*}
+\partial_\theta \left( B_x \circ A \right):& \quad \left(...\right) + \beta^T M \partial_\theta \left( B_x \circ A \right) \\
+\partial_\theta \left( B_y \circ A \right):& \quad \left(...\right) + \gamma^T M \partial_\theta \left( B_y \circ A \right) \\
+\partial_\theta A:& \quad \alpha^T S \partial_\theta A - \beta^T C_y \partial_\theta A + \gamma^T C_x \partial_\theta A \\
+\partial_\theta S:& \quad \alpha^T \partial_\theta S A
+\end{align*}
+
