@@ -63,7 +63,7 @@ function Valve_CreateMatrices(params, mesh0, refin_level, check)
     
     %% Set boundary conditions
     
-    id_dirichlet = x == min(x) | x == max(x) | y == min(y) | y == max(y);
+    id_dirichlet = x == max(x) | y == min(y) | y == max(y);
     
     %% Prescribe mu and gamma
     

@@ -5,7 +5,7 @@ addpath(genpath('./3rd_party'));
 
 %% Load data
 
-refin_level = 5;
+refin_level = 7;
 
 folder_name = 'Valve_Data';
 
