@@ -6,7 +6,7 @@
 \contentsline {section}{\numberline {1.4}Force}{5}% 
 \contentsline {chapter}{\numberline {2}Weak formulation}{6}% 
 \contentsline {section}{\numberline {2.1}Magnetostatic case}{6}% 
-\contentsline {chapter}{\numberline {3}Topology optimization}{9}% 
-\contentsline {section}{\numberline {3.1}Problem formulation in continuous space}{9}% 
-\contentsline {section}{\numberline {3.2}Problem formulation in discrete space}{9}% 
-\contentsline {chapter}{Appendix}{12}% 
+\contentsline {chapter}{\numberline {3}Topology optimization}{8}% 
+\contentsline {section}{\numberline {3.1}Problem formulation in continuous space}{8}% 
+\contentsline {section}{\numberline {3.2}Problem formulation in discrete space}{8}% 
+\contentsline {chapter}{Appendix}{11}% 

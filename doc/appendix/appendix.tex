@@ -62,3 +62,55 @@ M &= \sum_{n=1}^{N} \int_{T_n} \lambda^n \lambda^m \mathrm{d}S
 \begin{equation} \label{eq:ap11}
 S A  =  M J \rightarrow A = S^\top M J
 \end{equation}
+
+\noindent If we discretize the problem with triangular elements and select the first-order polynomial (linear function), as an approximation of the scalar field A, we get three basis functions for each triangle. The coordinates $\left(r,s\right)$ correspond to the reference triangle with vertices $V_1 = (0,0), V_2 = (0,1)$ and $V_3 = (1,1)$ numbered in counter-clockwise direction.
+
+\begin{align*}
+\beta_1 &= 1 - r - s \numberthis \label{eq:ap12} \\
+\beta_2 &= r \numberthis \label{eq:ap13} \\
+\beta_3 &= s \numberthis \label{eq:ap14}
+\end{align*}
+
+\noindent If we differentiate them in respect to coordinates, we get:
+
+\begin{equation} \label{eq:ap15}
+\partial \beta = \begin{pmatrix} \partial_r \beta_1 & \partial_r \beta_2 & \partial_r \beta_3 \\ \partial_s \beta_1 & \partial_s \beta_2 & \partial_s \beta_3 \\ \end{pmatrix} =  \begin{pmatrix} -1 & 1 & 0 \\ -1 & 0 & 1 \\ \end{pmatrix}
+\end{equation}
+
+\noindent The matrices, fields and functions of the reference triangle must then be transformed into our coordinate system $(r,s) \rightarrow (x,y)$ and put into right place. Vertices of the triangle in $(x,y)$ coordinates are $V_1 = (x_1,y_1), V_2 = (x_2,y_2)$ and $V_3 = (x_3,y_3)$.
+
+\begin{equation} \label{eq:ap16}
+\Phi \begin{pmatrix} x \\ y \\ \end{pmatrix} = \begin{pmatrix} x_1 \\ y_1 \\ \end{pmatrix} + \begin{pmatrix} x_2 - x_1 & x_3 - x_1  \\ y_2 - y_1 & y_3 - y_1 \\ \end{pmatrix} \begin{pmatrix} r \\ s \\ \end{pmatrix}
+\end{equation}
+
+\noindent The $\Phi$ is the transformation function. We can use it to transform basis functions of reference triangle $T_r$ to basis functions of the n-th triangle $T_n$.
+
+\begin{equation} \label{eq:ap18}
+\lambda\left(x,y\right) = \left( \beta \circ \Phi^{-1}\right) \left(x,y\right)
+\end{equation}
+
+\noindent We will also need the inverse Jacobian matrix and the “Jacobian”, ie the determinant of the Jacobian matrix.
+
+\begin{equation} \label{eq:ap19}
+\vert \mathrm{det} \left(\nabla \Phi \right) \vert = \left| \mathrm{det} \begin{pmatrix} x_2 - x_1 & x_3 - x_1  \\ y_2 - y_1 & y_3 - y_1 \\ \end{pmatrix} \right|
+\end{equation} 
+
+\begin{equation} \label{eq:ap20}
+\left(\nabla \Phi \right)^{-1} = \frac{1}{\vert \mathrm{det} \left(\nabla \Phi \right) \vert} \begin{pmatrix} y_3 - y_1  &    -\left(x_3 - x_1\right) \\ -\left( y_2 - y_1 \right) & x_2 - x_1 \\ \end{pmatrix}
+\end{equation}
+
+\noindent Mass matrix:
+
+\begin{align*}
+M_{T_n} &= \int_{T_n} \lambda^n \lambda^m \mathrm{d}S =  \int_{T_n} \left( \beta \circ \Phi^{-1}\right)^n \left( \beta \circ \Phi^{-1}\right)^m \mathrm{d}S \\
+&= \vert \mathrm{det} \left(\nabla \Phi \right) \vert \int_{T_r} \beta^n \beta^m \mathrm{d}S
+\end{align*}
+
+
+\begin{align*}
+\int_{T_r} \left(1-r-s\right)^2 \mathrm{d}S =  \qquad \int_{T_r} \left(1-r-s\right)r \,\mathrm{d}S = \qquad \int_{T_r} \left(1-r-s\right)s \,\mathrm{d}S = \\
+\int_{T_r} s^2 \,\mathrm{d}S =  \qquad \int_{T_r} r^2 \,\mathrm{d}S =  \qquad \int_{T_r} r \,\mathrm{d}S = \qquad \int_{T_r} s \,\mathrm{d}S = \qquad \int_{T_r} rs \,\mathrm{d}S =  \\
+\end{align*}
+
+
+%mloc   = edet*[1/12 1/24 1/24;1/24 1/12 1/24;1/24 1/24 1]/12;

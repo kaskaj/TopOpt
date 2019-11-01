@@ -20,29 +20,6 @@
  S_{T_n} =  S_{y,T_n} +  S_{x,T_n} = \int_{T_n} \left( \partial_y \lambda^n \partial_y \lambda^m \right) \,\mathrm{d}S + \int_{T_n} \left( \partial_x \lambda^n \partial_x \lambda^m \right) \,\mathrm{d}S \numberthis \label{eq:29} \\
 \end{align*}
 
-\noindent Basis functions on reference triangle $(r,s,t)$
-
-\begin{align*}
-\beta_1 &= 1 - r - s \numberthis \label{eq:30} \\
-\beta_2 &= r \numberthis \label{eq:29} \\
-\beta_3 &= s \numberthis \label{eq:31} \\
-\end{align*}
-
-\begin{equation} \label{eq:32}
-\partial \beta = \begin{pmatrix} \partial_r \beta_1 & \partial_r \beta_2 & \partial_r \beta_3 \\ \partial_s \beta_1 & \partial_s \beta_2 & \partial_s \beta_3 \\ \end{pmatrix} =  \begin{pmatrix} -1 & 1 & 0 \\ -1 & 0 & 1 \\ \end{pmatrix}
-\end{equation}
-
-\noindent Coordinate transformation
-
-\begin{equation} \label{eq:33}
-\Phi \begin{pmatrix} x \\ y \\ \end{pmatrix} = \begin{pmatrix} x_1 \\ y_1 \\ \end{pmatrix} + \begin{pmatrix} x_2 - x_1 & x_3 - x_1  \\ y_2 - y_1 & y_3 - y_1 \\ \end{pmatrix} \begin{pmatrix} r \\ s \\ \end{pmatrix}
-\end{equation}
-
-\begin{align*}
-\begin{pmatrix} x \\ y \\ \end{pmatrix} &= \Phi \begin{pmatrix} r \\ s \\ \end{pmatrix} \numberthis \label{eq:34} \\
-\begin{pmatrix} r \\ s \\ \end{pmatrix} &= \Phi^{-1} \begin{pmatrix} x \\ y \\ \end{pmatrix} \numberthis \label{eq:35} \\
-\lambda\left(x,y\right) &= \left( \beta \circ \Phi^{-1}\right) \left(x,y\right) \numberthis \label{eq:36} \\
-\end{align*}
 
 \begin{align*}
 \vert \mathrm{det} \left(\nabla \Phi \right) \vert = \left| \mathrm{det} \begin{pmatrix} x_2 - x_1 & x_3 - x_1  \\ y_2 - y_1 & y_3 - y_1 \\ \end{pmatrix} \right| \numberthis \label{eq:37} \\
