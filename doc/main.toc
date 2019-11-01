@@ -1,11 +1,12 @@
 \babel@toc {english}{}
 \contentsline {chapter}{\numberline {1}Theory}{4}% 
-\contentsline {section}{\numberline {1.1}2D Magnetodynamic equations}{4}% 
-\contentsline {section}{\numberline {1.2}Boundary condition}{4}% 
-\contentsline {section}{\numberline {1.3}Initial condition}{4}% 
-\contentsline {section}{\numberline {1.4}Force}{4}% 
+\contentsline {section}{\numberline {1.1}Magnetodynamic equation}{4}% 
+\contentsline {section}{\numberline {1.2}Boundary conditions}{4}% 
+\contentsline {section}{\numberline {1.3}Initial condition}{5}% 
+\contentsline {section}{\numberline {1.4}Force}{5}% 
 \contentsline {chapter}{\numberline {2}Weak formulation}{6}% 
 \contentsline {section}{\numberline {2.1}Magnetostatic case}{6}% 
 \contentsline {chapter}{\numberline {3}Topology optimization}{9}% 
 \contentsline {section}{\numberline {3.1}Problem formulation in continuous space}{9}% 
 \contentsline {section}{\numberline {3.2}Problem formulation in discrete space}{9}% 
+\contentsline {chapter}{Appendix}{12}% 

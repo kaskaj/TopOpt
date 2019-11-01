@@ -1,0 +1,64 @@
+\chapter*{Appendix}
+\addcontentsline{toc}{chapter}{Appendix}
+\section*{Weak formulation}
+\noindent For $\gamma = 0$.
+
+\begin{equation} \label{eq:ap1}
+\nabla \times \left( \frac{1}{\mu} \left( \nabla \times A \right) \right) = J
+\end{equation}
+\noindent The $\theta$ is test function.
+
+\begin{equation} \label{eq:ap2}
+\int_{\Omega} \nabla \times \left( \frac{1}{\mu} \left( \nabla \times A \right) \right) \theta \mathrm{d}S = \int_{\Omega} J \theta \mathrm{d}S
+\end{equation}
+
+\begin{align*} 
+\nabla \times A &= \left(\partial_y A, -\partial_x A\right) = \bm{B} \\
+\nabla \times \bm{B} &= \partial_x B_y - \partial_y B_x = - \partial_x \partial_x A - \partial_y \partial_y A  = -\Delta A \numberthis \label{eq:ap3}
+\end{align*}
+
+\begin{equation} \label{eq:ap4}
+\int_{\Omega} - \frac{1}{\mu} \Delta A \theta \mathrm{d}S = \int_{\Omega} J \theta \mathrm{d}S
+\end{equation}
+
+\noindent Green's first identity:
+
+\begin{equation} \label{eq:ap5}
+\int_{\Omega} \Delta F \theta \mathrm{d}S + \int_{\Omega} \nabla F \nabla \theta \mathrm{d}S = \int_{\partial\Omega} \left(\nabla F \bm{n} \right) \theta \mathrm{d}l
+\end{equation}
+
+\begin{equation} \label{eq:ap5}
+\int_{\Omega} - \frac{1}{\mu} \Delta A \theta \mathrm{d}S = \int_{\Omega} \frac{1}{\mu} \nabla A \nabla \theta \mathrm{d}S - \int_{\partial\Omega1} \frac{1}{\mu} \left(\nabla A \bm{n} \right) \theta \mathrm{d}l - \int_{\partial\Omega2} \frac{1}{\mu} \left(\nabla A \bm{n} \right) \theta \mathrm{d}l
+\end{equation}
+
+$\theta \in f \left(\Omega\right) : \theta \rvert_{\partial\Omega1} = 0, \theta \rvert_{\partial\Omega2} = 0 \rightarrow \int_{\partial\Omega1} \frac{1}{\mu} \left(\nabla A \bm{n} \right) \theta \mathrm{d}l = 0, \int_{\partial\Omega2} \frac{1}{\mu} \left(\nabla A \bm{n} \right) \theta \mathrm{d}l = 0$
+ 
+\noindent Discretization
+
+\begin{align*}
+A\left(x,y,t\right) \approx \sum_{n=1}^{N} A^n \left(t\right) \lambda^n \left(x,y\right) \numberthis \label{eq:ap6} \\
+J\left(x,y,t\right) \approx \sum_{n=1}^{N} J^n \left(t\right) \lambda^n \left(x,y\right) \numberthis \label{eq:ap7} \\
+\theta\left(x,y,t\right) \approx \sum_{n=1}^{N} \theta^n \left(t\right) \lambda^n \left(x,y\right) \numberthis \label{eq:ap8} \\
+\end{align*}
+
+\begin{equation} \label{eq:ap9}
+\int_{T_n} \frac{1}{\mu} \nabla \left( \sum_{n=1}^{N} A^n \lambda^n \right) \nabla \left( \sum_{n=1}^{N} \theta^n \lambda^n \right) \mathrm{d}S = \int_{T_n} \sum_{n=1}^{N} J^n \lambda^n \sum_{n=1}^{N} \theta^n \lambda^n \mathrm{d}S
+\end{equation}
+
+\noindent $T_n$ is one descrete element of geometry, in our case it is a triangle.
+
+\begin{align*} 
+\sum_{n=1}^{N} \int_{T_n} \frac{1}{\mu} \nabla \left( A^n \lambda^n \right) \nabla \left( \theta^m \lambda^m \right) \mathrm{d}S &= \sum_{n=1}^{N} \int_{T_n} J^n \lambda^n \theta^m \lambda^m \mathrm{d}S \\
+\sum_{n=1}^{N} A^n \int_{T_n} \frac{1}{\mu} \nabla  \lambda^n  \nabla \lambda^m \mathrm{d}S &= \sum_{n=1}^{N} J^n \int_{T_n} \lambda^n \lambda^m \mathrm{d}S \numberthis \label{eq:ap10}
+\end{align*}
+
+\noindent We can put $A^n$ and $J^n$ out of $\nabla$ and out of $\int_{T_n}$, because they no longer depend on coordinate system.
+
+\begin{align*} 
+S &= \sum_{n=1}^{N} \int_{T_n} \frac{1}{\mu} \nabla  \lambda^n  \nabla \lambda^m \mathrm{d}S  \\
+M &= \sum_{n=1}^{N} \int_{T_n} \lambda^n \lambda^m \mathrm{d}S
+\end{align*}
+
+\begin{equation} \label{eq:ap11}
+S A  =  M J \rightarrow A = S^\top M J
+\end{equation}

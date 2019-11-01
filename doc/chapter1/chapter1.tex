@@ -1,40 +1,56 @@
 \newpage
 \chapter{Theory}
 
-\section{2D Magnetodynamic equations}
+\section{Magnetodynamic equation}
 
-\noindent Cartesian coordinate system $(x,y,z)$
+\noindent 3D Cartesian coordinate system $(x,y,z)$:
 
 \begin{equation} \label{eq:1}
 \nabla \times \left( \frac{1}{\mu} \left( \nabla \times \bm{A} \right) \right) + \gamma \frac{\partial \bm{A}}{\partial t} - \gamma \left( \bm{v} \times \left( \nabla \times \bm{A} \right) \right) = \bm{J}
 \end{equation}
 
-
+\noindent Reduction to 2D $(x,y)$:
 \begin{align*} 
-\bm{A} &= \left(0,0,A_z\right) \numberthis \label{eq:2} \\
-\bm{J} &= \left(0,0,J_z\right) \numberthis \label{eq:3} \\
-\bm{v} &= \left(v_x,v_y,0\right) \numberthis \label{eq:4} \\
-\bm{B} &= \nabla \times \bm{A} = \left(\partial_y A_x,-\partial_x A_y,0\right) = \left(B_x,B_y,0\right) \numberthis \label{eq:5} \\
-\bm{v} \times \bm{B} &= \left(0,0,v_x B_y - v_y B_x\right) \numberthis \label{eq:6}
+\bm{A} &= \left(0,0,A_z\right) \quad &\rightarrow \quad A &= A_z \numberthis \label{eq:2} \\
+\bm{J} &= \left(0,0,J_z\right)  \quad &\rightarrow \quad J &= J_z \numberthis \label{eq:3} \\
+\bm{v} &= \left(v_x,v_y,0\right)  \quad &\rightarrow \quad \bm{v} &= \left(v_x,v_y\right) \numberthis \label{eq:4} \\
+\bm{B} &= \nabla \times \bm{A} = \left(B_x,B_y,0\right)  \quad &\rightarrow \quad \bm{B} &= \left(B_x,B_y\right) \numberthis \label{eq:5}
 \end{align*}
 
-\begin{align*}
-\bm{A}, \bm{J}, \bm{v}  &= f\left(x,y,t\right) \numberthis \label{eq:7} \\
-\mathrm{Linear} \quad \mu, \gamma  &= f\left(x,y\right) \qquad \mathrm{Nonlinear} \quad \mu = f\left(x,y, ||\bm{B}||\right) \numberthis \label{eq:8}
-\end{align*}
+\noindent For 2D, time-dependent problems are $A, J, \bm{v}$ and  $\bm{B}$ functions of coordinates $(x,y)$ and time $t$. Both $A$ and $J$ are scalar fields $\mathbb{R}^2 \rightarrow \mathbb{R}^1$, $\bm{v}$ and $\bm{B}$ are vector fields $\mathbb{R}^2 \rightarrow \mathbb{R}^2$.
 
-\section{Boundary condition}
+In a linear material, the $\mu$ and the $\gamma$ are dependent only on the coordinate system $(x,y)$, in the non-linear material, the $\mu$ is also dependent on the size of $||\bm{B}||$.
 
-\begin{equation} \label{eq:9} 
-A_z\bigg\rvert_{\partial \Omega} = 0
+\begin{equation} \label{eq:6}
+\nabla = \left( \partial_x, \partial_y \right)
 \end{equation}
+
+\noindent Curl of scalar field $\left(\nabla \times A\right)$ is vector field $\left(\partial_y A, -\partial_x A\right)$, so $\mathbb{R}^1 \rightarrow \mathbb{R}^2$, but curl of vector field $\left(\nabla \times \bm{B}\right)$ is scalar field $\left(\partial_x B_y - \partial_y B_x\right)$, so $\mathbb{R}^2 \rightarrow \mathbb{R}^1$.
+
+Divergence of vector field $\left(\nabla \cdot \bm{B}\right)$ is also scalar field $\left(\partial_x B_x + \partial_y B_y\right)$, so $\mathbb{R}^2 \rightarrow \mathbb{R}^1$.
+
+\begin{equation} \label{eq:7}
+\nabla \times \left( \frac{1}{\mu} \left( \nabla \times A \right) \right) + \gamma \frac{\partial A}{\partial t} - \gamma \left( \bm{v} \times \left( \nabla \times A \right) \right) = J
+\end{equation}
+
+\section{Boundary conditions}
+\noindent Dirichlet condition:
+\begin{equation} \label{eq:6} 
+A\bigg\rvert_{\partial \Omega_1} = f_1\left(x,y\right)
+\end{equation}
+
+\noindent Neumann condition:
+\begin{equation} \label{eq:7} 
+\partial_{\bm{n}} A\bigg\rvert_{\partial \Omega_2} = f_2\left(x,y\right)
+\end{equation}
+
+\noindent For our model, both $f_1$ and $f_2$ are equal to zero.
 
 \section{Initial condition}
 
 \begin{equation} \label{eq:10} 
-A_z\bigg\rvert_{t=0} = 0
+A\bigg\rvert_{t=0} = 0
 \end{equation}
-
 
 \section{Force}
 
@@ -52,23 +68,15 @@ B_x^2 + B_y^2 & 0 \\
 \end{pmatrix}
 \end{equation}
 
-\begin{align*}
-\mathrm{3D} \qquad &\bm{F}\left(x,y,z\right) = \oint_{\partial \Omega} \mathbb{T}  \,\mathrm{d}\bm{S} = \int_{\Omega} \left( \nabla \cdot \mathbb{T} \right) \,\mathrm{d}V \numberthis \label{eq:13} \\
-\mathrm{2D} \qquad &\bm{F}\left(x,y\right) = L \oint_{\partial \Omega} \mathbb{T}  \,\mathrm{d}\bm{l} = L \int_{\Omega} \left( \nabla \cdot \mathbb{T} \right) \,\mathrm{d}S \numberthis \label{eq:14} \\
-\end{align*}
-
-\begin{equation} \label{eq:15} 
-\nabla \cdot \mathbb{T} = \frac{1}{\mu_0} \left(\partial_x,\partial_y\right) \begin{pmatrix}
-\frac{1}{2} \left(B_x^2 - B_y^2 \right) & B_x B_y \\
-B_y B_x & \frac{1}{2} \left(B_y^2 - B_x^2 \right) \\
-\end{pmatrix}
+\begin{equation} \label{eq:12} 
+\bm{F}\left(x,y\right) = L \oint_{\partial \Omega} \mathbb{T} \bm{n} \,\mathrm{d}l = L \int_{\Omega} \left( \nabla \cdot \mathbb{T} \right) \,\mathrm{d}S
 \end{equation}
 
-\begin{equation} \label{eq:16} 
-\nabla \cdot \mathbb{T} = \frac{1}{\mu_0} \left(\frac{1}{2} \partial_x \left(B_x^2 - B_y^2 \right) + \partial_y \left( B_y B_x \right), \frac{1}{2} \partial_y \left(B_y^2 - B_x^2 \right) + \partial_x \left( B_x B_y \right)\right)
-\end{equation}
+\noindent Variable L is the length of the model into the third dimension $z$.
 
 \begin{align*}
-\nabla \cdot \mathbb{T} \left(x\right) = \frac{1}{\mu_0} \left( \partial_x B_x B_x - \partial_x B_y B_y + \partial_y B_y B_x + \partial_y B_x B_y \right) \numberthis \label{eq:17} \\
-\nabla \cdot \mathbb{T} \left(y\right) = \frac{1}{\mu_0} \left( \partial_y B_y B_y - \partial_y B_x B_x + \partial_x B_x B_y + \partial_x B_y B_x \right) \numberthis \label{eq:18} \\
+\nabla \cdot \mathbb{T} &= \frac{1}{\mu_0} \begin{pmatrix} \frac{1}{2} \left(B_x^2 - B_y^2 \right) & B_x B_y \\ B_y B_x & \frac{1}{2} \left(B_y^2 - B_x^2 \right) \\ \end{pmatrix}^{\top} \begin{pmatrix}
+\partial_x \\ \partial_y \\ \end{pmatrix} \\
+&= \frac{1}{\mu_0} \begin{pmatrix} \frac{1}{2} \partial_x \left(B_x^2 - B_y^2 \right) + \partial_y \left( B_y B_x \right) \\ \frac{1}{2} \partial_y \left(B_y^2 - B_x^2 \right) + \partial_x \left( B_x B_y \right) \\ \end{pmatrix} \\
+&= \frac{1}{\mu_0} \begin{pmatrix} \partial_x B_x B_x - \partial_x B_y B_y + \partial_y B_y B_x + \partial_y B_x B_y \\ \partial_y B_y B_y - \partial_y B_x B_x + \partial_x B_x B_y + \partial_x B_y B_x \\ \end{pmatrix} \numberthis \label{eq:13} \\
 \end{align*}
