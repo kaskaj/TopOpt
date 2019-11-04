@@ -9,7 +9,7 @@
 \noindent The $\theta$ is test function.
 
 \begin{equation} \label{eq:ap2}
-\int_{\Omega} \nabla \times \left( \frac{1}{\mu} \left( \nabla \times A \right) \right) \theta \mathrm{d}S = \int_{\Omega} J \theta \mathrm{d}S
+\int_{\Omega} \nabla \times \left( \frac{1}{\mu} \left( \nabla \times A \right) \right) \theta \, \mathrm{d}S = \int_{\Omega} J \theta \, \mathrm{d}S
 \end{equation}
 
 \begin{align*} 
@@ -18,17 +18,17 @@
 \end{align*}
 
 \begin{equation} \label{eq:ap4}
-\int_{\Omega} - \frac{1}{\mu} \Delta A \theta \mathrm{d}S = \int_{\Omega} J \theta \mathrm{d}S
+\int_{\Omega} - \frac{1}{\mu} \Delta A \theta \, \mathrm{d}S = \int_{\Omega} J \theta \, \mathrm{d}S
 \end{equation}
 
 \noindent Green's first identity:
 
 \begin{equation} \label{eq:ap5}
-\int_{\Omega} \Delta F \theta \mathrm{d}S + \int_{\Omega} \nabla F \nabla \theta \mathrm{d}S = \int_{\partial\Omega} \left(\nabla F \bm{n} \right) \theta \mathrm{d}l
+\int_{\Omega} \Delta F \theta \, \mathrm{d}S + \int_{\Omega} \nabla F \nabla \theta \, \mathrm{d}S = \int_{\partial\Omega} \left(\nabla F \bm{n} \right) \theta \mathrm{d}l
 \end{equation}
 
 \begin{equation} \label{eq:ap5}
-\int_{\Omega} - \frac{1}{\mu} \Delta A \theta \mathrm{d}S = \int_{\Omega} \frac{1}{\mu} \nabla A \nabla \theta \mathrm{d}S - \int_{\partial\Omega1} \frac{1}{\mu} \left(\nabla A \bm{n} \right) \theta \mathrm{d}l - \int_{\partial\Omega2} \frac{1}{\mu} \left(\nabla A \bm{n} \right) \theta \mathrm{d}l
+\int_{\Omega} - \frac{1}{\mu} \Delta A \theta \, \mathrm{d}S = \int_{\Omega} \frac{1}{\mu} \nabla A \nabla \theta \, \mathrm{d}S - \int_{\partial\Omega1} \frac{1}{\mu} \left(\nabla A \bm{n} \right) \theta \mathrm{d}l - \int_{\partial\Omega2} \frac{1}{\mu} \left(\nabla A \bm{n} \right) \theta \mathrm{d}l
 \end{equation}
 
 $\theta \in f \left(\Omega\right) : \theta \rvert_{\partial\Omega1} = 0, \theta \rvert_{\partial\Omega2} = 0 \rightarrow \int_{\partial\Omega1} \frac{1}{\mu} \left(\nabla A \bm{n} \right) \theta \mathrm{d}l = 0, \int_{\partial\Omega2} \frac{1}{\mu} \left(\nabla A \bm{n} \right) \theta \mathrm{d}l = 0$
@@ -42,21 +42,21 @@ J\left(x,y,t\right) \approx \sum_{n=1}^{N} J^n \left(t\right) \lambda^n \left(x,
 \end{align*}
 
 \begin{equation} \label{eq:ap9}
-\int_{T_n} \frac{1}{\mu} \nabla \left( \sum_{n=1}^{N} A^n \lambda^n \right) \nabla \left( \sum_{n=1}^{N} \theta^n \lambda^n \right) \mathrm{d}S = \int_{T_n} \sum_{n=1}^{N} J^n \lambda^n \sum_{n=1}^{N} \theta^n \lambda^n \mathrm{d}S
+\int_{T_n} \frac{1}{\mu} \nabla \left( \sum_{n=1}^{N} A^n \lambda^n \right) \nabla \left( \sum_{n=1}^{N} \theta^n \lambda^n \right) \, \mathrm{d}S = \int_{T_n} \sum_{n=1}^{N} J^n \lambda^n \sum_{n=1}^{N} \theta^n \lambda^n \, \mathrm{d}S
 \end{equation}
 
 \noindent $T_n$ is one descrete element of geometry, in our case it is a triangle.
 
 \begin{align*} 
-\sum_{n=1}^{N} \int_{T_n} \frac{1}{\mu} \nabla \left( A^n \lambda^n \right) \nabla \left( \theta^m \lambda^m \right) \mathrm{d}S &= \sum_{n=1}^{N} \int_{T_n} J^n \lambda^n \theta^m \lambda^m \mathrm{d}S \\
-\sum_{n=1}^{N} A^n \int_{T_n} \frac{1}{\mu} \nabla  \lambda^n  \nabla \lambda^m \mathrm{d}S &= \sum_{n=1}^{N} J^n \int_{T_n} \lambda^n \lambda^m \mathrm{d}S \numberthis \label{eq:ap10}
+\sum_{n=1}^{N} \int_{T_n} \frac{1}{\mu} \nabla \left( A^n \lambda^n \right) \nabla \left( \theta^m \lambda^m \right) \, \mathrm{d}S &= \sum_{n=1}^{N} \int_{T_n} J^n \lambda^n \theta^m \lambda^m \, \mathrm{d}S \\
+\sum_{n=1}^{N} A^n \int_{T_n} \frac{1}{\mu} \nabla  \lambda^n  \nabla \lambda^m \, \mathrm{d}S &= \sum_{n=1}^{N} J^n \int_{T_n} \lambda^n \lambda^m \, \mathrm{d}S \numberthis \label{eq:ap10}
 \end{align*}
 
 \noindent We can put $A^n$ and $J^n$ out of $\nabla$ and out of $\int_{T_n}$, because they no longer depend on coordinate system.
 
 \begin{align*} 
-S &= \sum_{n=1}^{N} \int_{T_n} \frac{1}{\mu} \nabla  \lambda^n  \nabla \lambda^m \mathrm{d}S  \\
-M &= \sum_{n=1}^{N} \int_{T_n} \lambda^n \lambda^m \mathrm{d}S
+S &= \sum_{n=1}^{N} \int_{T_n} \frac{1}{\mu} \nabla  \lambda^n  \nabla \lambda^m \, \mathrm{d}S  \\
+M &= \sum_{n=1}^{N} \int_{T_n} \lambda^n \lambda^m \, \mathrm{d}S
 \end{align*}
 
 \begin{equation} \label{eq:ap11}
@@ -102,15 +102,98 @@ S A  =  M J \rightarrow A = S^\top M J
 \noindent Mass matrix:
 
 \begin{align*}
-M_{T_n} &= \int_{T_n} \lambda^n \lambda^m \mathrm{d}S =  \int_{T_n} \left( \beta \circ \Phi^{-1}\right)^n \left( \beta \circ \Phi^{-1}\right)^m \mathrm{d}S \\
-&= \vert \mathrm{det} \left(\nabla \Phi \right) \vert \int_{T_r} \beta^n \beta^m \mathrm{d}S
+M_{T_n} &= \int_{T_n} \lambda^n \lambda^m \, \mathrm{d}S =  \int_{T_n} \left( \beta \circ \Phi^{-1}\right)^n \left( \beta \circ \Phi^{-1}\right)^m \, \mathrm{d}S \\
+&= \vert \mathrm{det} \left(\nabla \Phi \right) \vert \int_{T_r} \beta^n \beta^m \, \mathrm{d}S \numberthis \label{eq:ap21}
 \end{align*}
 
+\begin{equation} \label{eq:ap22}
+M_{T_n} = \vert \mathrm{det} \left(\nabla \Phi \right) \vert \begin{pmatrix} \int \beta_1 \beta_1 \, \mathrm{d}S & \int \beta_1 \beta_2 \, \mathrm{d}S  & \int \beta_1 \beta_3 \, \mathrm{d}S  \\ \int \beta_2 \beta_1 \, \mathrm{d}S & \int \beta_2 \beta_2 \, \mathrm{d}S  & \int \beta_2 \beta_3 \, \mathrm{d}S \\ \int \beta_3 \beta_1 \, \mathrm{d}S & \int \beta_3 \beta_2 \, \mathrm{d}S & \int \beta_3 \beta_3 \, \mathrm{d}S \\ \end{pmatrix}
+\end{equation}
+
+\begin{equation} \label{eq:ap23}
+M = \sum_{n=1}^{N} \vert \mathrm{det} \left(\nabla \Phi \right) \vert \begin{pmatrix} \frac{1}{12} & \frac{1}{24}  & \frac{1}{24}  \\ \frac{1}{24} & \frac{1}{12}  & \frac{1}{24} \\ \frac{1}{24}  & \frac{1}{24} & \frac{1}{12} \\ \end{pmatrix}
+\end{equation}
+
+\noindent Stiffness matrix:
 
 \begin{align*}
-\int_{T_r} \left(1-r-s\right)^2 \mathrm{d}S =  \qquad \int_{T_r} \left(1-r-s\right)r \,\mathrm{d}S = \qquad \int_{T_r} \left(1-r-s\right)s \,\mathrm{d}S = \\
-\int_{T_r} s^2 \,\mathrm{d}S =  \qquad \int_{T_r} r^2 \,\mathrm{d}S =  \qquad \int_{T_r} r \,\mathrm{d}S = \qquad \int_{T_r} s \,\mathrm{d}S = \qquad \int_{T_r} rs \,\mathrm{d}S =  \\
+S_{T_n} &= \int_{T_n} \frac{1}{\mu} \nabla  \lambda^n  \nabla \lambda^m \, \mathrm{d}S = \int_{T_n} \frac{1}{\mu} \nabla  \left( \beta \circ \Phi^{-1}\right)^n  \nabla \left( \beta \circ \Phi^{-1}\right)^m \, \mathrm{d}S  \\
+&= \int_{T_n} \frac{1}{\mu} \partial_x \left( \beta \circ \Phi^{-1}\right)^n \partial_x \left( \beta \circ \Phi^{-1}\right)^m \, \mathrm{d}S +  \int_{T_n} \frac{1}{\mu}  \partial_y \left( \beta \circ \Phi^{-1}\right)^n  \partial_y \left( \beta \circ \Phi^{-1}\right)^m \, \mathrm{d}S \\
+&= S_{T_n,x} + S_{T_n,y} \numberthis \label{eq:ap24}
 \end{align*}
+
+\begin{align*}
+S_{T_n,x} &= \int_{T_n} \frac{1}{\mu} \left( \partial_{\Phi^{-1}} \beta^n \right) \left( \partial_x \Phi^{-1} \right) \left( \partial_{\Phi^{-1}} \beta^m \right) \left( \partial_x \Phi^{-1} \right) \, \mathrm{d}S \\
+&= \frac{1}{\mu} \vert \mathrm{det} \left(\nabla \Phi \right) \vert \left(1,0\right)  \int_{T_r} \left(\nabla \Phi \right)^{-\top}  \partial \beta \,\mathrm{d}S  \numberthis \label{eq:ap25}
+\end{align*}
+
+\begin{equation} \label{eq:ap26}
+S = \sum_{n=1}^{N} \frac{1}{2 \mu} \vert \mathrm{det} \left(\nabla \Phi \right) \vert  \left(1,0\right) \left(\nabla \Phi \right)^{-\top} \partial \beta + \sum_{n=1}^{N}  \frac{1}{2 \mu} \vert \mathrm{det} \left(\nabla \Phi \right) \vert  \left(0,1\right)\left(\nabla \Phi \right)^{-\top} \partial \beta
+\end{equation}
+
+\noindent If we want to get the vector field $\bm{B}$ from the scalar field $A$, we need a “curl matrix”.
+
+
+\begin{equation} \label{eq:ap27}
+\bm{B} = \nabla \times A
+\end{equation}
+
+\noindent  $\bm{\tau} = \left(\partial_y,-\partial_x\right)$
+
+\begin{equation} \label{eq:ap28}
+\int_{\Omega} \bm{B} \theta \,\mathrm{d}S = \int_{\Omega} \left( \nabla \times A \right) \theta \,\mathrm{d}S
+= \int_{\Omega} \bm{\tau} A \theta \,\mathrm{d}S \numberthis 
+\end{equation}
+
+\noindent Integration by parts:
+
+\begin{equation} \label{eq:ap29}
+\int_{\Omega} \partial F \theta \,\mathrm{d}S = \int_{\partial\Omega}  F \theta \mathrm{d}l  - \int_{\Omega} F \partial \theta \,\mathrm{d}S
+\end{equation}
+
+\begin{equation} \label{eq:ap30}
+\int_{\Omega} \bm{B} \theta \,\mathrm{d}S = \int_{\Omega} \bm{\tau} A \theta \,\mathrm{d}S = \int_{\partial\Omega} A \theta \,\mathrm{d}l - \int_{\Omega} A \bm{\tau} \theta \,\mathrm{d}S
+\end{equation}
+
+\noindent Constraints for $\theta$ ... , $\bm{\theta} = \bm{\tau} \theta$.
+
+\begin{equation} \label{eq:ap40} \int_{\Omega} \sum_{n=1}^{N} \bm{B}^n \lambda^n \sum_{n=1}^{N} \bm{\theta}^n \lambda^n \,\mathrm{d}S = -\int_{\Omega} \sum_{n=1}^{N} A^n \lambda^n  \bm{\tau} \left(  \sum_{n=1}^{N} \theta^n \lambda^n \right) \,\mathrm{d}S 
+\end{equation}
+
+\begin{equation} \label{eq:ap41} \sum_{n=1}^{N} \bm{B}^n \int_{\Omega} \lambda^n \lambda^m \,\mathrm{d}S =  -\sum_{n=1}^{N}  A^n \int_{\Omega} \lambda^n  \bm{\tau} \lambda^m  \,\mathrm{d}S 
+\end{equation}
+
+\begin{equation} \label{eq:ap42} M B = - C A \rightarrow B = - M^{\top} C A
+\end{equation}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\noindent LocalMatrices.m
+
+\verb|edet| = $\vert \mathrm{det} \left(\nabla \Phi \right) \vert$
+
+\verb|dFinv| = $\left(\nabla \Phi \right)^{-1}$
+
+\verb|dphi| = $\left(\nabla \Phi \right)^{-\top} \partial \beta$
+
+\verb|slocxx| = $\mu S_{T_n,x}$ = \verb|1/2 * dphi(1,:)' * dphi(1,:) * edet|
+
+\verb|slocyy| = $\mu S_{T_n,y}$ = \verb|1/2 * dphi(2,:)' * dphi(2,:) * edet|
+
+\verb|mloc| = $M_{T_n}$ = \verb|edet*[1 1/2 1/2;1/2 1 1/2;1/2 1/2 1]/12;|
 
 
 %mloc   = edet*[1/12 1/24 1/24;1/24 1/12 1/24;1/24 1/24 1]/12;
