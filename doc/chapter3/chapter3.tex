@@ -5,13 +5,13 @@
 
 \begin{align*} 
 \mathrm{minimize}\quad  &  F_y^p \quad \mathrm{(p\,-\,plunger)} \\
-\mathrm{subject \, to}\quad  &  \nabla \times \left( \frac{1}{\mu} \left( \nabla \times A \right) \right) = J \\
+\mathrm{subject \, to}\quad  & - \frac{1}{\mu} \Delta A = J \\
 &  B_x = \partial_y A \\
 &  B_y = - \partial_x A
 \end{align*}
 
 \begin{equation} \label{eq:43} 
-F_y^p = \left(0,1\right) \int_{\Omega p} \left( \nabla \cdot \mathbb{T} \right) \,\mathrm{d}S = \int_{\Omega p} \frac{1}{\mu_0} \left( \partial_y B_y B_y - \partial_y B_x B_x + \partial_x B_x B_y + \partial_x B_y B_x \right) \,\mathrm{d}S
+F_y^p = \left(0,1\right) \int_{\Omega_p} \left( \nabla \cdot \mathbb{T} \right) \,\mathrm{d}S = \int_{\Omega_p} \frac{1}{\mu_0} \left( \partial_y B_y B_y - \partial_y B_x B_x + \partial_x B_x B_y + \partial_x B_y B_x \right) \,\mathrm{d}S
 \end{equation}
 
 \section{Problem formulation in discrete space}
@@ -36,24 +36,22 @@ M B_x = C_y A \quad &\rightarrow \quad \beta \\
 M B_y = -C_x A \quad &\rightarrow \quad \gamma \\
 \end{align*}
 
-\noindent The $\varphi_i$ is the topology function.
+\noindent The $\varphi$ is the topology function.
 
 \begin{equation} \label{eq:46} 
-J\left(\varphi_i\right) = J_1\left(\varphi_i\right) + J_2\left(\varphi_i\right) + J_3\left(\varphi_i\right) + J_4\left(\varphi_i\right)
+J\left(\varphi\right) = J_1\left(\varphi\right) + J_2\left(\varphi\right) + J_3\left(\varphi\right) + J_4\left(\varphi\right)
 \end{equation}
 
 \begin{align*} 
-J_1 &= \frac{1}{\mu_0} \left(B_y^{\top} C_y^p B_y - B_x^{\top} C_y^p B_x + B_y^{\top} C_x^p B_x + B_x^{\top} C_x^p B_y \right) \numberthis \label{eq:49} \\
-J_2 &= \alpha^{\top} \left(S A - M J\right) = 0 \numberthis \label{eq:50} \\
-J_3 &= \beta^{\top} \left(M B_x - C_y A\right) = 0 \numberthis \label{eq:51} \\ 
-J_4 &= \gamma^{\top} \left(M B_y + C_x A\right) = 0 \numberthis \label{eq:51}
+J_1 &= \frac{1}{\mu_0} \left(B_y^{\top} \left( \varphi \right) C_y^p B_y \left( \varphi \right) - B_x^{\top} \left( \varphi \right) C_y^p B_x \left( \varphi \right) + B_y^{\top} \left( \varphi \right) C_x^p B_x \left( \varphi \right) + B_x^{\top} \left( \varphi \right) C_x^p B_y \left( \varphi \right) \right) \numberthis \label{eq:49} \\
+J_2 &= \alpha^{\top} \left(S \left( \varphi \right) A \left( \varphi \right) - M J \left( \varphi \right) \right) = 0 \numberthis \label{eq:50} \\
+J_3 &= \beta^{\top} \left(M B_x \left( \varphi \right) - C_y A \left( \varphi \right) \right) = 0 \numberthis \label{eq:51} \\ 
+J_4 &= \gamma^{\top} \left(M B_y \left( \varphi \right) + C_x A \left( \varphi \right) \right) = 0 \numberthis \label{eq:51}
 \end{align*}
 
-
 \begin{equation} \label{eq:48} 
-\partial_{\varphi_i} J\left(\varphi_i\right) = \partial_{\varphi_i} J_1\left(\varphi_i\right) + \partial_{\varphi_i} J_2\left(\varphi_i\right) + \partial_{\varphi_i} J_3\left(\varphi_i\right) + \partial_{\varphi_i} J_4\left(\varphi_i\right)
+\partial_{\varphi_i} J\left(\varphi\right) = \partial_{\varphi_i} J_1\left(\varphi\right) + \partial_{\varphi_i} J_2\left(\varphi\right) + \partial_{\varphi_i} J_3\left(\varphi\right) + \partial_{\varphi_i} J_4\left(\varphi\right)
 \end{equation}
-
 
 \begin{equation} \label{eq:49} 
 \mu_0 \partial_{\varphi_i} J_1 = \partial_{\varphi_i} \left( B_y^{\top} C_y^p  B_y \right) - \partial_{\varphi_i} \left( B_x^{\top} C_y^p B_x \right) + \partial_{\varphi_i} \left( B_y^{\top} C_x^p B_x \right) + \partial_{\varphi_i} \left( B_x^{\top} C_x^p B_y \right)
@@ -63,43 +61,42 @@ J_4 &= \gamma^{\top} \left(M B_y + C_x A\right) = 0 \numberthis \label{eq:51}
 \partial_{\varphi_i} \left( B_y^{\top} C_y^p  B_y \right) = \partial_{\varphi_i} B_y^{\top} C_y^p B_y +  B_y^{\top} C_y^p \partial_{\varphi_i} B_y  = B_y^{\top} \left( C_y^p \right)^{\top} \partial_{\varphi_i} B_y + B_y^{\top} C_y^p \partial_{\varphi_i} B_y
 \end{equation}
 
-
 \begin{align*} 
-\partial_{\varphi_i} J_1 = &\frac{1}{\mu_0} \left(B_x^{\top}, B_y^{\top}\right) \begin{pmatrix} -\left(C_y^p\right)^{\top}  & -C_y^p \\ \left(C_x^p\right)^{\top}  & C_x^p \\ \end{pmatrix} \begin{pmatrix} \partial_{\varphi_i} B_x \\ \partial_{\varphi_i} B_x \\ \end{pmatrix} \\
-&+ \frac{1}{\mu_0} \left(B_x^{\top}, B_y^{\top}\right) \begin{pmatrix} \left(C_x^p\right)^{\top}  & C_x^p \\ \left(C_y^p\right)^{\top}  & C_y^p \\ \end{pmatrix} \begin{pmatrix} \partial_{\varphi_i} B_y \\ \partial_{\varphi_i} B_y \\ \end{pmatrix} \numberthis \label{eq:49} \\
+\partial_{\varphi_i} J_1 = &\frac{1}{\mu_0} \left(B_x^{\top}, B_y^{\top}\right) \begin{pmatrix} -\left(C_y^p\right)^{\top} -C_y^p \\ \left(C_x^p\right)^{\top} + C_x^p \\ \end{pmatrix} \partial_{\varphi_i} B_x \\
+&+ \frac{1}{\mu_0} \left(B_x^{\top}, B_y^{\top}\right) \begin{pmatrix} \left(C_x^p\right)^{\top} + C_x^p \\ \left(C_y^p\right)^{\top} + C_y^p \\ \end{pmatrix}  \partial_{\varphi_i} B_y  \numberthis \label{eq:49} \\
 \end{align*}
 
 
 \begin{align*} 
-\partial_{\varphi_i} J_2 &= \alpha^{\top} \partial_{\varphi_i} \left(S A\right) - \alpha^{\top} \partial_{\varphi_i} \left( M J \right) = \alpha^{\top} \partial_{\varphi_i} S A + \alpha^{\top} S \partial_{\varphi_i} A \numberthis \label{eq:50} \\
+\partial_{\varphi_i} J_2 &= \alpha^{\top} \partial_{\varphi_i} \left(S A\right) = \alpha^{\top} \partial_{\varphi_i} S A + \alpha^{\top} S \partial_{\varphi_i} A \numberthis \label{eq:50} \\
 \partial_{\varphi_i} J_3 &= \beta^{\top} M \partial_{\varphi_i} B_x - \beta^{\top} C_y \partial_{\varphi_i} A \numberthis \label{eq:51} \\ 
 \partial_{\varphi_i} J_4 &= \gamma^{\top} M \partial_{\varphi_i} B_y + \gamma^{\top} C_x \partial_{\varphi_i} A \numberthis \label{eq:51}
 \end{align*}
 
 \begin{align*}
-\partial_{\varphi_i} B_x:& \quad \frac{1}{\mu_0} \left(B_x^{\top}, B_y^{\top}\right) \begin{pmatrix} -\left(C_y^p\right)^{\top}  & -C_y^p \\ \left(C_x^p\right)^{\top}  & C_x^p \\ \end{pmatrix} \begin{pmatrix} \partial_{\varphi_i} B_x \\ \partial_{\varphi_i} B_x \\ \end{pmatrix} + \beta^{\top} M \partial_{\varphi_i} B_x \numberthis \label{eq:52}  \\
-\partial_{\varphi_i} B_y:& \quad \frac{1}{\mu_0} \left(B_x^{\top}, B_y^{\top}\right) \begin{pmatrix} \left(C_x^p\right)^{\top}  & C_x^p \\ \left(C_y^p\right)^{\top}  & C_y^p \\ \end{pmatrix} \begin{pmatrix} \partial_{\varphi_i} B_y \\ \partial_{\varphi_i} B_y \\ \end{pmatrix} + \gamma^{\top} M \partial_{\varphi_i} B_y  \numberthis \label{eq:53} \\
+\partial_{\varphi_i} B_x:& \quad \frac{1}{\mu_0} \left(B_x^{\top}, B_y^{\top}\right) \begin{pmatrix} -\left(C_y^p\right)^{\top} -C_y^p \\ \left(C_x^p\right)^{\top} + C_x^p \\ \end{pmatrix} \partial_{\varphi_i} B_x + \beta^{\top} M \partial_{\varphi_i} B_x \numberthis \label{eq:52}  \\
+\partial_{\varphi_i} B_y:& \quad \frac{1}{\mu_0} \left(B_x^{\top}, B_y^{\top}\right) \begin{pmatrix} \left(C_x^p\right)^{\top} + C_x^p \\ \left(C_y^p\right)^{\top} + C_y^p \\ \end{pmatrix}  \partial_{\varphi_i} B_y + \gamma^{\top} M \partial_{\varphi_i} B_y  \numberthis \label{eq:53} \\
 \partial_{\varphi_i} A:& \quad \alpha^{\top} S \partial_{\varphi_i} A - \beta^{\top} C_y \partial_{\varphi_i} A + \gamma^{\top} C_x \partial_{\varphi_i} A  \numberthis \label{eq:54} \\
 \partial_{\varphi_i} S:& \quad \alpha^{\top} \partial_{\varphi_i} S A  \numberthis \label{eq:55} 
 \end{align*}
 
+\noindent If we choose $\alpha, \beta, \gamma$ such that  (\ref{eq:52}), (\ref{eq:53}) and (\ref{eq:54}) are equal to $0$, then: 
 
-\noindent From (\ref{eq:52}): 
+\noindent From (\ref{eq:52}), ($M^{\top} = M$, $S^{\top} = S$ ): 
 \begin{equation} \label{eq:56} 
-\beta = - \frac{1}{\mu_0} M^{-\top} \left(B_x^{\top}, B_y^{\top}\right) \begin{pmatrix} -\left(C_y^p\right)^{\top}  & -C_y^p \\ \left(C_x^p\right)^{\top}  & C_x^p \\ \end{pmatrix}
+\beta = - \frac{1}{\mu_0} M^{-1} \begin{pmatrix} -\left(C_y^p\right)^{\top} -C_y^p \\ \left(C_x^p\right)^{\top} + C_x^p \\ \end{pmatrix}^{\top} \begin{pmatrix} B_x^{\top} \\ B_y^{\top}  \end{pmatrix}
 \end{equation}
 
 \noindent From (\ref{eq:53}): 
 \begin{equation} \label{eq:57} 
-\gamma = - \frac{1}{\mu_0} M^{-\top} \left(B_x^{\top}, B_y^{\top}\right) \begin{pmatrix} \left(C_x^p\right)^{\top}  & C_x^p \\ \left(C_y^p\right)^{\top}  & C_y^p \\ \end{pmatrix}
+\gamma = - \frac{1}{\mu_0} M^{-1} \begin{pmatrix} \left(C_x^p\right)^{\top} + C_x^p \\ \left(C_y^p\right)^{\top} + C_y^p \\ \end{pmatrix}^{\top} \begin{pmatrix} B_x^{\top} \\ B_y^{\top}  \end{pmatrix}
 \end{equation}
 
 \noindent From (\ref{eq:54}): 
 \begin{equation} \label{eq:58} 
-\alpha =  S^{-\top} \left( C_y^{\top} \beta - C_x^{\top} \gamma \right)
+\alpha =  S^{-1} \left( C_y^{\top} \beta - C_x^{\top} \gamma \right)
 \end{equation}
 
-\noindent If we choose $\alpha, \beta, \gamma$ such that  (\ref{eq:52}), (\ref{eq:53}) and (\ref{eq:54}) are equal to $0$, then: 
 
 \begin{equation} \label{eq:59} 
 \partial_{\varphi_i} J = \alpha^{\top} \partial_{\varphi_i} S A 

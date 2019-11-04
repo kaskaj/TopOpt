@@ -75,8 +75,6 @@ B_x^2 + B_y^2 & 0 \\
 \noindent Variable L is the length of the model into the third dimension $z$.
 
 \begin{align*}
-\nabla \cdot \mathbb{T} &= \frac{1}{\mu_0} \begin{pmatrix} \frac{1}{2} \left(B_x^2 - B_y^2 \right) & B_x B_y \\ B_y B_x & \frac{1}{2} \left(B_y^2 - B_x^2 \right) \\ \end{pmatrix}^{\top} \begin{pmatrix}
-\partial_x \\ \partial_y \\ \end{pmatrix} \\
-&= \frac{1}{\mu_0} \begin{pmatrix} \frac{1}{2} \partial_x \left(B_x^2 - B_y^2 \right) + \partial_y \left( B_y B_x \right) \\ \frac{1}{2} \partial_y \left(B_y^2 - B_x^2 \right) + \partial_x \left( B_x B_y \right) \\ \end{pmatrix} \\
+\nabla \cdot \mathbb{T} &= \frac{1}{\mu_0} \begin{pmatrix} \frac{1}{2} \partial_x \left(B_x^2 - B_y^2 \right) + \partial_y \left( B_y B_x \right) \\ \frac{1}{2} \partial_y \left(B_y^2 - B_x^2 \right) + \partial_x \left( B_x B_y \right) \\ \end{pmatrix} \\
 &= \frac{1}{\mu_0} \begin{pmatrix} \partial_x B_x B_x - \partial_x B_y B_y + \partial_y B_y B_x + \partial_y B_x B_y \\ \partial_y B_y B_y - \partial_y B_x B_x + \partial_x B_x B_y + \partial_x B_y B_x \\ \end{pmatrix} \numberthis \label{eq:13} \\
 \end{align*}

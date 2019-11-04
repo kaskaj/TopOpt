@@ -28,12 +28,12 @@
 \end{equation}
 
 \begin{equation} \label{eq:ap5}
-\int_{\Omega} - \frac{1}{\mu} \Delta A \theta \, \mathrm{d}S = \int_{\Omega} \frac{1}{\mu} \nabla A \nabla \theta \, \mathrm{d}S - \int_{\partial\Omega1} \frac{1}{\mu} \left(\nabla A \bm{n} \right) \theta \mathrm{d}l - \int_{\partial\Omega2} \frac{1}{\mu} \left(\nabla A \bm{n} \right) \theta \mathrm{d}l
+\int_{\Omega} - \frac{1}{\mu} \Delta A \theta \, \mathrm{d}S = \int_{\Omega} \frac{1}{\mu} \nabla A \nabla \theta \, \mathrm{d}S - \int_{\partial\Omega_1} \frac{1}{\mu} \left(\nabla A \bm{n} \right) \theta \mathrm{d}l - \int_{\partial\Omega_2} \frac{1}{\mu} \left(\nabla A \bm{n} \right) \theta \mathrm{d}l
 \end{equation}
 
-$\theta \in f \left(\Omega\right) : \theta \rvert_{\partial\Omega1} = 0, \theta \rvert_{\partial\Omega2} = 0 \rightarrow \int_{\partial\Omega1} \frac{1}{\mu} \left(\nabla A \bm{n} \right) \theta \mathrm{d}l = 0, \int_{\partial\Omega2} \frac{1}{\mu} \left(\nabla A \bm{n} \right) \theta \mathrm{d}l = 0$
+$\theta \in H^1 : \theta \rvert_{\partial\Omega_1} = 0, \theta \rvert_{\partial\Omega_2} = 0 \rightarrow \int_{\partial\Omega_1} \frac{1}{\mu} \left(\nabla A \bm{n} \right) \theta \mathrm{d}l = 0, \int_{\partial\Omega_2} \frac{1}{\mu} \left(\nabla A \bm{n} \right) \theta \mathrm{d}l = 0$
  
-\noindent Discretization
+\section*{Discretization}
 
 \begin{align*}
 A\left(x,y,t\right) \approx \sum_{n=1}^{N} A^n \left(t\right) \lambda^n \left(x,y\right) \numberthis \label{eq:ap6} \\
@@ -42,25 +42,25 @@ J\left(x,y,t\right) \approx \sum_{n=1}^{N} J^n \left(t\right) \lambda^n \left(x,
 \end{align*}
 
 \begin{equation} \label{eq:ap9}
-\int_{T_n} \frac{1}{\mu} \nabla \left( \sum_{n=1}^{N} A^n \lambda^n \right) \nabla \left( \sum_{n=1}^{N} \theta^n \lambda^n \right) \, \mathrm{d}S = \int_{T_n} \sum_{n=1}^{N} J^n \lambda^n \sum_{n=1}^{N} \theta^n \lambda^n \, \mathrm{d}S
+\int_{T_k} \frac{1}{\mu} \nabla \left( \sum_{n=1}^{N} A^n \lambda^n \right) \nabla \left( \sum_{n=1}^{N} \theta^n \lambda^n \right) \, \mathrm{d}S = \int_{T_k} \sum_{n=1}^{N} J^n \lambda^n \sum_{n=1}^{N} \theta^n \lambda^n \, \mathrm{d}S
 \end{equation}
 
-\noindent $T_n$ is one descrete element of geometry, in our case it is a triangle.
+\noindent $T_k$ is one discrete element of geometry, in our case it is a triangle.
 
 \begin{align*} 
-\sum_{n=1}^{N} \int_{T_n} \frac{1}{\mu} \nabla \left( A^n \lambda^n \right) \nabla \left( \theta^m \lambda^m \right) \, \mathrm{d}S &= \sum_{n=1}^{N} \int_{T_n} J^n \lambda^n \theta^m \lambda^m \, \mathrm{d}S \\
-\sum_{n=1}^{N} A^n \int_{T_n} \frac{1}{\mu} \nabla  \lambda^n  \nabla \lambda^m \, \mathrm{d}S &= \sum_{n=1}^{N} J^n \int_{T_n} \lambda^n \lambda^m \, \mathrm{d}S \numberthis \label{eq:ap10}
+\sum_{n=1}^{N} \int_{T_k} \frac{1}{\mu} \nabla \left( A^n \lambda^n \right) \nabla \left( \theta^m \lambda^m \right) \, \mathrm{d}S &= \sum_{n=1}^{N} \int_{T_k} J^n \lambda^n \theta^m \lambda^m \, \mathrm{d}S \\
+\sum_{n=1}^{N} A^n \int_{T_k} \frac{1}{\mu} \nabla  \lambda^n  \nabla \lambda^m \, \mathrm{d}S &= \sum_{n=1}^{N} J^n \int_{T_k} \lambda^n \lambda^m \, \mathrm{d}S \numberthis \label{eq:ap10}
 \end{align*}
 
-\noindent We can put $A^n$ and $J^n$ out of $\nabla$ and out of $\int_{T_n}$, because they no longer depend on coordinate system.
+\noindent We can put $A^n$ and $J^n$ out of $\nabla$ and out of $\int_{T_k}$, because they no longer depend on coordinate system.
 
 \begin{align*} 
-S &= \sum_{n=1}^{N} \int_{T_n} \frac{1}{\mu} \nabla  \lambda^n  \nabla \lambda^m \, \mathrm{d}S  \\
-M &= \sum_{n=1}^{N} \int_{T_n} \lambda^n \lambda^m \, \mathrm{d}S
+S &= \sum_{n=1}^{N} \int_{T_k} \frac{1}{\mu} \nabla  \lambda^n  \nabla \lambda^m \, \mathrm{d}S  \\
+M &= \sum_{n=1}^{N} \int_{T_k} \lambda^n \lambda^m \, \mathrm{d}S
 \end{align*}
 
 \begin{equation} \label{eq:ap11}
-S A  =  M J \rightarrow A = S^\top M J
+S A  =  M J \rightarrow A = S M J
 \end{equation}
 
 \noindent If we discretize the problem with triangular elements and select the first-order polynomial (linear function), as an approximation of the scalar field A, we get three basis functions for each triangle. The coordinates $\left(r,s\right)$ correspond to the reference triangle with vertices $V_1 = (0,0), V_2 = (0,1)$ and $V_3 = (1,1)$ numbered in counter-clockwise direction.
@@ -74,7 +74,7 @@ S A  =  M J \rightarrow A = S^\top M J
 \noindent If we differentiate them in respect to coordinates, we get:
 
 \begin{equation} \label{eq:ap15}
-\partial \beta = \begin{pmatrix} \partial_r \beta_1 & \partial_r \beta_2 & \partial_r \beta_3 \\ \partial_s \beta_1 & \partial_s \beta_2 & \partial_s \beta_3 \\ \end{pmatrix} =  \begin{pmatrix} -1 & 1 & 0 \\ -1 & 0 & 1 \\ \end{pmatrix}
+\nabla \beta = \begin{pmatrix} \partial_r \beta_1 & \partial_r \beta_2 & \partial_r \beta_3 \\ \partial_s \beta_1 & \partial_s \beta_2 & \partial_s \beta_3 \\ \end{pmatrix} =  \begin{pmatrix} -1 & 1 & 0 \\ -1 & 0 & 1 \\ \end{pmatrix}
 \end{equation}
 
 \noindent The matrices, fields and functions of the reference triangle must then be transformed into our coordinate system $(r,s) \rightarrow (x,y)$ and put into right place. Vertices of the triangle in $(x,y)$ coordinates are $V_1 = (x_1,y_1), V_2 = (x_2,y_2)$ and $V_3 = (x_3,y_3)$.
@@ -83,7 +83,7 @@ S A  =  M J \rightarrow A = S^\top M J
 \Phi \begin{pmatrix} x \\ y \\ \end{pmatrix} = \begin{pmatrix} x_1 \\ y_1 \\ \end{pmatrix} + \begin{pmatrix} x_2 - x_1 & x_3 - x_1  \\ y_2 - y_1 & y_3 - y_1 \\ \end{pmatrix} \begin{pmatrix} r \\ s \\ \end{pmatrix}
 \end{equation}
 
-\noindent The $\Phi$ is the transformation function. We can use it to transform basis functions of reference triangle $T_r$ to basis functions of the n-th triangle $T_n$.
+\noindent The $\Phi$ is the transformation function. We can use it to transform basis functions of reference triangle $T_r$ to basis functions of the n-th triangle $T_k$.
 
 \begin{equation} \label{eq:ap18}
 \lambda\left(x,y\right) = \left( \beta \circ \Phi^{-1}\right) \left(x,y\right)
@@ -96,18 +96,18 @@ S A  =  M J \rightarrow A = S^\top M J
 \end{equation} 
 
 \begin{equation} \label{eq:ap20}
-\left(\nabla \Phi \right)^{-1} = \frac{1}{\vert \mathrm{det} \left(\nabla \Phi \right) \vert} \begin{pmatrix} y_3 - y_1  &    -\left(x_3 - x_1\right) \\ -\left( y_2 - y_1 \right) & x_2 - x_1 \\ \end{pmatrix}
+\nabla \Phi^{-1} = \frac{1}{\vert \mathrm{det} \left(\nabla \Phi \right) \vert} \begin{pmatrix} y_3 - y_1  &    -\left(x_3 - x_1\right) \\ -\left( y_2 - y_1 \right) & x_2 - x_1 \\ \end{pmatrix}
 \end{equation}
 
 \noindent Mass matrix:
 
 \begin{align*}
-M_{T_n} &= \int_{T_n} \lambda^n \lambda^m \, \mathrm{d}S =  \int_{T_n} \left( \beta \circ \Phi^{-1}\right)^n \left( \beta \circ \Phi^{-1}\right)^m \, \mathrm{d}S \\
+M_{T_k} &= \int_{T_k} \lambda^n \lambda^m \, \mathrm{d}S =  \int_{T_k} \left( \beta^n \circ \Phi^{-1}\right) \left( \beta^m \circ \Phi^{-1}\right) \, \mathrm{d}S \\
 &= \vert \mathrm{det} \left(\nabla \Phi \right) \vert \int_{T_r} \beta^n \beta^m \, \mathrm{d}S \numberthis \label{eq:ap21}
 \end{align*}
 
 \begin{equation} \label{eq:ap22}
-M_{T_n} = \vert \mathrm{det} \left(\nabla \Phi \right) \vert \begin{pmatrix} \int \beta_1 \beta_1 \, \mathrm{d}S & \int \beta_1 \beta_2 \, \mathrm{d}S  & \int \beta_1 \beta_3 \, \mathrm{d}S  \\ \int \beta_2 \beta_1 \, \mathrm{d}S & \int \beta_2 \beta_2 \, \mathrm{d}S  & \int \beta_2 \beta_3 \, \mathrm{d}S \\ \int \beta_3 \beta_1 \, \mathrm{d}S & \int \beta_3 \beta_2 \, \mathrm{d}S & \int \beta_3 \beta_3 \, \mathrm{d}S \\ \end{pmatrix}
+M_{T_k} = \vert \mathrm{det} \left(\nabla \Phi \right) \vert \begin{pmatrix} \int \beta_1 \beta_1 \, \mathrm{d}S & \int \beta_1 \beta_2 \, \mathrm{d}S  & \int \beta_1 \beta_3 \, \mathrm{d}S  \\ \int \beta_2 \beta_1 \, \mathrm{d}S & \int \beta_2 \beta_2 \, \mathrm{d}S  & \int \beta_2 \beta_3 \, \mathrm{d}S \\ \int \beta_3 \beta_1 \, \mathrm{d}S & \int \beta_3 \beta_2 \, \mathrm{d}S & \int \beta_3 \beta_3 \, \mathrm{d}S \\ \end{pmatrix}
 \end{equation}
 
 \begin{equation} \label{eq:ap23}
@@ -117,72 +117,67 @@ M = \sum_{n=1}^{N} \vert \mathrm{det} \left(\nabla \Phi \right) \vert \begin{pma
 \noindent Stiffness matrix:
 
 \begin{align*}
-S_{T_n} &= \int_{T_n} \frac{1}{\mu} \nabla  \lambda^n  \nabla \lambda^m \, \mathrm{d}S = \int_{T_n} \frac{1}{\mu} \nabla  \left( \beta \circ \Phi^{-1}\right)^n  \nabla \left( \beta \circ \Phi^{-1}\right)^m \, \mathrm{d}S  \\
-&= \int_{T_n} \frac{1}{\mu} \partial_x \left( \beta \circ \Phi^{-1}\right)^n \partial_x \left( \beta \circ \Phi^{-1}\right)^m \, \mathrm{d}S +  \int_{T_n} \frac{1}{\mu}  \partial_y \left( \beta \circ \Phi^{-1}\right)^n  \partial_y \left( \beta \circ \Phi^{-1}\right)^m \, \mathrm{d}S \\
-&= S_{T_n,x} + S_{T_n,y} \numberthis \label{eq:ap24}
+S_{T_k} &= \int_{T_k} \frac{1}{\mu} \nabla  \lambda^n  \nabla \lambda^m \, \mathrm{d}S = \int_{T_k} \frac{1}{\mu} \nabla  \left( \beta^n \circ \Phi^{-1}\right)  \nabla \left( \beta^m \circ \Phi^{-1}\right) \, \mathrm{d}S  \\
+&= \int_{T_k} \frac{1}{\mu} \partial_x \left( \beta^n \circ \Phi^{-1}\right) \partial_x \left( \beta^m \circ \Phi^{-1}\right) \, \mathrm{d}S +  \int_{T_k} \frac{1}{\mu}  \partial_y \left( \beta^n \circ \Phi^{-1}\right)  \partial_y \left( \beta^m \circ \Phi^{-1}\right) \, \mathrm{d}S \\
+&= S_{T_k,x} + S_{T_k,y} \numberthis \label{eq:ap24}
 \end{align*}
 
 \begin{align*}
-S_{T_n,x} &= \int_{T_n} \frac{1}{\mu} \left( \partial_{\Phi^{-1}} \beta^n \right) \left( \partial_x \Phi^{-1} \right) \left( \partial_{\Phi^{-1}} \beta^m \right) \left( \partial_x \Phi^{-1} \right) \, \mathrm{d}S \\
-&= \frac{1}{\mu} \vert \mathrm{det} \left(\nabla \Phi \right) \vert \left(1,0\right)  \int_{T_r} \left(\nabla \Phi \right)^{-1}  \partial \beta^{\top} \left(\nabla \Phi \right)^{-\top}  \partial \beta \,\mathrm{d}S  \numberthis \label{eq:ap25}
+S_{T_k,x} &= \int_{T_k} \frac{1}{\mu} \left( \partial_x \beta^n \left( \Phi^{-1} \right) \right) \left( \partial_x \Phi^{-1} \right) \left( \partial_x \beta^n \left( \Phi^{-1} \right) \right) \left( \partial_x \Phi^{-1} \right) \, \mathrm{d}S \\
+&= \frac{1}{\mu} \vert \mathrm{det} \left(\nabla \Phi \right) \vert \left(1,0\right)  \int_{T_r} \nabla \Phi^{-1}  \nabla \beta^{\top} \nabla \Phi^{-\top}  \nabla \beta \,\mathrm{d}S  \numberthis \label{eq:ap25}
 \end{align*}
 
 \begin{align*} 
-S = &\sum_{n=1}^{N} \frac{1}{2 \mu} \vert \mathrm{det} \left(\nabla \Phi \right) \vert  \left(1,0\right) \left(\nabla \Phi \right)^{-1} \partial \beta^{\top}  \left(\nabla \Phi \right)^{-\top} \partial \beta \\
-&+ \sum_{n=1}^{N}  \frac{1}{2 \mu} \vert \mathrm{det} \left(\nabla \Phi \right) \vert  \left(0,1\right)\left(\nabla \Phi \right)^{-1} \partial \beta^{\top} \left(\nabla \Phi \right)^{-\top} \partial \beta \numberthis \label{eq:ap26}
+S = &\sum_{n=1}^{N} \frac{1}{2 \mu} \vert \mathrm{det} \left(\nabla \Phi \right) \vert  \left(1,0\right) \nabla \Phi^{-1} \nabla \beta^{\top}  \nabla \Phi^{-\top} \nabla \beta \\
+&+ \sum_{n=1}^{N}  \frac{1}{2 \mu} \vert \mathrm{det} \left(\nabla \Phi \right) \vert  \left(0,1\right)\nabla \Phi^{-1} \nabla \beta^{\top} \nabla \Phi^{-\top} \nabla \beta \numberthis \label{eq:ap26}
 \end{align*}
 
 \noindent If we want to get the vector field $\bm{B}$ from the scalar field $A$, we need a “curl matrix”.
 
 \begin{equation} \label{eq:ap27}
-\bm{B} = \nabla \times A
+\bm{B} = \begin{pmatrix} B_x \\ B_y \end{pmatrix} = \begin{pmatrix} \partial_y A \\ -\partial_x A \end{pmatrix}
 \end{equation}
 
-\noindent  $\bm{\tau} = \left(\partial_y,-\partial_x\right)$
-
 \begin{equation} \label{eq:ap28}
-\int_{\Omega} \bm{B} \theta \,\mathrm{d}S = \int_{\Omega} \left( \nabla \times A \right) \theta \,\mathrm{d}S
-= \int_{\Omega} \bm{\tau} A \theta \,\mathrm{d}S \numberthis 
+\int_{\Omega} B_x \theta \,\mathrm{d}S =  \int_{\Omega} \partial_y A \theta \,\mathrm{d}S
 \end{equation}
 
 \noindent Integration by parts:
 
 \begin{equation} \label{eq:ap29}
-\int_{\Omega} \partial F \theta \,\mathrm{d}S = \int_{\partial\Omega}  F \theta \mathrm{d}l  - \int_{\Omega} F \partial \theta \,\mathrm{d}S
+\int_{\Omega} \partial F \theta \,\mathrm{d}S = \int_{\partial\Omega}  F \theta \bm{n} \mathrm{d}l  - \int_{\Omega} F \partial \theta \,\mathrm{d}S
 \end{equation}
 
 \begin{equation} \label{eq:ap30}
-\int_{\Omega} \bm{B} \theta \,\mathrm{d}S = \int_{\Omega} \bm{\tau} A \theta \,\mathrm{d}S = \int_{\partial\Omega} A \theta \,\mathrm{d}l - \int_{\Omega} A \bm{\tau} \theta \,\mathrm{d}S
+\int_{\Omega} B_x \theta \,\mathrm{d}S = \int_{\Omega} \partial_y A \theta \,\mathrm{d}S = \int_{\partial\Omega} A \theta \bm{n} \,\mathrm{d}l - \int_{\Omega} A \partial_y \theta \,\mathrm{d}S
 \end{equation}
 
-\noindent Constraints for $\theta$ ... , $\bm{\theta} = \bm{\tau} \theta$.
+\noindent Constraints for $\theta$ ...
 
-\begin{equation} \label{eq:ap40} \int_{\Omega} \sum_{n=1}^{N} \bm{B}^n \lambda^n \sum_{n=1}^{N} \bm{\theta}^n \lambda^n \,\mathrm{d}S = -\int_{\Omega} \sum_{n=1}^{N} A^n \lambda^n  \bm{\tau} \left(  \sum_{n=1}^{N} \theta^n \lambda^n \right) \,\mathrm{d}S 
+\begin{equation} \label{eq:ap40}
+\int_{\Omega} \sum_{n=1}^{N} B_x^n \lambda^n \sum_{n=1}^{N} \theta^n \lambda^n \,\mathrm{d}S = -\int_{\Omega} \sum_{n=1}^{N} A^n \lambda^n \partial_y \left(  \sum_{n=1}^{N} \theta^n \lambda^n \right) \,\mathrm{d}S 
 \end{equation}
 
-\begin{equation} \label{eq:ap41} \sum_{n=1}^{N} \bm{B}^n \int_{\Omega} \lambda^n \lambda^m \,\mathrm{d}S =  -\sum_{n=1}^{N}  A^n \int_{\Omega} \lambda^n  \bm{\tau} \lambda^m  \,\mathrm{d}S 
+\begin{equation} \label{eq:ap41}
+\sum_{n=1}^{N} B_x^n \int_{\Omega} \lambda^n \lambda^m \,\mathrm{d}S =  -\sum_{n=1}^{N}  A^n \int_{\Omega} \lambda^n  \partial_y \lambda^m  \,\mathrm{d}S 
 \end{equation}
 
-\begin{equation} \label{eq:ap42} M B = - C A \rightarrow B = - M^{\top} C A
+\begin{equation} \label{eq:ap42} M B_x = - C_y A \rightarrow B_x = - M C_y A
 \end{equation}
 
 \noindent “Curl matrix”:
 
-\begin{align*} C_{T_n} &= \int_{T_n} \lambda^n  \bm{\tau} \lambda^m  \,\mathrm{d}S = \int_{T_n} \lambda^n  \left( \partial_y \lambda^m, -\partial_x \lambda^m \right) \,\mathrm{d}S \\
-&= \int_{T_n} \lambda^n \partial_y \lambda^m  \,\mathrm{d}S - \int_{T_n} \lambda^n \partial_x \lambda^m  \,\mathrm{d}S = \\
-&= \int_{T_n} \left( \beta \circ \Phi^{-1}\right)^n \partial_y \left( \beta \circ \Phi^{-1}\right)^m \,\mathrm{d}S - \int_{T_n} \left( \beta \circ \Phi^{-1}\right)^n \partial_x \left( \beta \circ \Phi^{-1}\right)^m \,\mathrm{d}S \\
-&= C_{T_n,x} -  C_{T_n,y} \numberthis \label{eq:ap43}
+\begin{align*} C_{T_k,y} &=  \int_{T_k} \lambda^n \partial_y \lambda^m  \,\mathrm{d}S = \int_{T_k} \left( \beta^n \circ \Phi^{-1}\right) \partial_y \left( \beta^m \circ \Phi^{-1}\right) \,\mathrm{d}S \\
+&= \int_{T_k} \left( \beta^n \circ \Phi^{-1}\right)   \left( \partial_y \beta^n \left(\Phi^{-1}\right) \right) \left( \partial_x \Phi^{-1} \right) \,\mathrm{d}S \\
+&= \vert \mathrm{det} \left(\nabla \Phi \right) \vert  \left(1,0\right) \int_{T_r} \beta \nabla \Phi^{-\top} \nabla \beta \,\mathrm{d}S \numberthis \label{eq:ap44}
 \end{align*}
 
-\begin{align*}
-C_{T_n,x} &= \int_{T_n} \left( \beta \circ \Phi^{-1}\right)^n  \left( \partial_{\Phi^{-1}} \beta^n \right) \left( \partial_x \Phi^{-1} \right) \,\mathrm{d}S \\
-&= \vert \mathrm{det} \left(\nabla \Phi \right) \vert  \left(1,0\right) \int_{T_r}  \left(\nabla \Phi \right)^{-\top}  \partial \beta \,\mathrm{d}S \numberthis \label{eq:ap44}
+\noindent We got $\frac{1}{6} = \frac{1}{2} \cdot \frac{1}{3}$, because $\int \beta \, \mathrm{d}S = \frac{1}{3}$.
+
+\begin{align*} 
+C_x &= \sum_{n=1}^{N} \frac{1}{6} \vert \mathrm{det} \left(\nabla \Phi \right) \vert \left(0,1\right) \nabla \Phi^{-\top} \nabla \beta \\
+C_y &= - \sum_{n=1}^{N} \frac{1}{6} \vert \mathrm{det} \left(\nabla \Phi \right) \vert \left(1,0\right) \nabla \Phi^{-\top} \nabla \beta \numberthis \label{eq:ap45} 
 \end{align*}
-
-
-\begin{equation} \label{eq:ap45} 
-C = \sum_{n=1}^{N} \frac{1}{2} \vert \mathrm{det} \left(\nabla \Phi \right) \vert \left(1,0\right) \left(\nabla \Phi \right)^{-\top} \partial \beta - \sum_{n=1}^{N} \frac{1}{2} \vert \mathrm{det} \left(\nabla \Phi \right) \vert \left(0,1\right) \left(\nabla \Phi \right)^{-\top} \partial \beta
-\end{equation}
 
 
 
@@ -205,23 +200,23 @@ C = \sum_{n=1}^{N} \frac{1}{2} \vert \mathrm{det} \left(\nabla \Phi \right) \ver
 
 \verb|edet| = $\vert \mathrm{det} \left(\nabla \Phi \right) \vert$
 
-\verb|dFinv| = $\left(\nabla \Phi \right)^{-1}$
+\verb|dFinv| = $\nabla \Phi^{-1}$
 
-\verb|dphi| = $\left(\nabla \Phi \right)^{-\top} \partial \beta$
+\verb|dphi| = $\nabla \Phi^{-\top} \nabla \beta$
 
-\verb|slocx|  = $...$ = \verb|1/2 *  dphi(1,:) * edet|                        
+\verb|slocx|  = $3C_{T_k,x}$ = \verb|1/2 *  dphi(1,:) * edet|                        
 
-\verb|slocy|  = $...$ = \verb|1/2 *  dphi(2,:) * edet|                       
+\verb|slocy|  = $3C_{T_k,y}$ = \verb|1/2 *  dphi(2,:) * edet|                       
 
-\verb|slocxx| = $\mu S_{T_n,x}$ = \verb|1/2 * dphi(1,:)' * dphi(1,:) * edet|
+\verb|slocxx| = $\mu S_{T_k,x}$ = \verb|1/2 * dphi(1,:)' * dphi(1,:) * edet|
 
-\verb|slocyy| = $\mu S_{T_n,y}$ = \verb|1/2 * dphi(2,:)' * dphi(2,:) * edet|
+\verb|slocyy| = $\mu S_{T_k,y}$ = \verb|1/2 * dphi(2,:)' * dphi(2,:) * edet|
 
-\verb|mloc| = $M_{T_n}$ = \verb|[1 1/2 1/2;1/2 1 1/2;1/2 1/2 1]/12 * edet|
+\verb|mloc| = $M_{T_k}$ = \verb|[1 1/2 1/2;1/2 1 1/2;1/2 1/2 1]/12 * edet|
 
-\verb|clocx|  = $...$ =  \verb|[slocx;slocx;slocx]/3|                   
+\verb|clocx|  = $C_{T_k,x}$ =  \verb|[slocx;slocx;slocx]/3|                   
 
-\verb|clocy|  = $...$ =  \verb|[slocy;slocy;slocy]/3|                   
+\verb|clocy|  = $C_{T_k,y}$ =  \verb|[slocy;slocy;slocy]/3|                   
 
 
 
