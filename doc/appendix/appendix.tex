@@ -124,15 +124,15 @@ S_{T_n} &= \int_{T_n} \frac{1}{\mu} \nabla  \lambda^n  \nabla \lambda^m \, \math
 
 \begin{align*}
 S_{T_n,x} &= \int_{T_n} \frac{1}{\mu} \left( \partial_{\Phi^{-1}} \beta^n \right) \left( \partial_x \Phi^{-1} \right) \left( \partial_{\Phi^{-1}} \beta^m \right) \left( \partial_x \Phi^{-1} \right) \, \mathrm{d}S \\
-&= \frac{1}{\mu} \vert \mathrm{det} \left(\nabla \Phi \right) \vert \left(1,0\right)  \int_{T_r} \left(\nabla \Phi \right)^{-\top}  \partial \beta \,\mathrm{d}S  \numberthis \label{eq:ap25}
+&= \frac{1}{\mu} \vert \mathrm{det} \left(\nabla \Phi \right) \vert \left(1,0\right)  \int_{T_r} \left(\nabla \Phi \right)^{-1}  \partial \beta^{\top} \left(\nabla \Phi \right)^{-\top}  \partial \beta \,\mathrm{d}S  \numberthis \label{eq:ap25}
 \end{align*}
 
-\begin{equation} \label{eq:ap26}
-S = \sum_{n=1}^{N} \frac{1}{2 \mu} \vert \mathrm{det} \left(\nabla \Phi \right) \vert  \left(1,0\right) \left(\nabla \Phi \right)^{-\top} \partial \beta + \sum_{n=1}^{N}  \frac{1}{2 \mu} \vert \mathrm{det} \left(\nabla \Phi \right) \vert  \left(0,1\right)\left(\nabla \Phi \right)^{-\top} \partial \beta
-\end{equation}
+\begin{align*} 
+S = &\sum_{n=1}^{N} \frac{1}{2 \mu} \vert \mathrm{det} \left(\nabla \Phi \right) \vert  \left(1,0\right) \left(\nabla \Phi \right)^{-1} \partial \beta^{\top}  \left(\nabla \Phi \right)^{-\top} \partial \beta \\
+&+ \sum_{n=1}^{N}  \frac{1}{2 \mu} \vert \mathrm{det} \left(\nabla \Phi \right) \vert  \left(0,1\right)\left(\nabla \Phi \right)^{-1} \partial \beta^{\top} \left(\nabla \Phi \right)^{-\top} \partial \beta \numberthis \label{eq:ap26}
+\end{align*}
 
 \noindent If we want to get the vector field $\bm{B}$ from the scalar field $A$, we need a “curl matrix”.
-
 
 \begin{equation} \label{eq:ap27}
 \bm{B} = \nabla \times A
@@ -166,6 +166,26 @@ S = \sum_{n=1}^{N} \frac{1}{2 \mu} \vert \mathrm{det} \left(\nabla \Phi \right) 
 \begin{equation} \label{eq:ap42} M B = - C A \rightarrow B = - M^{\top} C A
 \end{equation}
 
+\noindent “Curl matrix”:
+
+\begin{align*} C_{T_n} &= \int_{T_n} \lambda^n  \bm{\tau} \lambda^m  \,\mathrm{d}S = \int_{T_n} \lambda^n  \left( \partial_y \lambda^m, -\partial_x \lambda^m \right) \,\mathrm{d}S \\
+&= \int_{T_n} \lambda^n \partial_y \lambda^m  \,\mathrm{d}S - \int_{T_n} \lambda^n \partial_x \lambda^m  \,\mathrm{d}S = \\
+&= \int_{T_n} \left( \beta \circ \Phi^{-1}\right)^n \partial_y \left( \beta \circ \Phi^{-1}\right)^m \,\mathrm{d}S - \int_{T_n} \left( \beta \circ \Phi^{-1}\right)^n \partial_x \left( \beta \circ \Phi^{-1}\right)^m \,\mathrm{d}S \\
+&= C_{T_n,x} -  C_{T_n,y} \numberthis \label{eq:ap43}
+\end{align*}
+
+\begin{align*}
+C_{T_n,x} &= \int_{T_n} \left( \beta \circ \Phi^{-1}\right)^n  \left( \partial_{\Phi^{-1}} \beta^n \right) \left( \partial_x \Phi^{-1} \right) \,\mathrm{d}S \\
+&= \vert \mathrm{det} \left(\nabla \Phi \right) \vert  \left(1,0\right) \int_{T_r}  \left(\nabla \Phi \right)^{-\top}  \partial \beta \,\mathrm{d}S \numberthis \label{eq:ap44}
+\end{align*}
+
+
+\begin{equation} \label{eq:ap45} 
+C = \sum_{n=1}^{N} \frac{1}{2} \vert \mathrm{det} \left(\nabla \Phi \right) \vert \left(1,0\right) \left(\nabla \Phi \right)^{-\top} \partial \beta - \sum_{n=1}^{N} \frac{1}{2} \vert \mathrm{det} \left(\nabla \Phi \right) \vert \left(0,1\right) \left(\nabla \Phi \right)^{-\top} \partial \beta
+\end{equation}
+
+
+
 
 
 
@@ -189,11 +209,20 @@ S = \sum_{n=1}^{N} \frac{1}{2 \mu} \vert \mathrm{det} \left(\nabla \Phi \right) 
 
 \verb|dphi| = $\left(\nabla \Phi \right)^{-\top} \partial \beta$
 
+\verb|slocx|  = $...$ = \verb|1/2 *  dphi(1,:) * edet|                        
+
+\verb|slocy|  = $...$ = \verb|1/2 *  dphi(2,:) * edet|                       
+
 \verb|slocxx| = $\mu S_{T_n,x}$ = \verb|1/2 * dphi(1,:)' * dphi(1,:) * edet|
 
 \verb|slocyy| = $\mu S_{T_n,y}$ = \verb|1/2 * dphi(2,:)' * dphi(2,:) * edet|
 
-\verb|mloc| = $M_{T_n}$ = \verb|edet*[1 1/2 1/2;1/2 1 1/2;1/2 1/2 1]/12;|
+\verb|mloc| = $M_{T_n}$ = \verb|[1 1/2 1/2;1/2 1 1/2;1/2 1/2 1]/12 * edet|
+
+\verb|clocx|  = $...$ =  \verb|[slocx;slocx;slocx]/3|                   
+
+\verb|clocy|  = $...$ =  \verb|[slocy;slocy;slocy]/3|                   
+
 
 
 %mloc   = edet*[1/12 1/24 1/24;1/24 1/12 1/24;1/24 1/24 1]/12;
