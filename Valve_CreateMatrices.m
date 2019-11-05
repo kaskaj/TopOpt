@@ -74,27 +74,6 @@ function Valve_CreateMatrices(params, mesh0, refin_level, check)
     
     id_dirichlet = x == max(x) | y == min(y) | y == max(y);
     
-    %% Prescribe mu and gamma
-    
-    % Select whole Fe region + air
-    mu_nodes_select    = (x_mid >= params.x_fe_min) & (x_mid <= params.x_fe_max) & (y_mid >= params.y_fe_min) & (y_mid <= params.y_fe_max);
-    
-    % Deselect conductors and gaps
-    mu_nodes_deselect1 = (x_mid >= params.x_c_min) & (x_mid <= params.x_c_max) & (y_mid >= params.y_c_min) & (y_mid <= params.y_c_max);
-    mu_nodes_deselect2 = (x_mid >= params.x_c_min) & (x_mid <= params.x_c_max) & (y_mid >= -params.y_c_max) & (y_mid <= -params.y_c_min);
-    mu_nodes_deselect3 = (x_mid >= params.x_gap_min) & (x_mid <= params.x_gap_max) & (y_mid >= params.y_gap_min) & (y_mid <= params.y_gap_max);
-    mu_nodes_deselect4 = (x_mid >= params.x_t1_min) & (x_mid <= params.x_t1_max) & (y_mid >= params.y_t1_min) & (y_mid <= params.y_t1_max);
-    mu_nodes_deselect5 = (x_mid >= params.x_t2_min) & (x_mid <= params.x_t2_max) & (y_mid >= params.y_t2_min) & (y_mid <= params.y_t2_max);
-    
-    % Combine them
-    mu_nodes           = mu_nodes_select & ~mu_nodes_deselect1 & ~mu_nodes_deselect2 & ~mu_nodes_deselect3 & ~mu_nodes_deselect4 & ~mu_nodes_deselect5;
-    
-    % Insert values
-    mu            = zeros(nelement,1);
-    mu(mu_nodes)  = params.mu0*params.mur;
-    mu(~mu_nodes) = params.mu0;
-    mu            = repmat(mu,1,9);
-    
     %% Prescribe current density
     t   = params.t;
     J = zeros(npoint,1);
@@ -116,7 +95,6 @@ function Valve_CreateMatrices(params, mesh0, refin_level, check)
     slocyy_aa = zeros(nelement,9);
     clocx_aa  = zeros(nelement,9);
     clocy_aa  = zeros(nelement,9);
-    mloc_aa_plunger  = zeros(nelement,9);
     clocx_aa_plunger = zeros(nelement,9);
     clocy_aa_plunger = zeros(nelement,9);
     
@@ -135,7 +113,6 @@ function Valve_CreateMatrices(params, mesh0, refin_level, check)
         clocy_aa(k,:)    = clocy(:);
         
         if x_mid(k) >= params.x_piston_min-tol2 && x_mid(k) <= params.x_piston_max+tol2 && y_mid(k) >= params.y_piston_min-tol2 && y_mid(k) <= params.y_piston_max+tol2
-            mloc_aa_plunger(k,:)  = mloc(:);
             clocx_aa_plunger(k,:) = clocx(:);
             clocy_aa_plunger(k,:) = clocy(:);
         end
@@ -147,8 +124,6 @@ function Valve_CreateMatrices(params, mesh0, refin_level, check)
     Sloc    = sparse(ii(:),jj(:),(slocxx_aa(:)+slocyy_aa(:)));
     Clocx   = sparse(ii(:),jj(:),clocx_aa(:));
     Clocy   = sparse(ii(:),jj(:),clocy_aa(:));
-    Sloc_mu = sparse(ii(:),jj(:),(slocxx_aa(:)+slocyy_aa(:))./mu(:));
-    Mloc_plunger  = sparse(ii(:),jj(:),mloc_aa_plunger(:));
     Clocx_plunger = sparse(ii(:),jj(:),clocx_aa_plunger(:));
     Clocy_plunger = sparse(ii(:),jj(:),clocy_aa_plunger(:));
     
@@ -166,26 +141,23 @@ function Valve_CreateMatrices(params, mesh0, refin_level, check)
     mesh.elems2nodes  = elems2nodes;
     mesh.id_dirichlet = id_dirichlet;
     
-    matrix = [];
-    matrix.ii            = ii;
-    matrix.jj            = jj;
-    matrix.Mloc          = Mloc;
-    matrix.Sloc          = Sloc;
-    matrix.sloc_aa       = slocxx_aa + slocyy_aa;    
-    matrix.Clocx         = Clocx;
-    matrix.Clocx_plunger = Clocx_plunger;
-    matrix.Clocy         = Clocy;
-    matrix.Clocy_plunger = Clocy_plunger;
-    matrix.Sloc_mu       = Sloc_mu;
-    matrix.Mloc_plunger  = Mloc_plunger;
-    matrix.J             = J;
-    
+    matrices = [];
+    matrices.ii            = ii;
+    matrices.jj            = jj;
+    matrices.Mloc          = Mloc;
+    matrices.Sloc          = Sloc;
+    matrices.sloc_aa       = slocxx_aa + slocyy_aa;    
+    matrices.Clocx         = Clocx;
+    matrices.Clocx_plunger = Clocx_plunger;
+    matrices.Clocy         = Clocy;
+    matrices.Clocy_plunger = Clocy_plunger;
+    matrices.J             = J;    
     
     file_name_mesh   = fullfile('Valve_Data', sprintf('Mesh%d.mat', refin_level));
     file_name_matrix = fullfile('Valve_Data', sprintf('Matrices%d.mat', refin_level));
     
     save(file_name_mesh,'mesh');
-    save(file_name_matrix,'matrix');
+    save(file_name_matrix,'matrices');
     
 end
 
