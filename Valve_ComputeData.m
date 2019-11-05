@@ -1,17 +1,15 @@
 clear all;
 close all;
 
-addpath(genpath('./3rd_party'));
-
 %% Load data
 
-refin_level = 8;
+refin_level = 5;
 
 folder_name = 'Valve_Data';
 
 load(fullfile(folder_name, 'Param'), 'params');
 load(fullfile(folder_name, sprintf('Mesh%d.mat', refin_level)), 'mesh');
-load(fullfile(folder_name, sprintf('Matrices%d.mat', refin_level)));
+load(fullfile(folder_name, sprintf('Matrices%d.mat', refin_level)), 'matrix');
 
 %% Extract parameters
 
@@ -24,22 +22,12 @@ id          = ~mesh.id_dirichlet;
 npoint      = mesh.npoint;
 elems2nodes = mesh.elems2nodes;
 
-%% Prescribe current density
-
-J = zeros(npoint,1);
-
-J_nodes_1 = (x >= (params.x_c_min + 2*t)) & (x <= (params.x_c_max - t)) & (y >= (params.y_c_min + t)) & (y <= (params.y_c_max - t));
-J_nodes_2 = (x >= (params.x_c_min + 2*t)) & (x <= (params.x_c_max - t)) & (y >= -(params.y_c_max - t)) & (y <= -(params.y_c_min + t));
-
-J(J_nodes_1) = params.J_coil1;
-J(J_nodes_2) = params.J_coil2;
-
 %% Solve the system
 
-f     = Mloc*J;
+f     = matrix.Mloc*matrix.J;
 A     = zeros(npoint,1);
-A(id) = Sloc_mu(id,id) \ f(id);
-B     = [Mloc\(Clocy*A),-Mloc\(Clocx*A)];
+A(id) = matrix.Sloc_mu(id,id) \ f(id);
+B     = [matrix.Mloc\(matrix.Clocy*A),-matrix.Mloc\(matrix.Clocx*A)];
 
 %% Plot fields
 
@@ -53,8 +41,8 @@ Valve_PlotEdges(params, max(field));
 
 %% Compute the force acting on the plunger (way 1)
 
-F_x_aux = B(:,1)'*Clocx_plunger*B(:,1) - B(:,2)'*Clocx_plunger*B(:,2) + B(:,2)'*Clocy_plunger*B(:,1) + B(:,1)'*Clocy_plunger*B(:,2);
-F_y_aux = -B(:,1)'*Clocy_plunger*B(:,1) + B(:,2)'*Clocy_plunger*B(:,2) + B(:,2)'*Clocx_plunger*B(:,1) + B(:,1)'*Clocx_plunger*B(:,2);
+F_x_aux = B(:,1)'*matrix.Clocx_plunger*B(:,1) - B(:,2)'*matrix.Clocx_plunger*B(:,2) + B(:,2)'*matrix.Clocy_plunger*B(:,1) + B(:,1)'*matrix.Clocy_plunger*B(:,2);
+F_y_aux = -B(:,1)'*matrix.Clocy_plunger*B(:,1) + B(:,2)'*matrix.Clocy_plunger*B(:,2) + B(:,2)'*matrix.Clocx_plunger*B(:,1) + B(:,1)'*matrix.Clocx_plunger*B(:,2);
 F       = 1/mu0*[F_x_aux; F_y_aux];
 
 %% Compute the force acting on the plunger (way 2)

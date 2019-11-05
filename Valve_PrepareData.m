@@ -1,6 +1,6 @@
 clear all;
 
-levels_max = 8;
+levels_max = 5;
 
 % Set parameters
 Valve_SetParameters;

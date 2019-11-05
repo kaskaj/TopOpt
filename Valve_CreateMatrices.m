@@ -95,6 +95,16 @@ function Valve_CreateMatrices(params, mesh0, refin_level, check)
     mu(~mu_nodes) = params.mu0;
     mu            = repmat(mu,1,9);
     
+    %% Prescribe current density
+    t   = params.t;
+    J = zeros(npoint,1);
+
+    J_nodes_1 = (x >= (params.x_c_min + 2*t)) & (x <= (params.x_c_max - t)) & (y >= (params.y_c_min + t)) & (y <= (params.y_c_max - t));
+    J_nodes_2 = (x >= (params.x_c_min + 2*t)) & (x <= (params.x_c_max - t)) & (y >= -(params.y_c_max - t)) & (y <= -(params.y_c_min + t));
+
+    J(J_nodes_1) = params.J_coil1;
+    J(J_nodes_2) = params.J_coil2;
+    
     %% Transformation for Triangulation
     
     ii        = zeros(nelement,9);
@@ -156,11 +166,26 @@ function Valve_CreateMatrices(params, mesh0, refin_level, check)
     mesh.elems2nodes  = elems2nodes;
     mesh.id_dirichlet = id_dirichlet;
     
+    matrix = [];
+    matrix.ii            = ii;
+    matrix.jj            = jj;
+    matrix.Mloc          = Mloc;
+    matrix.Sloc          = Sloc;
+    matrix.sloc_aa       = slocxx_aa + slocyy_aa;    
+    matrix.Clocx         = Clocx;
+    matrix.Clocx_plunger = Clocx_plunger;
+    matrix.Clocy         = Clocy;
+    matrix.Clocy_plunger = Clocy_plunger;
+    matrix.Sloc_mu       = Sloc_mu;
+    matrix.Mloc_plunger  = Mloc_plunger;
+    matrix.J             = J;
+    
+    
     file_name_mesh   = fullfile('Valve_Data', sprintf('Mesh%d.mat', refin_level));
     file_name_matrix = fullfile('Valve_Data', sprintf('Matrices%d.mat', refin_level));
     
     save(file_name_mesh,'mesh');
-    save(file_name_matrix,'ii','jj','Mloc','Sloc','Clocx','Clocy','Sloc_mu','Mloc_plunger','Clocx_plunger','Clocy_plunger');
+    save(file_name_matrix,'matrix');
     
 end
 
