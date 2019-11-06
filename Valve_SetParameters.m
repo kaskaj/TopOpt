@@ -87,6 +87,11 @@ params.x_piston_max = w_channel + w1;
 params.y_piston_min = -h3/2-2*t-h2+h4+t+y_move;
 params.y_piston_max = -h3/2-2*t-h2+h4+t+h_piston+y_move;
 
+params.x_init_min = w_channel + w1 + 3*t + w2;
+params.x_init_max = w_channel + w1 + 3*t + w2 + w3;
+params.y_init_min = -h3/2;
+params.y_init_max = h3/2;
+
 
 %% Compute edges
 
@@ -146,8 +151,8 @@ params.edg4(:,3) = +3;
 params.nod5 = [
     w_channel, (h3/2) + h2 + 2*t - h4;
     w_channel, (h3/2) + h2 + 2*t + h1;
-    w_channel + w1 + w4 + w_magnet + t + w3, (h3/2) + h2 + 2*t + h1;
-    w_channel + w1 + w4 + w_magnet + t + w3, -((h3/2) + h2 + 2*t + h1);
+    w_channel + w1 + 2*t + w2 + t + w3, (h3/2) + h2 + 2*t + h1;
+    w_channel + w1 + 2*t + w2 + t + w3, -((h3/2) + h2 + 2*t + h1);
     w_channel, -((h3/2) + h2 + 2*t + h1);
     w_channel, -((h3/2) + h2 + 2*t - h4);
     w_channel + w1, -((h3/2) + h2 + 2*t - h4);
@@ -173,11 +178,52 @@ params.edg5 = [
     ] ;
 params.edg5(:,3) = +4;
 
+% (t + y_move) region under the plunger
+params.nod6 = [
+    (w_channel),  -(h3/2 + 2*t + h2 - h4);
+    (w_channel + w1),  -(h3/2 + 2*t + h2 - h4);
+    (w_channel + w1),  -(h3/2 + 2*t + h2 - h4 - t - y_move);
+    (w_channel),  -(h3/2 + 2*t + h2 - h4 - t - y_move);    
+    ] ;
+params.edg6 = [
+     1 ,  2 ;  2 ,  3
+     3 ,  4 ;  4 ,  1
+    ] ;
+params.edg6(:,3) = +5;
+
+% (t + y_gap - y_move) region above the plunger
+params.nod7 = [
+    (w_channel),  -(h3/2 + 2*t + h2 - h4 - t - y_move - h_piston);
+    (w_channel + w1),  -(h3/2 + 2*t + h2 - h4 - t - y_move - h_piston);
+    (w_channel + w1),  -(h3/2 + 2*t + h2 - h4 - t  - h_piston - t - h_gap);
+    (w_channel),  -(h3/2 + 2*t + h2 - h4 - t  - h_piston - t - h_gap);   
+    ] ;
+params.edg7 = [
+     1 ,  2 ;  2 ,  3
+     3 ,  4 ;  4 ,  1
+    ] ;
+params.edg7(:,3) = +6;
+
+% Channel
+params.nod8 = [
+    0,  -params.y_air/2;
+    w_channel,  -params.y_air/2;
+    w_channel,  params.y_air/2;
+    0,  params.y_air/2;
+    ] ;
+params.edg8 = [
+     1 ,  2 ;  2 ,  3
+     3 ,  4 ;  4 ,  1
+    ] ;
+params.edg8(:,3) = +7;
+
 params.edg2(:,1:2) = params.edg2(:,1:2) + size(params.nod1,1);
 params.edg3(:,1:2) = params.edg3(:,1:2) + size(params.nod1,1) + size(params.nod2,1);
 params.edg4(:,1:2) = params.edg4(:,1:2) + size(params.nod1,1) + size(params.nod2,1) + size(params.nod3,1);
 params.edg5(:,1:2) = params.edg5(:,1:2) + size(params.nod1,1) + size(params.nod2,1) + size(params.nod3,1) + size(params.nod4,1);
-
+params.edg6(:,1:2) = params.edg6(:,1:2) + size(params.nod1,1) + size(params.nod2,1) + size(params.nod3,1) + size(params.nod4,1) + size(params.nod5,1);
+params.edg7(:,1:2) = params.edg7(:,1:2) + size(params.nod1,1) + size(params.nod2,1) + size(params.nod3,1) + size(params.nod4,1) + size(params.nod5,1) + size(params.nod6,1);
+params.edg8(:,1:2) = params.edg8(:,1:2) + size(params.nod1,1) + size(params.nod2,1) + size(params.nod3,1) + size(params.nod4,1) + size(params.nod5,1) + size(params.nod6,1) + size(params.nod7,1);
 
 %% Create the structure
 

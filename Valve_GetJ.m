@@ -1,4 +1,4 @@
-function [F, A, B, Sloc_mu] = Valve_GetJ(phi, mesh, matrices, params)
+function [F, A, B, Sloc_mu] = Valve_GetJ(phi, mesh, matrices, params, p)
 
 id     = ~mesh.id_dirichlet;
 npoint = mesh.npoint;
@@ -8,7 +8,7 @@ mu2 = params.mu0*params.mur;
 
 %% phi -> mu, dmu
 
-mu_inv = 1./((1-phi)*mu1 + phi*mu2);
+mu_inv = 1./((1-phi)*mu1 + (phi.^p)*mu2);
 mu_inv = repmat(mu_inv,1,9);
 
 Sloc_mu  = sparse(matrices.ii(:),matrices.jj(:),(matrices.sloc_aa(:)).*mu_inv(:));

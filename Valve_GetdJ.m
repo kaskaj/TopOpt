@@ -1,4 +1,4 @@
-function dJ = Valve_GetdJ(phi, Sloc_mu, A, B, mesh, matrices, params)
+function dJ = Valve_GetdJ(phi, Sloc_mu, A, B, mesh, matrices, params, p)
 
 id     = ~mesh.id_dirichlet;
 npoint = mesh.npoint;
@@ -17,7 +17,7 @@ f         = matrices.Clocy'*beta - matrices.Clocx'*gamma;
 alpha     = zeros(npoint,1);
 alpha(id) = Sloc_mu(id,id)\f(id);
 
-dmu_inv = repmat((mu1 - mu2)./((1-phi)*mu1 + phi*mu2).^2, 1, 9);
+dmu_inv = repmat((mu1 - p*mu2*phi.^(p-1))./((1-phi)*mu1 + (phi.^p)*mu2).^2, 1, 9);
 dmu_inv = reshape(dmu_inv', [], 1);
 
 x1 = A(mesh.elems2nodes);

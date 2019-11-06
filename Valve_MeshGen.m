@@ -8,8 +8,8 @@ function Valve_MeshGen(params, show)
     
     %% Modify the required edges inside
     
-    edge = [params.edg1; params.edg2; params.edg3; params.edg4; params.edg5];
-    node = [params.nod1; params.nod2; params.nod3; params.nod4; params.nod5];
+    edge = [params.edg1; params.edg2; params.edg3; params.edg4; params.edg5; params.edg6; params.edg7; params.edg8;];
+    node = [params.nod1; params.nod2; params.nod3; params.nod4; params.nod5; params.nod6; params.nod7; params.nod8;];
     
     part{1} = [ ...
         find(edge(:,3) == 0)
@@ -17,6 +17,9 @@ function Valve_MeshGen(params, show)
         find(edge(:,3) == 2)
         find(edge(:,3) == 3)
         find(edge(:,3) == 4)
+        find(edge(:,3) == 5)
+        find(edge(:,3) == 6)
+        find(edge(:,3) == 7)
         ] ;
     part{2} = [ ...
         find(edge(:,3) == 1)
@@ -29,6 +32,15 @@ function Valve_MeshGen(params, show)
         ];
     part{5} = [ ...
         find(edge(:,3) == 4)
+        ] ;
+     part{6} = [ ...
+        find(edge(:,3) == 5)
+        ] ;
+     part{7} = [ ...
+        find(edge(:,3) == 6)
+        ] ;
+     part{8} = [ ...
+        find(edge(:,3) == 7)
         ] ;
     
     edge = edge(:,1:2) ;

@@ -139,6 +139,7 @@ function Valve_CreateMatrices(params, mesh0, refin_level, check)
     mesh.nodes2coord  = nodes2coord;
     mesh.bedges2nodes = bedges2nodes;
     mesh.elems2nodes  = elems2nodes;
+    mesh.tnum         = tnum;
     mesh.id_dirichlet = id_dirichlet;
     
     matrices = [];

@@ -34,12 +34,13 @@ phi            = zeros(mesh.nelement,1);
 phi(mu_nodes)  = 1;
 
 %% Compute derivatives
+p = 2;
 
-[F, A, B, Sloc_mu] = Valve_GetJ(phi, mesh, matrices, params);
-dJ = Valve_GetdJ(phi, Sloc_mu, A, B, mesh, matrices, params);
+[F, A, B, Sloc_mu] = Valve_GetJ(phi, mesh, matrices, params, p);
+dJ = Valve_GetdJ(phi, Sloc_mu, A, B, mesh, matrices, params, p);
 
-f = @(phi) Valve_GetJ(phi, mesh, matrices, params);
-g = @(x) Valve_GetdJ(phi, Sloc_mu, A, B, mesh, matrices, params);
+f = @(phi) Valve_GetJ(phi, mesh, matrices, params, p);
+g = @(x) Valve_GetdJ(phi, Sloc_mu, A, B, mesh, matrices, params, p);
 
 %Direction
 
