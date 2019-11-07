@@ -4,8 +4,10 @@ I1  = 2;         % supply current - coil 1
 I2  = 2;         % supply current - coil 2
 N   = 900;       % number of turns
 t   = 0.001;     % technological size
+tm  = 0.001/10;     % technological size for magnet
 mu0 = 4*pi*1e-7;
 mur = 700;
+Br = 1.4;
 
 w_magnet  = 0.0025;   % width of magnet
 w_channel = 0.01;     % diameter of fluid pipe
@@ -28,8 +30,10 @@ params.I1        = I1;
 params.I2        = I2;
 params.N         = N;
 params.t         = t;
+params.tm        = tm;
 params.mu0       = mu0;
 params.mur       = mur;
+params.Brx       = Br;
 params.w_magnet  = w_magnet;
 params.w_channel = w_channel;
 params.w1        = w1;
@@ -85,8 +89,13 @@ params.y_t2_max = h3/2;
 
 params.x_piston_min = w_channel;
 params.x_piston_max = w_channel + w1;
-params.y_piston_min = -h3/2-2*t-h2+h4+t+y_move;
-params.y_piston_max = -h3/2-2*t-h2+h4+t+h_piston+y_move;
+params.y_piston_min = -h3/2 - 2*t - h2 + h4 + t + y_move;
+params.y_piston_max = -h3/2 - 2*t - h2 + h4 + t + h_piston + y_move;
+
+params.x_magnet_min = w_channel + w1  + w4 + tm;
+params.x_magnet_max = w_channel + w1  + w4 + w_magnet - tm;
+params.y_magnet_min = h3/2 + 2*t + h2 + tm;
+params.y_magnet_max = h3/2 + 2*t + h2 + h1 - tm;
 
 %Initial iron position
 params.x_init_min = w_channel;
@@ -148,37 +157,6 @@ params.edg4 = [
     3 ,  4 ;  4 ,  1
     ] ;
 params.edg4(:,3) = +3;
-
-% Iron
-% params.nod5 = [
-%     w_channel, (h3/2) + h2 + 2*t - h4;
-%     w_channel, (h3/2) + h2 + 2*t + h1;
-%     w_channel + w1 + 2*t + w2 + t + w3, (h3/2) + h2 + 2*t + h1;
-%     w_channel + w1 + 2*t + w2 + t + w3, -((h3/2) + h2 + 2*t + h1);
-%     w_channel, -((h3/2) + h2 + 2*t + h1);
-%     w_channel, -((h3/2) + h2 + 2*t - h4);
-%     w_channel + w1, -((h3/2) + h2 + 2*t - h4);
-%     w_channel + w1, -((h3/2) + h2 + 2*t);
-%     w_channel + w1 + w4 + w_magnet + 2*t , -((h3/2) + h2 + 2*t);
-%     w_channel + w1 + w4 + w_magnet + 2*t , -((h3/2));
-%     w_channel + w1 + w4 + w_magnet - w2 , -((h3/2));
-%     w_channel + w1 + w4 + w_magnet - w2 , (h3/2);
-%     w_channel + w1 + w4 + w_magnet + 2*t , (h3/2);
-%     w_channel + w1 + w4 + w_magnet + 2*t , (h3/2) + 2*t + h2;
-%     w_channel + w1 , (h3/2) +  2*t + h2;
-%     w_channel + w1 , (h3/2) + 2*t + h2 - h4;
-%     ] ;
-% params.edg5 = [
-%     1 ,  2 ;  2 ,  3
-%     3 ,  4 ;  4 ,  5
-%     5 ,  6 ;  6 ,  7
-%     7 ,  8 ;  8 ,  9
-%     9 ,  10 ;  10 ,  11
-%     11 ,  12 ;  12 ,  13
-%     13 ,  14 ;  14 ,  15
-%     15 ,  16 ;  16 ,  1
-%     ] ;
-% params.edg5(:,3) = +4;
 
 %Technological gap
 params.nod5 = [
@@ -254,13 +232,146 @@ params.edg8 = [
     ] ;
 params.edg8(:,3) = +7;
 
-params.edg2(:,1:2) = params.edg2(:,1:2) + size(params.nod1,1);
-params.edg3(:,1:2) = params.edg3(:,1:2) + size(params.nod1,1) + size(params.nod2,1);
-params.edg4(:,1:2) = params.edg4(:,1:2) + size(params.nod1,1) + size(params.nod2,1) + size(params.nod3,1);
-params.edg5(:,1:2) = params.edg5(:,1:2) + size(params.nod1,1) + size(params.nod2,1) + size(params.nod3,1) + size(params.nod4,1);
-params.edg6(:,1:2) = params.edg6(:,1:2) + size(params.nod1,1) + size(params.nod2,1) + size(params.nod3,1) + size(params.nod4,1) + size(params.nod5,1);
-params.edg7(:,1:2) = params.edg7(:,1:2) + size(params.nod1,1) + size(params.nod2,1) + size(params.nod3,1) + size(params.nod4,1) + size(params.nod5,1) + size(params.nod6,1);
-params.edg8(:,1:2) = params.edg8(:,1:2) + size(params.nod1,1) + size(params.nod2,1) + size(params.nod3,1) + size(params.nod4,1) + size(params.nod5,1) + size(params.nod6,1) + size(params.nod7,1);
+% Outer Magnet Air upper
+params.nod9 = [
+    w_channel + w1  + w4,  h3/2 + 2*t + h2;
+    w_channel + w1  + w4,  h3/2 + 2*t + h2 + h1;
+    w_channel + w1  + w4 + w_magnet,  h3/2 + 2*t + h2 + h1;
+    w_channel + w1  + w4 + w_magnet,  h3/2 + 2*t + h2;
+    %- Magnet upper
+    w_channel + w1  + w4 + tm,  h3/2 + 2*t + h2 + tm;
+    w_channel + w1  + w4 + tm,  h3/2 + 2*t + h2 + h1 - tm;
+    w_channel + w1  + w4 + w_magnet - tm,  h3/2 + 2*t + h2 + h1 - tm;
+    w_channel + w1  + w4 + w_magnet - tm,  h3/2 + 2*t + h2 + tm;
+    ] ;
+params.edg9 = [
+    1 ,  2 ;  2 ,  3
+    3 ,  4 ;  4 ,  1
+    %- Magnet upper
+    5 ,  6 ;  6 ,  7
+    7 ,  8 ;  8 ,  5
+    ] ;
+params.edg9(:,3) = +8;
+
+% Outer Magnet Air lower
+params.nod10 = [
+    w_channel + w1  + w4,  -(h3/2 + 2*t + h2);
+    w_channel + w1  + w4,  -(h3/2 + 2*t + h2 + h1);
+    w_channel + w1  + w4 + w_magnet,  -(h3/2 + 2*t + h2 + h1);
+    w_channel + w1  + w4 + w_magnet,  -(h3/2 + 2*t + h2);
+    %- Magnet lower
+    w_channel + w1  + w4 + tm,  -(h3/2 + 2*t + h2 + tm);
+    w_channel + w1  + w4 + tm,  -(h3/2 + 2*t + h2 + h1 - tm);
+    w_channel + w1  + w4 + w_magnet - tm,  -(h3/2 + 2*t + h2 + h1 - tm);
+    w_channel + w1  + w4 + w_magnet - tm,  -(h3/2 + 2*t + h2 + tm);
+    ] ;
+params.edg10 = [
+    1 ,  2 ;  2 ,  3
+    3 ,  4 ;  4 ,  1
+    %- Magnet lower
+    5 ,  6 ;  6 ,  7
+    7 ,  8 ;  8 ,  5
+    ] ;
+params.edg10(:,3) = +9;
+
+% Iron (left upper part)
+params.nod11 = [
+      w_channel, h3/2 + 2*t + h2 - h4;
+      w_channel, h3/2 + 2*t + h2 + h1;
+      w_channel + w1 + w4, h3/2 + 2*t + h2 + h1;
+      w_channel + w1 + w4, h3/2 + 2*t + h2;
+      w_channel + w1, h3/2 + 2*t + h2;
+      w_channel + w1, h3/2 + 2*t + h2 - h4;
+    ] ;
+params.edg11 = [
+    1 ,  2 ;  2 ,  3
+    3 ,  4 ;  4 ,  5
+    5 ,  6 ;  6 ,  1    
+    ] ;
+params.edg11(:,3) = +10;
+
+% Iron (left lower part)
+params.nod12 = [
+      w_channel, -(h3/2 + 2*t + h2 - h4);
+      w_channel, -(h3/2 + 2*t + h2 + h1);
+      w_channel + w1 + w4, -(h3/2 + 2*t + h2 + h1);
+      w_channel + w1 + w4, -(h3/2 + 2*t + h2);
+      w_channel + w1, -(h3/2 + 2*t + h2);
+      w_channel + w1, -(h3/2 + 2*t + h2 - h4);
+    ] ;
+params.edg12 = [
+    1 ,  2 ;  2 ,  3
+    3 ,  4 ;  4 ,  5
+    5 ,  6 ;  6 ,  1    
+    ] ;
+params.edg12(:,3) = +11;
+
+% Iron (right part)
+params.nod13 = [
+      w_channel + w1 + w4 + w_magnet, (h3/2 + 2*t + h2 + h1);
+      w_channel + w1 + 3*t + w2 + w3, (h3/2 + 2*t + h2 + h1);
+      w_channel + w1 + 3*t + w2 + w3, -(h3/2 + 2*t + h2 + h1);
+      w_channel + w1 + w4 + w_magnet, -(h3/2 + 2*t + h2 + h1);
+      w_channel + w1 + w4 + w_magnet, -(h3/2 + 2*t + h2);
+      w_channel + w1 + 3*t + w2, -(h3/2 + 2*t + h2);
+      w_channel + w1 + 3*t + w2, -(h3/2);
+      w_channel + w1 + t, -(h3/2);
+      w_channel + w1 + t, (h3/2);
+      w_channel + w1 + 3*t + w2, (h3/2);
+      w_channel + w1 + 3*t + w2, (h3/2 + 2*t + h2);
+      w_channel + w1 + w4 + w_magnet, (h3/2 + 2*t + h2);      
+      ] ;
+params.edg13 = [
+    1 ,  2 ;  2 ,  3
+    3 ,  4 ;  4 ,  5
+    5 ,  6 ;  6 ,  7
+    7 ,  8 ;  8 ,  9
+    9 ,  10 ;  10 ,  11
+    11 , 12 ;  12 ,  1    
+    ] ;
+params.edg13(:,3) = +12;
+
+% Magnet upper
+params.nod14 = [
+    w_channel + w1  + w4 + tm,  h3/2 + 2*t + h2 + tm;
+    w_channel + w1  + w4 + tm,  h3/2 + 2*t + h2 + h1 - tm;
+    w_channel + w1  + w4 + w_magnet - tm,  h3/2 + 2*t + h2 + h1 - tm;
+    w_channel + w1  + w4 + w_magnet - tm,  h3/2 + 2*t + h2 + tm;
+    ] ;
+params.edg14 = [
+    1 ,  2 ;  2 ,  3
+    3 ,  4 ;  4 ,  1
+    ] ;
+params.edg14(:,3) = +13;
+
+% Magnet lower
+params.nod15 = [
+    w_channel + w1  + w4 + tm,  -(h3/2 + 2*t + h2 + tm);
+    w_channel + w1  + w4 + tm,  -(h3/2 + 2*t + h2 + h1 - tm);
+    w_channel + w1  + w4 + w_magnet - tm,  -(h3/2 + 2*t + h2 + h1 - tm);
+    w_channel + w1  + w4 + w_magnet - tm,  -(h3/2 + 2*t + h2 + tm);
+    ] ;
+params.edg15 = [
+    1 ,  2 ;  2 ,  3
+    3 ,  4 ;  4 ,  1
+    ] ;
+params.edg15(:,3) = +14;
+
+params.edg2(:,1:2 ) = params.edg2(:,1:2) + size(params.nod1,1);
+params.edg3(:,1:2)  = params.edg3(:,1:2) + size(params.nod1,1) + size(params.nod2,1);
+params.edg4(:,1:2)  = params.edg4(:,1:2) + size(params.nod1,1) + size(params.nod2,1) + size(params.nod3,1);
+params.edg5(:,1:2)  = params.edg5(:,1:2) + size(params.nod1,1) + size(params.nod2,1) + size(params.nod3,1) + size(params.nod4,1);
+params.edg6(:,1:2)  = params.edg6(:,1:2) + size(params.nod1,1) + size(params.nod2,1) + size(params.nod3,1) + size(params.nod4,1) + size(params.nod5,1);
+params.edg7(:,1:2)  = params.edg7(:,1:2) + size(params.nod1,1) + size(params.nod2,1) + size(params.nod3,1) + size(params.nod4,1) + size(params.nod5,1) + size(params.nod6,1);
+params.edg8(:,1:2)  = params.edg8(:,1:2) + size(params.nod1,1) + size(params.nod2,1) + size(params.nod3,1) + size(params.nod4,1) + size(params.nod5,1) + size(params.nod6,1) + size(params.nod7,1);
+params.edg9(:,1:2)  = params.edg9(:,1:2) + size(params.nod1,1) + size(params.nod2,1) + size(params.nod3,1) + size(params.nod4,1) + size(params.nod5,1) + size(params.nod6,1) + size(params.nod7,1) + size(params.nod8,1);
+params.edg10(:,1:2) = params.edg10(:,1:2) + size(params.nod1,1) + size(params.nod2,1) + size(params.nod3,1) + size(params.nod4,1) + size(params.nod5,1) + size(params.nod6,1) + size(params.nod7,1) + size(params.nod8,1) + size(params.nod9,1);
+params.edg11(:,1:2) = params.edg11(:,1:2) + size(params.nod1,1) + size(params.nod2,1) + size(params.nod3,1) + size(params.nod4,1) + size(params.nod5,1) + size(params.nod6,1) + size(params.nod7,1) + size(params.nod8,1) + size(params.nod9,1) + size(params.nod10,1);
+params.edg12(:,1:2) = params.edg12(:,1:2) + size(params.nod1,1) + size(params.nod2,1) + size(params.nod3,1) + size(params.nod4,1) + size(params.nod5,1) + size(params.nod6,1) + size(params.nod7,1) + size(params.nod8,1) + size(params.nod9,1) + size(params.nod10,1) + size(params.nod11,1);
+params.edg13(:,1:2) = params.edg13(:,1:2) + size(params.nod1,1) + size(params.nod2,1) + size(params.nod3,1) + size(params.nod4,1) + size(params.nod5,1) + size(params.nod6,1) + size(params.nod7,1) + size(params.nod8,1) + size(params.nod9,1) + size(params.nod10,1) + size(params.nod11,1) + size(params.nod12,1);
+params.edg14(:,1:2) = params.edg14(:,1:2) + size(params.nod1,1) + size(params.nod2,1) + size(params.nod3,1) + size(params.nod4,1) + size(params.nod5,1) + size(params.nod6,1) + size(params.nod7,1) + size(params.nod8,1) + size(params.nod9,1) + size(params.nod10,1) + size(params.nod11,1) + size(params.nod12,1) + size(params.nod13,1);
+params.edg15(:,1:2) = params.edg15(:,1:2) + size(params.nod1,1) + size(params.nod2,1) + size(params.nod3,1) + size(params.nod4,1) + size(params.nod5,1) + size(params.nod6,1) + size(params.nod7,1) + size(params.nod8,1) + size(params.nod9,1) + size(params.nod10,1) + size(params.nod11,1) + size(params.nod12,1) + size(params.nod13,1) + size(params.nod14,1);
+
 
 %% Create the structure
 

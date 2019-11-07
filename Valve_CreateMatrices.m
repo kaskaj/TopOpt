@@ -84,6 +84,15 @@ J_nodes_2 = (x >= (params.x_c_min + 2*t)) & (x <= (params.x_c_max - t)) & (y >= 
 J(J_nodes_1) = params.J_coil1;
 J(J_nodes_2) = params.J_coil2;
 
+%% Prescribe permanent magnets
+Br = zeros(npoint,1);
+
+Br_nodes_1 = (x >= params.x_magnet_min) & (x <= params.x_magnet_max) & (y >= params.y_magnet_min) & (y <= params.y_magnet_max);
+Br_nodes_2 = (x >= params.x_magnet_min) & (x <= params.x_magnet_max) & (y >= -params.y_magnet_max) & (y <= -params.y_magnet_min);
+
+Br(Br_nodes_1) = params.Brx;
+Br(Br_nodes_2) = params.Brx;
+
 %% Transformation for Triangulation
 
 ii        = zeros(nelement,9);
@@ -153,6 +162,7 @@ matrices.Clocx_plunger = Clocx_plunger;
 matrices.Clocy         = Clocy;
 matrices.Clocy_plunger = Clocy_plunger;
 matrices.J             = J;
+matrices.Br            = Br;
 
 file_name_mesh   = fullfile('Valve_Data', sprintf('Mesh%d.mat', refin_level));
 file_name_matrix = fullfile('Valve_Data', sprintf('Matrices%d.mat', refin_level));

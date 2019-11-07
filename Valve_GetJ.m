@@ -1,4 +1,4 @@
-function [F, A, B, Sloc_mu] = Valve_GetJ(phi, mesh, matrices, params, p)
+function [F, A, B, Sloc_mu] = Valve_GetJ(phi, mesh, matrices, params, p, coil)
 
 id     = ~mesh.id_dirichlet;
 npoint = mesh.npoint;
@@ -14,8 +14,11 @@ mu_inv = repmat(mu_inv,1,9);
 Sloc_mu  = sparse(matrices.ii(:),matrices.jj(:),(matrices.sloc_aa(:)).*mu_inv(:));
 
 %% Solve the system
-
-f     = matrices.Mloc*matrices.J;
+if coil == 1    %Turn on the current
+    f = matrices.Mloc*matrices.J + (1/params.mu0)*matrices.Clocy*matrices.Br;
+else            %Turn off the current
+    f = (1/params.mu0)*matrices.Clocy*matrices.Br;
+end
 A     = zeros(npoint,1);
 A(id) = Sloc_mu(id,id) \ f(id);
 B     = [matrices.Mloc\(matrices.Clocy*A),-matrices.Mloc\(matrices.Clocx*A)];
