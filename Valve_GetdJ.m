@@ -27,6 +27,7 @@ y2 = reshape([repmat(x2(:,1), 1, 3), repmat(x2(:,2), 1, 3), repmat(x2(:,3), 1, 3
 
 dJ = reshape(matrices.sloc_aa', [], 1) .* y1 .* y2 .* dmu_inv;
 dJ = sum(reshape(dJ, 9, []))';
+dJ = -dJ;
 
 end
 

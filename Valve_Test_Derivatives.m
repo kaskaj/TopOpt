@@ -45,7 +45,7 @@ g = @(x) Valve_GetdJ(phi, Sloc_mu, A, B, mesh, matrices, params, p);
 %Direction
 
 %dir = dJ;
-dir = sin(mesh.x_mid + mesh.y_mid); 
+dir = sin(mesh.x_mid + mesh.y_mid);
 
 test = Diff_Derivatives(f, g, phi, dir);
 

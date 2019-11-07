@@ -26,6 +26,7 @@ F_y_aux = -B(:,1)'*matrices.Clocy_plunger*B(:,1) + B(:,2)'*matrices.Clocy_plunge
 F       = 1/params.mu0*[F_x_aux; F_y_aux];
 
 F = F(2);   %force in y direction
+F = -F;
 
 % F_mod = zeros(4,2);
 % for i=1:4
@@ -42,7 +43,7 @@ F = F(2);   %force in y direction
 %     y_p  = y(ii);
 %     Bx_p = B(ii,1);
 %     By_p = B(ii,2);
-%     
+%
 %     if i==1 || i==3
 %         [~,jj] = sort(x_p);
 %     else
@@ -52,7 +53,7 @@ F = F(2);   %force in y direction
 %     y_p    = y_p(jj);
 %     Bx_p   = Bx_p(jj);
 %     By_p   = By_p(jj);
-%     
+%
 %     T_p  = {1/2*(Bx_p.*Bx_p-By_p.*By_p), Bx_p.*By_p; Bx_p.*By_p, 1/2*(By_p.*By_p-Bx_p.*Bx_p)};
 %     if i==1
 %         T_pn = [-T_p{1,2}, -T_p{2,2}];
@@ -65,9 +66,9 @@ F = F(2);   %force in y direction
 %     end
 %     xy_diff = diff([x_p, y_p]);
 %     xy_norm = sqrt(xy_diff(:,1).^2 + xy_diff(:,2).^2);
-%     
+%
 %     T_mean  = 0.5*(T_pn(1:end-1,:) + T_pn(2:end,:));
-%     
+%
 %     F_mod(i,:) = sum(repmat(xy_norm,1,2).*T_mean)';
 % end
 % F_mod = F_mod / params.mu0;

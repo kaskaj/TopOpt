@@ -12,10 +12,11 @@ nod1 = [params.nod1; params.nod1(1,:)];
 nod2 = [params.nod2; params.nod2(1,:)];
 nod3 = [params.nod3; params.nod3(1,:)];
 nod4 = [params.nod4; params.nod4(1,:)];
-nod5 = [params.nod5; params.nod5(1,:)];
+nod5 = params.nod5;
 nod6 = [params.nod6; params.nod6(1,:)];
 nod7 = [params.nod7; params.nod7(1,:)];
 nod8 = [params.nod8; params.nod8(1,:)];
+edg5 = params.edg5;
 
 if nargin < 1
     hold on;
@@ -34,7 +35,10 @@ else
     plot3(nod2(:,1),nod2(:,2),repmat(z,size(nod2,1),1),colortag,'LineWidth',lw);
     plot3(nod3(:,1),nod3(:,2),repmat(z,size(nod3,1),1),colortag,'LineWidth',lw);
     plot3(nod4(:,1),nod4(:,2),repmat(z,size(nod4,1),1),colortag,'LineWidth',lw);
-    plot3(nod5(:,1),nod5(:,2),repmat(z,size(nod5,1),1),colortag,'LineWidth',lw);
+    for i=1:size(edg5)
+        ii = edg5(i,[1 2]) - min(reshape(edg5(:,[1 2]), [], 1)) + 1;
+        plot3(nod5(ii,1),nod5(ii,2),[z;z],colortag,'LineWidth',lw);
+    end
     plot3(nod6(:,1),nod6(:,2),repmat(z,size(nod6,1),1),colortag,'LineWidth',lw);
     plot3(nod7(:,1),nod7(:,2),repmat(z,size(nod7,1),1),colortag,'LineWidth',lw);
     plot3(nod8(:,1),nod8(:,2),repmat(z,size(nod8,1),1),colortag,'LineWidth',lw);
