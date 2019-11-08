@@ -1,4 +1,4 @@
-function [F, A, B, Sloc_mu] = Valve_GetJ(phi, mesh, matrices, params, p, coil)
+function [F, A, B, B_ele, Sloc_mu] = Valve_GetJ(phi, mesh, matrices, params, p, coil)
 
 id     = ~mesh.id_dirichlet;
 npoint = mesh.npoint;
@@ -22,6 +22,7 @@ end
 A     = zeros(npoint,1);
 A(id) = Sloc_mu(id,id) \ f(id);
 B     = [matrices.Mloc\(matrices.Clocy*A),-matrices.Mloc\(matrices.Clocx*A)];
+B_ele = [matrices.Clocy_ele*A,-matrices.Clocx_ele*A];
 
 
 F_x_aux = B(:,1)'*matrices.Clocx_plunger*B(:,1) - B(:,2)'*matrices.Clocx_plunger*B(:,2) + B(:,2)'*matrices.Clocy_plunger*B(:,1) + B(:,1)'*matrices.Clocy_plunger*B(:,2);

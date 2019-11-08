@@ -99,21 +99,29 @@ Br(Br_nodes_2) = params.Brx;
 ii        = zeros(nelement,9);
 jj        = zeros(nelement,9);
 
+ii_ele    = zeros(nelement,3);
+jj_ele    = zeros(nelement,3);
+
 edet_aa   = zeros(nelement,1);
 mloc_aa   = zeros(nelement,9);
 slocxx_aa = zeros(nelement,9);
 slocyy_aa = zeros(nelement,9);
 clocx_aa  = zeros(nelement,9);
 clocy_aa  = zeros(nelement,9);
+clocx_ele_aa  = zeros(nelement,3);
+clocy_ele_aa  = zeros(nelement,3);
 clocx_aa_plunger = zeros(nelement,9);
 clocy_aa_plunger = zeros(nelement,9);
 
 for k = 1:nelement
-    [edet,dFinv] = GenerateTransformation(k,elems2nodes,x,y);
-    [~,slocxx,~,slocyy,~,mloc,clocx,clocy] = LocalMatrices(edet,dFinv);
+    [edet,dFinv,Cinv] = GenerateTransformation(k,elems2nodes,x,y);
+    [~,slocxx,~,slocyy,~,mloc,clocx,clocy,clocx_ele,clocy_ele] = LocalMatrices(edet,dFinv,Cinv);
     
     ii(k,:) = repmat(elems2nodes(k,:), 1, 3);
     jj(k,:) = reshape(repmat(elems2nodes(k,:), 3, 1), 1, 9);
+    
+    ii_ele(k,:) = [k,k,k];
+    jj_ele(k,:) = elems2nodes(k,:);
     
     edet_aa(k,1)     = edet;
     mloc_aa(k,:)     = mloc(:);
@@ -121,6 +129,9 @@ for k = 1:nelement
     slocyy_aa(k,:)   = slocyy(:);
     clocx_aa(k,:)    = clocx(:);
     clocy_aa(k,:)    = clocy(:);
+    
+    clocx_ele_aa(k,:)    = clocx_ele(:);
+    clocy_ele_aa(k,:)    = clocy_ele(:);
     
     if x_mid(k) >= params.x_piston_min-tol2 && x_mid(k) <= params.x_piston_max+tol2 && y_mid(k) >= params.y_piston_min-tol2 && y_mid(k) <= params.y_piston_max+tol2
         clocx_aa_plunger(k,:) = clocx(:);
@@ -136,6 +147,8 @@ Clocx   = sparse(ii(:),jj(:),clocx_aa(:));
 Clocy   = sparse(ii(:),jj(:),clocy_aa(:));
 Clocx_plunger = sparse(ii(:),jj(:),clocx_aa_plunger(:));
 Clocy_plunger = sparse(ii(:),jj(:),clocy_aa_plunger(:));
+Clocx_ele = sparse(ii_ele(:),jj_ele(:),clocx_ele_aa(:));
+Clocy_ele = sparse(ii_ele(:),jj_ele(:),clocy_ele_aa(:));
 
 %% Save results
 
@@ -160,8 +173,10 @@ matrices.Sloc          = Sloc;
 matrices.sloc_aa       = slocxx_aa + slocyy_aa;
 matrices.Clocx         = Clocx;
 matrices.Clocx_plunger = Clocx_plunger;
+matrices.Clocx_ele     = Clocx_ele;
 matrices.Clocy         = Clocy;
 matrices.Clocy_plunger = Clocy_plunger;
+matrices.Clocy_ele     = Clocy_ele;
 matrices.J             = J;
 matrices.Br            = Br;
 

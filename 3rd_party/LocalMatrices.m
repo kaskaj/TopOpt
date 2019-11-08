@@ -1,4 +1,4 @@
-function [slocx,slocxx,slocy,slocyy,slocxy,mloc,clocx,clocy] = LocalMatrices(edet,dFinv)
+function [slocx,slocxx,slocy,slocyy,slocxy,mloc,clocx,clocy,clocx_ele,clocy_ele] = LocalMatrices(edet,dFinv,Cinv)
     
     dphi   = dFinv'*[-1 1 0; -1 0 1];
     
@@ -10,5 +10,7 @@ function [slocx,slocxx,slocy,slocyy,slocxy,mloc,clocx,clocy] = LocalMatrices(ede
     mloc   = edet*[1 1/2 1/2;1/2 1 1/2;1/2 1/2 1]/12; % mloc
     clocx  = [slocx;slocx;slocx]/3;                   % clocx
     clocy  = [slocy;slocy;slocy]/3;                   % clocy
+    clocx_ele = Cinv(2,:);                            % clocx for elements
+    clocy_ele = Cinv(3,:);                            % clocy for elements
 end
 
