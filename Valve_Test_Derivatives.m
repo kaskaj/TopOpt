@@ -36,17 +36,22 @@ phi(mu_nodes)  = 1;
 %% Compute derivatives
 p = 2;
 
-[F, A, B, Sloc_mu] = Valve_GetJ(phi, mesh, matrices, params, p);
+[F, A, B, ~, Sloc_mu] = Valve_GetJ(phi, mesh, matrices, params, p, 1);
 dJ = Valve_GetdJ(phi, Sloc_mu, A, B, mesh, matrices, params, p);
 
-f = @(phi) Valve_GetJ(phi, mesh, matrices, params, p);
+f = @(phi) Valve_GetJ(phi, mesh, matrices, params, p, 1);
 g = @(x) Valve_GetdJ(phi, Sloc_mu, A, B, mesh, matrices, params, p);
 
-%Direction
+for i = 1:2
+    if i == 1
+        dir = dJ;
+    else
+        dir = sin(mesh.x_mid + mesh.y_mid);
+    end
+    err = Diff_Derivatives(f, g, phi, dir);
 
-%dir = dJ;
-dir = sin(mesh.x_mid + mesh.y_mid);
+    fprintf('The relative error = %1.3e\n', err);
+end
 
-test = Diff_Derivatives(f, g, phi, dir);
 
-test
+
