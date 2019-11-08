@@ -1,6 +1,6 @@
 clear all;
 
-levels_max = 7;
+levels_max = 4;
 
 % Set parameters
 Valve_SetParameters;
@@ -17,12 +17,5 @@ file_name = fullfile('Valve_Data', 'Mesh0.mat');
 load(file_name, 'mesh');
 
 % Create matrices
-for levels = 1:levels_max
-    fprintf('Creating matrix level %d.\n', levels);
-    if levels <= 5
-        Valve_CreateMatrices(params, mesh, levels, 1);
-    else
-        Valve_CreateMatrices(params, mesh, levels, 0);
-    end
-end
+Valve_CreateMatrices(params, mesh, 1:levels_max, 1);
 

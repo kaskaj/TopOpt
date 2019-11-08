@@ -1,4 +1,4 @@
-refin_level = 4;
+refin_level = 7;
 
 folder_name = 'Valve_Data';
 
