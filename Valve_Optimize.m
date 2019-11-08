@@ -1,7 +1,7 @@
 clear all;
 
 %% Load data
-refin_level = 2;
+refin_level = 4;
 
 folder_name = 'Valve_Data';
 
@@ -9,10 +9,10 @@ load(fullfile(folder_name, 'Param'), 'params');
 load(fullfile(folder_name, sprintf('Mesh%d.mat', refin_level)), 'mesh');
 load(fullfile(folder_name, sprintf('Matrices%d.mat', refin_level)), 'matrices');
 
-steps = 200;
+steps = 1000;
 p = 1.0;
 lambda = 1e-1;
-coil = 0;   %on / off
+coil = 1;   %on / off
 
 %% Prescribe fixed Air and Iron domains
 
@@ -76,9 +76,9 @@ SubPlotPhi(mesh, params, phi(:,end));
 PlotData(mesh.x,mesh.y,mesh.elems2nodes,A)
 Valve_PlotEdges(params,max(A))
 
-%Save results
-%file_name = fullfile('Valve_Results', 'Fy.mat');
-%save(file_name, 'F', 'F_round', 'phi');
+% Save results
+% file_name = fullfile('Valve_Results', 'Fy2.mat');
+% save(file_name, 'F', 'F_round', 'phi');
 
 
 

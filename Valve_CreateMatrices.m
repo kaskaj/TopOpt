@@ -19,16 +19,17 @@ for i=1:refin_level
     x_patch = [nodes2coord(elems2nodes(:,1),1), nodes2coord(elems2nodes(:,2),1), nodes2coord(elems2nodes(:,3),1)];
     y_patch = [nodes2coord(elems2nodes(:,1),2), nodes2coord(elems2nodes(:,2),2), nodes2coord(elems2nodes(:,3),2)];
     
+      
     if i <= 3
         % Refine everywhere
         ele_size  = sum(abs(x_patch(:,:) - x_patch(:,[2 3 1])) + abs(y_patch(:,:) - y_patch(:,[2 3 1])),2);
-        ii_refine = ele_size >= mean(ele_size);
+        ii_refine = ele_size >= quantile(ele_size, 0.75);
     elseif i <= 6
         % Refine only around the iron
         ii = min(x_patch,[],2) >= params.x_fe_min - tol0 & max(x_patch,[],2) <= params.x_fe_max + tol0 ...
             & min(y_patch,[],2) >= params.y_fe_min - tol0 & max(y_patch,[],2) <= params.y_fe_max + tol0;
         ele_size  = sum(abs(x_patch(:,:) - x_patch(:,[2 3 1])) + abs(y_patch(:,:) - y_patch(:,[2 3 1])),2);
-        ii_refine = ii & ele_size >= mean(ele_size(ii));
+        ii_refine = ii & ele_size >= quantile(ele_size(ii), 0.75);
     else
         % Refine only around the piston
         x_piston_min = params.x_piston_min;
