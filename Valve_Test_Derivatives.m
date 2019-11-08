@@ -42,11 +42,13 @@ dJ = Valve_GetdJ(phi, Sloc_mu, A, B, mesh, matrices, params, p);
 f = @(phi) Valve_GetJ(phi, mesh, matrices, params, p);
 g = @(x) Valve_GetdJ(phi, Sloc_mu, A, B, mesh, matrices, params, p);
 
-%Direction
-
-%dir = dJ;
-dir = sin(mesh.x_mid + mesh.y_mid);
-
-test = Diff_Derivatives(f, g, phi, dir);
-
-test
+for i = 1:2
+    if i == 1
+        dir = dJ;
+    else
+        dir = sin(mesh.x_mid + mesh.y_mid);
+    end
+    err = Diff_Derivatives(f, g, phi, dir);
+    
+    fprintf('The relative error = %1.3e\n', err);
+end
