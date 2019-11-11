@@ -2,13 +2,17 @@ function [mu] = Valve_GetMu(B,B_mu)
 
 B = (B(:,1).^2) + (B(:,2).^2);
 
-ii_linear = (B < 1);
-ii_poly = ~ii_linear;
+ii_linear1 = (B < B_mu.max_B);
+ii_linear2 = (B > B_mu.min_B);
+
+ii_poly = ~ii_linear1 & ~ii_linear2;
 
 mu = zeros(length(B),1);
-mu(ii_linear) = B_mu.max_mu;
+mu(ii_linear1) = B_mu.max_mu;
+mu(ii_linear2) = B_mu.min_mu;
 
-mu(ii_poly) = B_mu.p(1)*B(ii_poly).^3 + B_mu.p(2)*B(ii_poly).^2 + B_mu.p(3)*B(ii_poly) + B_mu.p(4);
+mu(ii_poly) = feval(B_mu.f,B(ii_poly));
+
 
 
 end

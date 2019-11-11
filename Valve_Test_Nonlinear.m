@@ -28,26 +28,43 @@ coil = 1;
 
 mu_fe = params.mu0*params.mur*ones(mesh.nelement,1);
 
-for i = 1:10
+for i = 1:20
     
-    [A, B_ele] = Valve_GetJ_nonlinear(phi, mesh, matrices, params, p, coil, mu_fe);
-    mu_fe = Valve_GetMu(B_ele,B_mu);
+    [A_new, B_ele_new] = Valve_GetJ_nonlinear(phi, mesh, matrices, params, p, coil, mu_fe);
     
-    norm(A)
+    if i>1
+        alpha = 0.25;
+        A = alpha*A_new + (1-alpha)*A_old;
+        B_ele = alpha*B_ele_new + (1-alpha)*B_ele_old;
+    else
+        A = A_new;
+        B_ele = B_ele_new;
+    end
+    
+    A_old = A_new;
+    B_ele_old = B_ele_new;
+    
+    mu_fe = Valve_GetMu(B_ele,B_mu);    
+   
+    max(B_ele)
 end
 
-eroijoierjo
-
-PlotData(mesh.x,mesh.y,mesh.elems2nodes,A);
-Valve_PlotEdges(params,max(A));
+% ele = delaunay(mesh.x_mid,mesh.y_mid);
+% PlotData(mesh.x_mid,mesh.y_mid,ele,B_ele(:,1))
+% caxis([min(B_ele(:,1)), max(B_ele(:,1))]);
+% Valve_PlotEdges(params,max(B_ele(:,1)))
+% 
+% 
+% PlotData(mesh.x,mesh.y,mesh.elems2nodes,A);
+% Valve_PlotEdges(params,max(A));
 
 
 % ele = delaunay(mesh.x_mid,mesh.y_mid);
-% 
+%
 % PlotData(mesh.x,mesh.y,mesh.elems2nodes,B(:,1))
 % caxis([min(B_ele(:,1)), max(B_ele(:,1))]);
 % Valve_PlotEdges(params,max(B(:,1)))
-% 
+%
 % PlotData(mesh.x_mid,mesh.y_mid,ele,B_ele(:,1))
 % caxis([min(B_ele(:,1)), max(B_ele(:,1))]);
 % Valve_PlotEdges(params,max(B_ele(:,1)))
