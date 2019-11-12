@@ -14,7 +14,7 @@ end
 
 %% phi -> mu, dmu
 
-mu_inv = 1./((1-phi)*mu0 + (phi.^p)*mu2);
+mu_inv = 1./((1-phi)*mu0 + (phi.^p).*mu2);
 mu_inv = repmat(mu_inv,1,9);
 
 Sloc_mu  = sparse(matrices.ii(:),matrices.jj(:),(matrices.sloc_aa(:)).*mu_inv(:));

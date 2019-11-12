@@ -1,10 +1,15 @@
-function dJ = Valve_GetdJ(phi, Sloc_mu, A, B, mesh, matrices, params, p)
+function dJ = Valve_GetdJ(phi, Sloc_mu, A, B, mesh, matrices, params, p, nonlinear, mu_fe)
 
 id     = ~mesh.id_dirichlet;
 npoint = mesh.npoint;
 
 mu1 = params.mu0;
-mu2 = params.mu0*params.mur;
+
+if nonlinear == 1
+    mu2 = mu_fe;
+else
+    mu2 = params.mu0*params.mur;
+end
 
 %% Compute derivative
 

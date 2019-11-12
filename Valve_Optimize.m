@@ -13,6 +13,7 @@ steps = 1000;
 p = 1.0;
 lambda = 1e-1;
 coil = 1;   %on / off
+nonlinear = 0;
 
 %% Prescribe fixed Air and Iron domains
 
@@ -43,8 +44,8 @@ F = zeros(steps,1);
 F_round = nan(steps,1);
 
 for i = 1:steps
-    [F(i), A, B, Sloc_mu] = Valve_GetJ(phi(:,i), mesh, matrices, params, p, coil);
-    dJ = Valve_GetdJ(phi(:,i), Sloc_mu, A, B, mesh, matrices, params, p);
+    [F(i), A, B, Sloc_mu] = Valve_GetJ(phi(:,i), mesh, matrices, params, p, coil, nonlinear);
+    dJ = Valve_GetdJ(phi(:,i), Sloc_mu, A, B, mesh, matrices, params, p, nonlinear);
     
     phi(ii_fix0,i+1) = 0;
     phi(ii_fix1,i+1) = 1;
@@ -52,7 +53,7 @@ for i = 1:steps
     phi(ii_opt,i+1)  = max(min(phi(ii_opt,i+1), 1), 0);
     
     if mod(i, 10) == 0
-        F_round(i) = Valve_GetJ(round(phi(:,i+1)), mesh, matrices, params, p, coil);
+        F_round(i) = Valve_GetJ(round(phi(:,i+1)), mesh, matrices, params, p, coil, nonlinear);
         fprintf('step%d: Fy = %d, Fy_round = %d.\n',i, F(i), F_round(i));
     else
         fprintf('step%d: Fy = %d\n',i,F(i));
@@ -61,8 +62,8 @@ end
 
 phi_final = round(phi(:,end));
 
-F1 = Valve_GetJ(phi(:,end), mesh, matrices, params, 1, coil);
-[F2, A, B] = Valve_GetJ(phi_final, mesh, matrices, params, 1, coil);
+F1 = Valve_GetJ(phi(:,end), mesh, matrices, params, 1, coil, nonlinear);
+[F2, A, B] = Valve_GetJ(phi_final, mesh, matrices, params, 1, coil, nonlinear);
 
 fprintf('Last step: Fy = %d, Fy_round = %d.\n', F1, F2);
 
