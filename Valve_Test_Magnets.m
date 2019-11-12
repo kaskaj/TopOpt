@@ -35,7 +35,9 @@ phi(ii_fix1)  = 1;
 
 p = 1;
 coil = 0;
-[F, A, B, B_ele Sloc_mu] = Valve_GetJ(phi, mesh, matrices, params, p , coil);
+nonlinear = 0;
+
+[F, A, B, B_ele Sloc_mu] = Valve_GetJ(phi, mesh, matrices, params, p , coil, nonlinear);
 
 ele = delaunay(mesh.x_mid,mesh.y_mid);
 

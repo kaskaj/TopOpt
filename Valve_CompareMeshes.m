@@ -1,4 +1,6 @@
 refin_level = 4;
+save = 0;
+tol = 0.003;
 
 folder_name = 'Valve_Data';
 
@@ -15,8 +17,6 @@ nodes2coord1 = meshstats.dofs.coords';
 elems2nodes2 = mesh.elems2nodes;
 nodes2coord2 = mesh.nodes2coord;
 
-save = 0;
-tol = 0.003;
 zoom = [params.x_piston_min - tol, params.x_piston_max + tol; params.y_piston_min - tol, params.y_piston_max + tol];
 
 filename = 'Valve_Results/Dirichlet1/Mesh_pos1.png';

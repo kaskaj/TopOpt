@@ -1,4 +1,6 @@
 refin_level = 4;
+save = 0;
+tol = 0.001;
 
 folder_name = 'Valve_Data';
 
@@ -16,8 +18,6 @@ A_comsol  = mphinterp(model, 'mf.Az', 'coord', mesh.nodes2coord', 'solnum', 1)';
 Bx_comsol = mphinterp(model, 'mf.Bx', 'coord', mesh.nodes2coord', 'solnum', 1)';
 By_comsol = mphinterp(model, 'mf.By', 'coord', mesh.nodes2coord', 'solnum', 1)';
 
-save = 1;
-tol = 0.001;
 zoom = [params.x_piston_min - tol, params.x_piston_max + tol; params.y_piston_min - tol, params.y_piston_max + tol];
 
 %A

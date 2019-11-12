@@ -1,19 +1,14 @@
-function [mu] = Valve_GetMu(B,B_mu)
+function [mu] = Valve_GetMu(B_ele,B_mu,params)
 
-B = (B(:,1).^2) + (B(:,2).^2);
+B = (B_ele(:,1).^2) + (B_ele(:,2).^2);
 
-ii_linear1 = (B < B_mu.max_B);
-ii_linear2 = (B > B_mu.min_B);
-
-ii_poly = ~ii_linear1 & ~ii_linear2;
+ii_linear = (B < B_mu.max_B);
+ii_exp = ~ii_linear;
 
 mu = zeros(length(B),1);
-mu(ii_linear1) = B_mu.max_mu;
-mu(ii_linear2) = B_mu.min_mu;
+mu(ii_linear) = B_mu.max_mu;
 
-mu(ii_poly) = B_mu.f(B(ii_poly));
-
-
+mu(ii_exp) = params.mu0 + (B_mu.max_mu - params.mu0)*exp(-B_mu.a*(B(ii_exp)-B_mu.max_B));
 
 end
 
