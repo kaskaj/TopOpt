@@ -1,4 +1,4 @@
-function [A, B_ele] = Valve_GetJ_nonlinear(phi, mesh, matrices, params, p, coil, mu_fe)
+function [A, B_ele, Sloc_mu] = Valve_GetJ_nonlinear(phi, mesh, matrices, params, p, coil, mu_fe)
 
 id     = ~mesh.id_dirichlet;
 npoint = mesh.npoint;
@@ -11,7 +11,6 @@ mu_inv = 1./((1-phi)*mu0 + (phi.^p).*mu_fe);
 mu_inv = repmat(mu_inv,1,9);
 
 Sloc_mu  = sparse(matrices.ii(:),matrices.jj(:),(matrices.sloc_aa(:)).*mu_inv(:));
-%dmu_inv = -(phi^2 * dH * (2*(Clocy_ele^2)*A + 2*(Clocx_ele^2)*A))/((1-phi)*mu1 + (phi.^p)*H)^2;
 
 %% Solve the system
 if coil == 1    %Turn on the current
@@ -24,7 +23,6 @@ A     = zeros(npoint,1);
 A(id) = Sloc_mu(id,id) \ f(id);
 % B     = [matrices.Mloc\(matrices.Clocy*A),-matrices.Mloc\(matrices.Clocx*A)];
 B_ele = [matrices.Clocy_ele*A,-matrices.Clocx_ele*A];
-
 
 % F_x_aux = B(:,1)'*matrices.Clocx_plunger*B(:,1) - B(:,2)'*matrices.Clocx_plunger*B(:,2) + B(:,2)'*matrices.Clocy_plunger*B(:,1) + B(:,1)'*matrices.Clocy_plunger*B(:,2);
 % F_y_aux = -B(:,1)'*matrices.Clocy_plunger*B(:,1) + B(:,2)'*matrices.Clocy_plunger*B(:,2) + B(:,2)'*matrices.Clocx_plunger*B(:,1) + B(:,1)'*matrices.Clocx_plunger*B(:,2);

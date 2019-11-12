@@ -179,9 +179,11 @@ function Valve_CreateMatrices(params, mesh0, refin_level, check)
             matrices.sloc_aa       = slocxx_aa + slocyy_aa;
             matrices.Clocx         = Clocx;
             matrices.Clocx_ele     = Clocx_ele;
+            matrices.clocx_ele_aa  = clocx_ele_aa;
             matrices.Clocx_plunger = Clocx_plunger;
             matrices.Clocy         = Clocy;
             matrices.Clocy_ele     = Clocy_ele;
+            matrices.clocy_ele_aa  = clocy_ele_aa;
             matrices.Clocy_plunger = Clocy_plunger;
             matrices.J             = J;
             matrices.Br            = Br;

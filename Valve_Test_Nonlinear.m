@@ -24,29 +24,30 @@ phi(ii_fix1)  = 1;
 
 p = 1;
 coil = 1;
-% n = 3;
 
 mu_fe = params.mu0*params.mur*ones(mesh.nelement,1);
 
-for i = 1:20
+for i = 1:10
     
-    [A_new, B_ele_new] = Valve_GetJ_nonlinear(phi, mesh, matrices, params, p, coil, mu_fe);
+    [SlocA, Sloc] = test_H(phi, mu_fe, A, params, matrices, p);
+    [A_new, B_ele_new, Sloc_new] = Valve_GetJ_nonlinear(phi, mesh, matrices, params, p, coil, mu_fe);
+    dF = Sloc_new + Valve_GetdSA(A_new, B_ele_new, mu_fe, dmu_fe, phi, mesh, matrices, params, p);
     
-    if i>1
-        alpha = 0.25;
-        A = alpha*A_new + (1-alpha)*A_old;
-        B_ele = alpha*B_ele_new + (1-alpha)*B_ele_old;
-    else
-        A = A_new;
-        B_ele = B_ele_new;
-    end
+    mu_fe = Valve_GetMu(B_ele_new,B_mu);  
+    dMu = Valve_GetdMu(B_ele_new,B_mu);
     
-    A_old = A_new;
-    B_ele_old = B_ele_new;
-    
+    A_new = A_old - ;
+    B_ele = B_ele_new;
+
+
     mu_fe = Valve_GetMu(B_ele,B_mu);    
    
     max(B_ele)
+    
+%     PlotData(mesh.x_mid,mesh.y,mesh.elems2nodes,B(:,1));
+
+ele = delaunay(mesh.x_mid,mesh.y_mid);
+PlotData(mesh.x_mid,mesh.y_mid,ele,B_ele(:,1))
 end
 
 % ele = delaunay(mesh.x_mid,mesh.y_mid);

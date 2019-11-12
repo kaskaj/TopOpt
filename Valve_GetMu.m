@@ -11,7 +11,7 @@ mu = zeros(length(B),1);
 mu(ii_linear1) = B_mu.max_mu;
 mu(ii_linear2) = B_mu.min_mu;
 
-mu(ii_poly) = feval(B_mu.f,B(ii_poly));
+mu(ii_poly) = B_mu.f(B(ii_poly));
 
 
 

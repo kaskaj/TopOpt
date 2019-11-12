@@ -40,7 +40,7 @@ p = 2;
 dJ = Valve_GetdJ(phi, Sloc_mu, A, B, mesh, matrices, params, p);
 
 f = @(phi) Valve_GetJ(phi, mesh, matrices, params, p, 1);
-g = @(x) Valve_GetdJ(phi, Sloc_mu, A, B, mesh, matrices, params, p);
+g = @(x,y) Valve_GetdJ(phi, Sloc_mu, A, B, mesh, matrices, params, p);
 
 for i = 1:2
     if i == 1
