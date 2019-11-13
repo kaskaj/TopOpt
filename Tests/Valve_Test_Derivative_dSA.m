@@ -30,15 +30,18 @@ nonlinear = 0;
 
 %% Compute derivatives
 
+id     = ~mesh.id_dirichlet;
+
 [~, A0, ~, B_ele] = Valve_GetJ(phi, mesh, matrices, params, p, coil, nonlinear);
 
-[SA, Sloc] = test_Sloc(A0, params,matrices,B_mu,phi,p);
+[SA, Sloc] = test_Sloc(A0, params, mesh, matrices, B_mu, phi, p);
 
-f = @(A) test_Sloc(A, params,matrices,B_mu,phi,p) - Sloc*A;
-g = @(A) Valve_GetdSA(A, phi, mesh, matrices, params, B_mu, p);
+
+f = @(A) test_Sloc_id(A, params, mesh, matrices, B_mu, phi, p, Sloc);
+g = @(A) Valve_GetdSA(A, B_ele, phi, mesh, matrices, params, B_mu, p);
 
 % f = @(A) test_Sloc(A, params,matrices,B_mu,phi,p);
-% g = @(A) Sloc + Valve_GetdSA(A, phi, mesh, matrices, params, B_mu, p);
+% g = @(A) Sloc + Valve_GetdSA(A, B_ele, phi, mesh, matrices, params, p, mu_fe, dmu_fe);
 
 for i = 1:2
     if i == 1
@@ -48,7 +51,7 @@ for i = 1:2
     end
     err = Diff_Derivatives(f, g, A0, dir);
 
-    fprintf('The relative error = %1.3e\n', err);
+    fprintf('The relative error (dSA) = %1.3e\n', err);
 end
 
 

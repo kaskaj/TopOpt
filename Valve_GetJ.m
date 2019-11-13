@@ -1,4 +1,4 @@
-function [F, A, B, B_ele, Sloc_mu] = Valve_GetJ(phi, mesh, matrices, params, p, coil, nonlinear, mu_fe)
+function [F, A, B, B_ele, Sloc_mu, f] = Valve_GetJ(phi, mesh, matrices, params, p, coil, nonlinear, mu_fe)
 
 id     = ~mesh.id_dirichlet;
 npoint = mesh.npoint;

@@ -27,14 +27,16 @@ phi(ii_fix0)  = 0;
 phi(ii_fix1)  = 1;
 
 p = 1;
+coil = 1;
+nonlinear = 0;
 
 %% Compute derivatives
 
-[F, A, B, ~, Sloc_mu] = Valve_GetJ(phi, mesh, matrices, params, p, 1);
-dJ = Valve_GetdJ(phi, Sloc_mu, A, B, mesh, matrices, params, p);
+[F, A, B, ~, Sloc_mu] = Valve_GetJ(phi, mesh, matrices, params, p, coil, nonlinear);
+dJ = Valve_GetdJ(phi, Sloc_mu, A, B, mesh, matrices, params, p, nonlinear);
 
-f = @(phi) Valve_GetJ(phi, mesh, matrices, params, p, 1);
-g = @(x,y) Valve_GetdJ(phi, Sloc_mu, A, B, mesh, matrices, params, p);
+f = @(phi) Valve_GetJ(phi, mesh, matrices, params, p, coil, nonlinear);
+g = @(x,y) Valve_GetdJ(phi, Sloc_mu, A, B, mesh, matrices, params, p, nonlinear);
 
 for i = 1:2
     if i == 1
@@ -44,7 +46,7 @@ for i = 1:2
     end
     err = Diff_Derivatives(f, g, phi, dir);
 
-    fprintf('The relative error = %1.3e\n', err);
+    fprintf('The relative error (dJ) = %1.3e\n', err);
 end
 
 

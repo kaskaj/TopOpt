@@ -1,8 +1,9 @@
-function dSA = Valve_GetdSA(A, phi, mesh, matrices, params, B_mu, p)
+function dSA = Valve_GetdSA(A, B_ele, phi, mesh, matrices, params, B_mu, p, mu_fe, dmu_fe)
 
-B_ele = [matrices.Clocy_ele*A,-matrices.Clocx_ele*A];
-mu_fe = Valve_GetMu(B_ele,B_mu,params);
-dmu_fe = Valve_GetdMu(B_ele,B_mu,params);
+if nargin < 9
+    mu_fe = Valve_GetMu(B_ele,B_mu,params);
+    dmu_fe = Valve_GetdMu(B_ele,B_mu,params);
+end
 
 mu0 = params.mu0;
 

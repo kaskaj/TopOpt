@@ -34,18 +34,20 @@ phi(ii_fix1)  = 1;
 % axis equal;
 
 p = 1;
-coil = 0;
+coil = 1;
 nonlinear = 0;
 
-[F, A, B, B_ele Sloc_mu] = Valve_GetJ(phi, mesh, matrices, params, p , coil, nonlinear);
+[F, A, B, B_ele, Sloc_mu] = Valve_GetJ(phi, mesh, matrices, params, p , coil, nonlinear);
 
-ele = delaunay(mesh.x_mid,mesh.y_mid);
+fprintf('Force for linear model: Fy = %d\n',F);
 
-PlotData(mesh.x,mesh.y,mesh.elems2nodes,B(:,1))
-caxis([min(B_ele(:,1)), max(B_ele(:,1))]);
-Valve_PlotEdges(params,max(B(:,1)))
+%ele = delaunay(mesh.x_mid,mesh.y_mid);
 
-PlotData(mesh.x_mid,mesh.y_mid,ele,B_ele(:,1))
-caxis([min(B_ele(:,1)), max(B_ele(:,1))]);
-Valve_PlotEdges(params,max(B_ele(:,1)))
+% PlotData(mesh.x,mesh.y,mesh.elems2nodes,B(:,1))
+% caxis([min(B_ele(:,1)), max(B_ele(:,1))]);
+% Valve_PlotEdges(params,max(B(:,1)))
+% 
+% PlotData(mesh.x_mid,mesh.y_mid,ele,B_ele(:,1))
+% caxis([min(B_ele(:,1)), max(B_ele(:,1))]);
+% Valve_PlotEdges(params,max(B_ele(:,1)))
 

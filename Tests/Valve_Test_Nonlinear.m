@@ -23,26 +23,67 @@ ii_opt  = ~ii_fix;
 phi(ii_fix0)  = 0;
 phi(ii_fix1)  = 1;
 
+id     = ~mesh.id_dirichlet;
+
 %% Newton–Raphson
 
 p = 1;
 coil = 1;
 nonlinear = 1;
+steps = 100;
 
+%Initial guess
 mu_fe = params.mu0*params.mur*ones(mesh.nelement,1);
+[~, A, ~, B_ele, Sloc, f] = Valve_GetJ(phi, mesh, matrices, params, p, coil, nonlinear, mu_fe);
 
-for i = 1:10
-    [~, A, ~, B_ele, Sloc_mu] = Valve_GetJ(phi, mesh, matrices, params, p, coil, nonlinear, mu_fe);
+SAf = zeros(mesh.npoint,1);
+
+for i = 1:steps
     
+    %New mu and dmu
+    mu_fe = Valve_GetMu(B_ele,B_mu,params);
+    mu_inv = 1./((1-phi)*params.mu0 + (phi.^p).*mu_fe);
+    mu_inv = repmat(mu_inv,1,9);    
+    dmu_fe = Valve_GetdMu(B_ele,B_mu,params);
     
-    %TODO: ITERATIVE SOLVER
-    A_new = A_old + f(A_old)/df(A_old);
+    %New Sloc
+    Sloc  = sparse(matrices.ii(:),matrices.jj(:),(matrices.sloc_aa(:)).*mu_inv(:));
     
+    %Function evaluation and its derivative for S_new and A_old
     
-    %Plot
-    ele = delaunay(mesh.x_mid,mesh.y_mid);
-    PlotData(mesh.x_mid,mesh.y_mid,ele,B_ele(:,1))
-    Valve_PlotEdges(params,max(B_ele(:,1)))
+    SAf(id)  = Sloc(id,id)*A(id) - f(id);
+    SAf(~id) = 0;
+    
+    dSA = Valve_GetdSA(A, B_ele, phi, mesh, matrices, params, B_mu, p, mu_fe, dmu_fe);
+    dSAf = Sloc(id,id) + dSA(id,id);
+    
+    %New A, new B_ele  
+    
+    res = SAf'*matrices.Mloc*SAf;
+    
+    if res <= 1e-8
+        break;
+    end
+    
+    if res <= 1e-1
+        step = 1;
+    else
+        step = 0.5;
+    end
+
+    A(id)  =  A(id) - step*(dSAf \ SAf(id));
+    A(~id) = 0;
+    B_ele = [matrices.Clocy_ele*A,-matrices.Clocx_ele*A];
+
 end
+
+[F, A, B, ~, ~, ~] = Valve_GetJ(phi, mesh, matrices, params, p, coil, nonlinear, mu_fe);
+
+fprintf('Force for nonlinear model: Fy = %d\n',F);
+
+%Plot
+% ele = delaunay(mesh.x_mid,mesh.y_mid);
+% PlotData(mesh.x_mid,mesh.y_mid,ele,B_ele(:,1))
+% Valve_PlotEdges(params,max(B_ele(:,1)))
 
 
