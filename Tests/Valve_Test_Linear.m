@@ -43,10 +43,10 @@ fprintf('Force for linear model: Fy = %d\n',F);
 
 %ele = delaunay(mesh.x_mid,mesh.y_mid);
 
-% PlotData(mesh.x,mesh.y,mesh.elems2nodes,B(:,1))
-% caxis([min(B_ele(:,1)), max(B_ele(:,1))]);
-% Valve_PlotEdges(params,max(B(:,1)))
-% 
+PlotData(mesh.x,mesh.y,mesh.elems2nodes,A);
+%caxis([min(A), max(A)]);
+%Valve_PlotEdges(params,max(A))
+
 % PlotData(mesh.x_mid,mesh.y_mid,ele,B_ele(:,1))
 % caxis([min(B_ele(:,1)), max(B_ele(:,1))]);
 % Valve_PlotEdges(params,max(B_ele(:,1)))

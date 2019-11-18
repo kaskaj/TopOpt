@@ -16,15 +16,22 @@ end
 
 mu_inv = 1./((1-phi)*mu0 + (phi.^p).*mu2);
 mu_inv = repmat(mu_inv,1,9);
+x_mid = repmat(mesh.x_mid,1,9);
 
-Sloc_mu  = sparse(matrices.ii(:),matrices.jj(:),(matrices.sloc_aa(:)).*mu_inv(:));
+%x_mid = ones(size(x_mid));
+
+Sloc_mu  = sparse(matrices.ii(:),matrices.jj(:),((matrices.sloc_aa(:)).*mu_inv(:).*x_mid(:)));
+% Sloc_mu  = sparse(matrices.ii(:),matrices.jj(:),((matrices.sloc_aa(:)).*mu_inv(:)));
+
+Mloc_mu  = sparse(matrices.ii(:),matrices.jj(:),((matrices.mloc_aa(:)).*x_mid(:)));
+% Mloc_mu  = sparse(matrices.ii(:),matrices.jj(:),((matrices.mloc_aa(:))));
 
 %% Solve the system
 
 A = zeros(npoint,1);        
 
 if coil == 1    %Turn on the current
-    f = matrices.Mloc*matrices.J + (1/params.mu0)*matrices.Clocy*matrices.Br;
+    f = Mloc_mu*matrices.J;% + (1/params.mu0)*matrices.Clocy*matrices.Br;
 else            %Turn off the current
     f = (1/params.mu0)*matrices.Clocy*matrices.Br;
 end

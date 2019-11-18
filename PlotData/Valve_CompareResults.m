@@ -18,6 +18,13 @@ A_comsol  = mphinterp(model, 'mf.Az', 'coord', mesh.nodes2coord', 'solnum', 1)';
 Bx_comsol = mphinterp(model, 'mf.Bx', 'coord', mesh.nodes2coord', 'solnum', 1)';
 By_comsol = mphinterp(model, 'mf.By', 'coord', mesh.nodes2coord', 'solnum', 1)';
 
+% alpha = pi/16;
+% nodes3d(:,[1 3]) = [cos(alpha)*nodes3d(:,1), -sin(alpha)*nodes3d(:,1)];
+% 
+% A_comsol  = mphinterp(model, 'mf.Az', 'coord', nodes3d', 'solnum', 1)';
+% Bx_comsol = mphinterp(model, 'mf.Bx', 'coord', nodes3d', 'solnum', 1)';
+% By_comsol = mphinterp(model, 'mf.By', 'coord', nodes3d', 'solnum', 1)';
+
 zoom = [params.x_piston_min - tol, params.x_piston_max + tol; params.y_piston_min - tol, params.y_piston_max + tol];
 
 %A

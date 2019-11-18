@@ -175,6 +175,7 @@ function Valve_CreateMatrices(params, mesh0, refin_level, check)
             matrices.ii            = ii;
             matrices.jj            = jj;
             matrices.Mloc          = Mloc;
+            matrices.mloc_aa       = mloc_aa;
             matrices.Sloc          = Sloc;
             matrices.sloc_aa       = slocxx_aa + slocyy_aa;
             matrices.Clocx         = Clocx;
