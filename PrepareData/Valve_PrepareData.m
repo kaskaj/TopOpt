@@ -6,14 +6,14 @@ levels_max = 4;
 Valve_SetParameters;
 
 % Load parameters
-file_name = fullfile('Valve_Data', 'Param.mat');
+file_name = fullfile('../Valve_Data', 'Param.mat');
 load(file_name, 'params');
 
 % Create mesh
 Valve_MeshGen(params);
 
 % Load mesh
-file_name = fullfile('Valve_Data', 'Mesh0.mat');
+file_name = fullfile('../Valve_Data', 'Mesh0.mat');
 load(file_name, 'mesh');
 
 % Create matrices

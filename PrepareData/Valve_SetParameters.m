@@ -375,7 +375,7 @@ params.edg15(:,1:2) = params.edg15(:,1:2) + size(params.nod1,1) + size(params.no
 
 %% Create the structure
 
-file_name = fullfile('Valve_Data', 'Param.mat');
+file_name = fullfile('../Valve_Data', 'Param.mat');
 save(file_name, 'params');
 
 

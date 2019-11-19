@@ -189,8 +189,8 @@ function Valve_CreateMatrices(params, mesh0, refin_level, check)
             matrices.J             = J;
             matrices.Br            = Br;
             
-            file_name_mesh   = fullfile('Valve_Data', sprintf('Mesh%d.mat', i_level));
-            file_name_matrix = fullfile('Valve_Data', sprintf('Matrices%d.mat', i_level));
+            file_name_mesh   = fullfile('../Valve_Data', sprintf('Mesh%d.mat', i_level));
+            file_name_matrix = fullfile('../Valve_Data', sprintf('Matrices%d.mat', i_level));
             
             save(file_name_mesh,'mesh');
             save(file_name_matrix,'matrices');

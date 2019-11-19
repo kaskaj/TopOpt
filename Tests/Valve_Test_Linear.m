@@ -1,16 +1,17 @@
 clear all;
+close all;
+add_paths
 
 %% Load data
 refin_level = 4;
 
-folder_name = 'Valve_Data';
+folder_name = '../Valve_Data';
 
 load(fullfile(folder_name, 'Param'), 'params');
 load(fullfile(folder_name, sprintf('Mesh%d.mat', refin_level)), 'mesh');
 load(fullfile(folder_name, sprintf('Matrices%d.mat', refin_level)), 'matrices');
 
 %% Prescribe fixed Air and Iron domains
-
 phi = zeros(mesh.nelement,1);
 
 ii_fix0 = ismember(mesh.tnum, [2,3,5,6,7,8,9,10,14,15]);
@@ -34,20 +35,19 @@ phi(ii_fix1)  = 1;
 % axis equal;
 
 p = 1;
-coil = 1;
+coil = 0;
 nonlinear = 0;
 
 [F, A, B, B_ele, Sloc_mu] = Valve_GetJ(phi, mesh, matrices, params, p , coil, nonlinear);
 
 fprintf('Force for linear model: Fy = %d\n',F);
 
-%ele = delaunay(mesh.x_mid,mesh.y_mid);
-
 PlotData(mesh.x,mesh.y,mesh.elems2nodes,A);
-%caxis([min(A), max(A)]);
-%Valve_PlotEdges(params,max(A))
+Valve_PlotEdges(params,max(A));
 
-% PlotData(mesh.x_mid,mesh.y_mid,ele,B_ele(:,1))
-% caxis([min(B_ele(:,1)), max(B_ele(:,1))]);
-% Valve_PlotEdges(params,max(B_ele(:,1)))
+ele = delaunay(mesh.x_mid,mesh.y_mid);
+
+PlotData(mesh.x_mid,mesh.y_mid,ele,B_ele(:,1))
+caxis([min(B_ele(:,1)), max(B_ele(:,1))]);
+Valve_PlotEdges(params,max(B_ele(:,1)))
 

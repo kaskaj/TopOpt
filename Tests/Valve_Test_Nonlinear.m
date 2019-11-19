@@ -1,10 +1,11 @@
 clear all;
 close all;
+add_paths
 
 %% Load data
 refin_level = 4;
 
-folder_name = 'Valve_Data';
+folder_name = '../Valve_Data';
 
 load(fullfile(folder_name, 'Param'), 'params');
 load(fullfile(folder_name, 'B_mu'),'B_mu');
@@ -80,10 +81,5 @@ end
 [F, A, B, ~, ~, ~] = Valve_GetJ(phi, mesh, matrices, params, p, coil, nonlinear, mu_fe);
 
 fprintf('Force for nonlinear model: Fy = %d\n',F);
-
-%Plot
-% ele = delaunay(mesh.x_mid,mesh.y_mid);
-% PlotData(mesh.x_mid,mesh.y_mid,ele,B_ele(:,1))
-% Valve_PlotEdges(params,max(B_ele(:,1)))
 
 

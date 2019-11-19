@@ -1,11 +1,12 @@
 clear all;
 close all;
+add_paths
 
 %% Load data
 
 refin_level = 4;
 
-folder_name = 'Valve_Data';
+folder_name = '../Valve_Data';
 
 load(fullfile(folder_name, 'Param'), 'params');
 load(fullfile(folder_name, 'B_mu'), 'B_mu');

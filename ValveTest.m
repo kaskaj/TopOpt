@@ -2,6 +2,10 @@ function tests = ValveTest
 tests = functiontests(localfunctions);
 end
 
+function setupOnce(testCase)  
+cd Tests
+end
+
 function TestLinear(testCase)
 Valve_Test_Linear;
 end
