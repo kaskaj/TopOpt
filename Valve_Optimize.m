@@ -1,19 +1,24 @@
 clear all;
 
 %% Load data
+
 refin_level = 4;
 
 folder_name = 'Valve_Data';
 
 load(fullfile(folder_name, 'Param'), 'params');
+load(fullfile(folder_name, 'B_mu'),'B_mu');
 load(fullfile(folder_name, sprintf('Mesh%d.mat', refin_level)), 'mesh');
 load(fullfile(folder_name, sprintf('Matrices%d.mat', refin_level)), 'matrices');
 
-steps = 1000;
-p = 1.0;
-lambda = 1e-1;
-coil = 1;   %on / off
-nonlinear = 0;
+steps  = 1000;
+lambda = 1e-2;
+
+model = [];
+model.p         = 1;
+model.coil      = 1;
+model.nonlinear = 1;
+model.B_mu      = B_mu;
 
 %% Prescribe fixed Air and Iron domains
 
@@ -42,10 +47,13 @@ phi(ii_fix1, 1)  = 1;
 
 F = zeros(steps,1);
 F_round = nan(steps,1);
+A = [];
 
-for i = 1:steps    
-    [F(i), A, B, B_ele, Sloc_mu, f] = Valve_GetJ(phi(:,i), mesh, matrices, params, p, coil, nonlinear);
-    dJ = Valve_GetdJ(phi(:,i), Sloc_mu, A, B, B_ele, mesh, matrices, params, p, nonlinear);         
+for i = 1:steps
+    tic
+    [F(i), A, B, B_ele, Sloc_mu, mu_fe, dmu_fe, f] = Valve_GetJ(phi(:,i), mesh, matrices, params, model, A);
+    toc;
+    dJ = Valve_GetdJ(phi(:,i), A, B, B_ele, Sloc_mu, mu_fe, dmu_fe, mesh, matrices, params, model);
     
     phi(ii_fix0,i+1) = 0;
     phi(ii_fix1,i+1) = 1;
@@ -53,17 +61,20 @@ for i = 1:steps
     phi(ii_opt,i+1)  = max(min(phi(ii_opt,i+1), 1), 0);
     
     if mod(i, 10) == 0
-        F_round(i) = Valve_GetJ(round(phi(:,i+1)), mesh, matrices, params, p, coil, nonlinear);
+        F_round(i) = Valve_GetJ(round(phi(:,i+1)), mesh, matrices, params, model);
         fprintf('step%d: Fy = %d, Fy_round = %d.\n',i, F(i), F_round(i));
     else
         fprintf('step%d: Fy = %d\n',i,F(i));
     end
 end
 
+model_true   = model;
+model_true.p = 1;
+
 phi_final = round(phi(:,end));
 
-F1 = Valve_GetJ(phi(:,end), mesh, matrices, params, 1, coil, nonlinear);
-[F2, A, B] = Valve_GetJ(phi_final, mesh, matrices, params, 1, coil, nonlinear);
+F1 = Valve_GetJ(phi(:,end), mesh, matrices, params, model_true);
+[F2, A, B] = Valve_GetJ(phi_final, mesh, matrices, params, model_true);
 
 fprintf('Last step: Fy = %d, Fy_round = %d.\n', F1, F2);
 

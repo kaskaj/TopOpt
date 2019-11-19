@@ -1,38 +1,101 @@
-function [F, A, B, B_ele, Sloc_mu, f] = Valve_GetJ(phi, mesh, matrices, params, p, coil, nonlinear, mu_fe)
+function [F, A, B, B_ele, Sloc_mu, mu_fe, dmu_fe, f] = Valve_GetJ(phi, mesh, matrices, params, model, A0)
 
 id     = ~mesh.id_dirichlet;
 npoint = mesh.npoint;
 
-mu0 = params.mu0;
+mu_air = params.mu0;
+p      = model.p;
 
-if nonlinear == 1
-    mu2 = mu_fe;
-else
-    mu2 = params.mu0*params.mur;
-end
-    
+%% Right-hand side
 
-%% phi -> mu, dmu
-
-mu_inv = 1./((1-phi)*mu0 + (phi.^p).*mu2);
-mu_inv = repmat(mu_inv,1,9);
-
-Sloc_mu  = sparse(matrices.ii(:),matrices.jj(:),((matrices.sloc_aa(:)).*mu_inv(:)));
-Mloc_mu  = sparse(matrices.ii(:),matrices.jj(:),((matrices.mloc_aa(:))));
-
-%% Solve the system
-
-A = zeros(npoint,1);        
-
-if coil == 1    %Turn on the current
-    f = Mloc_mu*matrices.J + (1/params.mu0)*matrices.Clocy*matrices.Br;
+if model.coil == 1    %Turn on the current
+    f = matrices.Mloc*matrices.J + (1/params.mu0)*matrices.Clocy*matrices.Br;
 else            %Turn off the current
     f = (1/params.mu0)*matrices.Clocy*matrices.Br;
 end
 
-A(id) = Sloc_mu(id,id) \ f(id);
+%% Compute A
+
+if model.nonlinear == 1
+    
+    % If initial guess is not provided, compute A
+    if nargin < 6 || isempty(A0)
+        mu_fe   = params.mu0*params.mur;        
+        mu_inv  = 1./((1-phi)*mu_air + (phi.^p).*mu_fe);
+        mu_inv  = repmat(mu_inv,1,9);
+        Sloc_mu = sparse(matrices.ii(:),matrices.jj(:),((matrices.sloc_aa(:)).*mu_inv(:)));
+        
+        A     = zeros(npoint,1);
+        A(id) = Sloc_mu(id,id) \ f(id);
+    else
+        A     = A0;
+    end
+    B_ele = [matrices.Clocy_ele*A,-matrices.Clocx_ele*A];
+    
+    SAf = zeros(mesh.npoint,1);
+    
+    maxsteps = 100;
+    for i = 1:maxsteps
+        
+        % Update mu
+        [mu_fe, dmu_fe] = Valve_GetMu(B_ele, params, model);
+
+        mu_inv = 1./((1-phi)*params.mu0 + (phi.^p).*mu_fe);
+        mu_inv = repmat(mu_inv,1,9);
+        
+        % Update Sloc
+        Sloc_mu = sparse(matrices.ii(:),matrices.jj(:),(matrices.sloc_aa(:)).*mu_inv(:));
+        
+        %Function evaluation and its derivative for S_new and A_old
+        SAf(id)  = Sloc_mu(id,id)*A(id) - f(id);
+        SAf(~id) = 0;
+        
+        dSA  = Valve_GetdSA(phi, A, B_ele, mesh, matrices, params, model, mu_fe, dmu_fe);
+        dSAf = Sloc_mu(id,id) + dSA(id,id);
+        
+        % Compute residual
+        res = SAf'*matrices.Mloc*SAf;
+        if res <= 1e-8
+            break;
+        end
+        
+        % Set step
+        if res <= 1e-1
+            step = 1;
+        else
+            step = 0.5;
+        end
+        
+        % Update A and B_ele
+        A(id)  =  A(id) - step*(dSAf \ SAf(id));
+        A(~id) = 0;
+        B_ele  = [matrices.Clocy_ele*A,-matrices.Clocx_ele*A];
+        
+    end
+    
+    if i == maxsteps
+        warning('Newton method did not converge.');
+    end
+else
+    mu_fe  = params.mu0*params.mur;
+    dmu_fe = [];
+
+    mu_inv = 1./((1-phi)*mu_air + (phi.^p).*mu_fe);
+    mu_inv = repmat(mu_inv,1,9);
+    
+    Sloc_mu  = sparse(matrices.ii(:),matrices.jj(:),((matrices.sloc_aa(:)).*mu_inv(:)));
+    
+    A     = zeros(npoint,1);    
+    A(id) = Sloc_mu(id,id) \ f(id);
+
+end
+
+%% Compute B
+
 B     = [matrices.Mloc\(matrices.Clocy*A),-matrices.Mloc\(matrices.Clocx*A)];
 B_ele = [matrices.Clocy_ele*A,-matrices.Clocx_ele*A];
+
+%% Compute F
 
 F_x_aux = B(:,1)'*matrices.Clocx_plunger*B(:,1) - B(:,2)'*matrices.Clocx_plunger*B(:,2) + B(:,2)'*matrices.Clocy_plunger*B(:,1) + B(:,1)'*matrices.Clocy_plunger*B(:,2);
 F_y_aux = -B(:,1)'*matrices.Clocy_plunger*B(:,1) + B(:,2)'*matrices.Clocy_plunger*B(:,2) + B(:,2)'*matrices.Clocx_plunger*B(:,1) + B(:,1)'*matrices.Clocx_plunger*B(:,2);

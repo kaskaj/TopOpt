@@ -1,28 +1,25 @@
-function dJ = Valve_GetdJ(phi, Sloc_mu, A, B, B_ele, mesh, matrices, params, p, nonlinear, mu_fe, dmu_fe, B_mu)
+function dJ = Valve_GetdJ(phi, A, B, B_ele, Sloc_mu, mu_fe, dmu_fe, mesh, matrices, params, model)
 
 id     = ~mesh.id_dirichlet;
 npoint = mesh.npoint;
 
-mu1 = params.mu0;
+mu_air = params.mu0;
+p      = model.p;
 
-if nonlinear == 1
-    mu2 = mu_fe;
-else
-    mu2 = params.mu0*params.mur;
-end
-
-%% Compute derivative
+%% Compute beta and gamma
 
 Cp_x  = (-matrices.Clocy_plunger' - matrices.Clocy_plunger)*B(:,1) + (matrices.Clocx_plunger' + matrices.Clocx_plunger)*B(:,2);
 Cp_y  = (matrices.Clocx_plunger' + matrices.Clocx_plunger)*B(:,1) + (matrices.Clocy_plunger' + matrices.Clocy_plunger)*B(:,2);
 beta  = -(1/params.mu0) * (matrices.Mloc\Cp_x);
 gamma = -(1/params.mu0) * (matrices.Mloc\Cp_y);
 
+%% Compute alpha
+
 f         = matrices.Clocy'*beta - matrices.Clocx'*gamma;
 alpha     = zeros(npoint,1);
 
-if nonlinear == 1
-    dSA = Valve_GetdSA(A, B_ele, phi, mesh, matrices, params, B_mu, p, mu_fe, dmu_fe);
+if model.nonlinear == 1
+    dSA  = Valve_GetdSA(phi, A, B_ele, mesh, matrices, params, model, mu_fe, dmu_fe);
     dSAf = Sloc_mu(id,id) + dSA(id,id);
     
     alpha(id) = dSAf\f(id);    
@@ -30,7 +27,9 @@ else
     alpha(id) = Sloc_mu(id,id)\f(id);
 end
 
-dmu_inv = repmat((mu1 - p.*mu2.*phi.^(p-1))./((1-phi)*mu1 + (phi.^p).*mu2).^2, 1, 9);
+%% Compute derivative
+
+dmu_inv = repmat((mu_air - p.*mu_fe.*phi.^(p-1))./((1-phi)*mu_air + (phi.^p).*mu_fe).^2, 1, 9);
 dmu_inv = reshape(dmu_inv', [], 1);
 
 x1 = A(mesh.elems2nodes);

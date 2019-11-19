@@ -1,4 +1,7 @@
-function [SA, Sloc, mu_fe] = Valve_GetSA(A, params, matrices, B_mu, phi, p)
+function [SA, Sloc, mu_fe] = Valve_GetSA(phi, A, params, matrices, model)
+
+p    = model.p;
+B_mu = model.B_mu;
 
 B_ele = [matrices.Clocy_ele*A,-matrices.Clocx_ele*A];
 mu_fe = Valve_GetMu(B_ele,B_mu,params);  

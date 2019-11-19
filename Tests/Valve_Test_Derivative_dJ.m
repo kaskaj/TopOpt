@@ -1,12 +1,8 @@
-clear all;
-close all;
-add_paths
-
 %% Load data
 
 refin_level = 4;
 
-folder_name = '../Valve_Data';
+folder_name = 'Valve_Data';
 
 load(fullfile(folder_name, 'Param'), 'params');
 load(fullfile(folder_name, sprintf('Mesh%d.mat', refin_level)), 'mesh');
@@ -27,25 +23,25 @@ ii_opt  = ~ii_fix;
 phi(ii_fix0)  = 0;
 phi(ii_fix1)  = 1;
 
-p = 1;
-coil = 1;
-nonlinear = 0;
+model = [];
+model.p         = 1;
+model.coil      = 1;
+model.nonlinear = 0;
 
 %% Compute derivatives
 
-[F, A, B, B_ele, Sloc_mu] = Valve_GetJ(phi, mesh, matrices, params, p, coil, nonlinear);
-dJ = Valve_GetdJ(phi, Sloc_mu, A, B, B_ele, mesh, matrices, params, p, nonlinear);
+[F, A, B, B_ele, Sloc_mu, mu_fe, dmu_fe] = Valve_GetJ(phi, mesh, matrices, params, model);
+df_x = Valve_GetdJ(phi, A, B, B_ele, Sloc_mu, mu_fe, dmu_fe, mesh, matrices, params, model);
 
-f = @(phi) Valve_GetJ(phi, mesh, matrices, params, p, coil, nonlinear);
-g = @(x,y) Valve_GetdJ(phi, Sloc_mu, A, B, B_ele, mesh, matrices, params, p, nonlinear);
+f = @(phi) Valve_GetJ(phi, mesh, matrices, params, model);
 
 for i = 1:2
     if i == 1
-        dir = dJ;
+        dir = df_x;
     else
         dir = sin(mesh.x_mid + mesh.y_mid);
     end
-    err = Diff_Derivatives(f, g, phi, dir);
+    err = Diff_Derivatives(f, df_x, phi, dir);
 
     fprintf('The relative error (dJ) = %1.3e\n', err);
 end

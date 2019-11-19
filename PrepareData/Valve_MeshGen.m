@@ -1,7 +1,5 @@
 function Valve_MeshGen(params, show)
 
-addpath(genpath('../3rd_party'));
-
 if nargin < 2
     show = 0;
 end
@@ -98,7 +96,7 @@ mesh.bedges2nodes = bedges2nodes;
 mesh.elems2nodes  = elems2nodes;
 mesh.tnum         = tnum;
 
-file_name = fullfile('../Valve_Data', 'Mesh0.mat');
+file_name = fullfile('Valve_Data', 'Mesh0.mat');
 save(file_name, 'mesh');
 
 end

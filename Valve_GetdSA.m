@@ -1,11 +1,11 @@
-function dSA = Valve_GetdSA(A, B_ele, phi, mesh, matrices, params, B_mu, p, mu_fe, dmu_fe)
+function dSA = Valve_GetdSA(phi, A, B_ele, mesh, matrices, params, model, mu_fe, dmu_fe)
 
-if nargin < 9
-    mu_fe = Valve_GetMu(B_ele,B_mu,params);
-    dmu_fe = Valve_GetdMu(B_ele,B_mu,params);
+if nargin < 8
+    [mu_fe, dmu_fe] = Valve_GetMu(B_ele, params, model);
 end
 
-mu0 = params.mu0;
+mu0  = params.mu0;
+p    = model.p;
 
 A_ele = A(mesh.elems2nodes);
 

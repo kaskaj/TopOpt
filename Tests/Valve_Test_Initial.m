@@ -1,6 +1,6 @@
 %% Load data
 
-refin_level = 2;
+refin_level = 4;
 
 folder_name = 'Valve_Data';
 
@@ -8,9 +8,6 @@ load(fullfile(folder_name, 'Param'), 'params');
 load(fullfile(folder_name, 'B_mu'),'B_mu');
 load(fullfile(folder_name, sprintf('Mesh%d.mat', refin_level)), 'mesh');
 load(fullfile(folder_name, sprintf('Matrices%d.mat', refin_level)), 'matrices');
-
-x_mid = mesh.x_mid;
-y_mid = mesh.y_mid;
 
 %% Prescribe fixed Air and Iron domains
 
@@ -24,29 +21,29 @@ ii_opt  = ~ii_fix;
 phi(ii_fix0)  = 0;
 phi(ii_fix1)  = 1;
 
+%% Find the force
+
 model = [];
 model.p         = 1;
 model.coil      = 1;
 model.nonlinear = 1;
 model.B_mu      = B_mu;
 
-%% Compute derivatives
+tic;
+[~, A1] = Valve_GetJ(phi, mesh, matrices, params, model);
+time1 = toc;
 
-[F, A, B, B_ele, Sloc_mu, mu_fe, dmu_fe] = Valve_GetJ(phi, mesh, matrices, params, model);
-df_x = Valve_GetdJ(phi, A, B, B_ele, Sloc_mu, mu_fe, dmu_fe, mesh, matrices, params, model);
+A0 = A1 + 1e-4*mesh.x;
+tic;
+[~, A2] = Valve_GetJ(phi, mesh, matrices, params, model, A0);
+time2 = toc;
 
-f = @(phi) Valve_GetJ(phi, mesh, matrices, params, model);
-
-for i = 1:2
-    if i == 1
-        dir = df_x;
-    else
-        dir = sin(mesh.x_mid + mesh.y_mid);
-    end
-    err = Diff_Derivatives(f, df_x, phi, dir);
-
-    fprintf('The relative error (dJ) = %1.3e\n', err);
+if (A1-A2)'*matrices.Mloc*(A1-A2) >= 1e-6
+    error('Results differ too much');
 end
+
+fprintf('Computation without starting point = %5.2fs\n', time1);
+fprintf('Computation with    starting point = %5.2fs\n', time2);
 
 
 

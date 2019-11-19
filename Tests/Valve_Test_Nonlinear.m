@@ -1,11 +1,8 @@
-clear all;
-close all;
-add_paths
-
 %% Load data
+
 refin_level = 4;
 
-folder_name = '../Valve_Data';
+folder_name = 'Valve_Data';
 
 load(fullfile(folder_name, 'Param'), 'params');
 load(fullfile(folder_name, 'B_mu'),'B_mu');
@@ -24,23 +21,19 @@ ii_opt  = ~ii_fix;
 phi(ii_fix0)  = 0;
 phi(ii_fix1)  = 1;
 
-%% Newton–Raphson
+%% Find the force
 
-p = 1;
-coil = 1;
-nonlinear = 1;
-maxsteps = 100;
+model = [];
+model.p         = 1;
+model.coil      = 1;
+model.nonlinear = 1;
+model.B_mu      = B_mu;
 
-%Initial guess
-mu_fe = params.mu0*params.mur*ones(mesh.nelement,1);
-[~, A, ~, B_ele, Sloc, f] = Valve_GetJ(phi, mesh, matrices, params, p, coil, nonlinear, mu_fe);
-
-% Newton
-[mu_fe, ~] = Valve_Newton(A, B_ele, phi, p, f, mesh, matrices, params, B_mu, maxsteps);
-
-%Get force
-[F, A, B, ~, ~, ~] = Valve_GetJ(phi, mesh, matrices, params, p, coil, nonlinear, mu_fe);
+[F, A, B, ~, ~, ~] = Valve_GetJ(phi, mesh, matrices, params, model);
 
 fprintf('Force for nonlinear model: Fy = %d\n',F);
+
+PlotData(mesh.x,mesh.y,mesh.elems2nodes,A);
+Valve_PlotEdges(params,max(A));
 
 
