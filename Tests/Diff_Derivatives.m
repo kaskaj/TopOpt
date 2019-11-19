@@ -1,7 +1,7 @@
-function err = Diff_Derivatives(f, g, x, dir)
+function err = Diff_Derivatives(f, df_x, x, dir)
 
 fun   = f(x);
-der1  = g(x)'*dir;
+der1  = df_x'*dir;
 s_all = 10.^(linspace(-10,-5,6));
 
 err = Inf;

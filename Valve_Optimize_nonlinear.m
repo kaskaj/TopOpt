@@ -6,6 +6,7 @@ refin_level = 4;
 folder_name = 'Valve_Data';
 
 load(fullfile(folder_name, 'Param'), 'params');
+load(fullfile(folder_name, 'B_mu'),'B_mu');
 load(fullfile(folder_name, sprintf('Mesh%d.mat', refin_level)), 'mesh');
 load(fullfile(folder_name, sprintf('Matrices%d.mat', refin_level)), 'matrices');
 
@@ -13,7 +14,7 @@ steps = 1000;
 p = 1.0;
 lambda = 1e-1;
 coil = 1;   %on / off
-nonlinear = 0;
+nonlinear = 1;
 
 %% Prescribe fixed Air and Iron domains
 
@@ -43,9 +44,17 @@ phi(ii_fix1, 1)  = 1;
 F = zeros(steps,1);
 F_round = nan(steps,1);
 
-for i = 1:steps    
-    [F(i), A, B, B_ele, Sloc_mu, f] = Valve_GetJ(phi(:,i), mesh, matrices, params, p, coil, nonlinear);
-    dJ = Valve_GetdJ(phi(:,i), Sloc_mu, A, B, B_ele, mesh, matrices, params, p, nonlinear);         
+%Initial guess for Newton
+mu_fe = params.mu0*params.mur*ones(mesh.nelement,1);
+[~, A, ~, B_ele, Sloc, f] = Valve_GetJ(phi, mesh, matrices, params, p, coil, nonlinear, mu_fe);
+
+for i = 1:steps
+        
+    % Newton
+    [~, ~, mu_fe] = Valve_Newton(A, B_ele, phi, p, f, mesh, matrices, params, B_mu, maxsteps);    
+
+    [F(i), A, B, B_ele, Sloc_mu, f] = Valve_GetJ(phi(:,i), mesh, matrices, params, p, coil, nonlinear, mu_fe);
+    dJ = Valve_GetdJ(phi, Sloc_mu, A, B, B_ele, mesh, matrices, params, p, nonlinear, mu_fe, dmu_fe, B_mu);
     
     phi(ii_fix0,i+1) = 0;
     phi(ii_fix1,i+1) = 1;

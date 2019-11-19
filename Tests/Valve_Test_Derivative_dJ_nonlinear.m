@@ -6,9 +6,11 @@ add_paths
 
 refin_level = 4;
 
-folder_name = '../Valve_Data';
+%folder_name = '../Valve_Data';
+folder_name = 'Valve_Data';
 
 load(fullfile(folder_name, 'Param'), 'params');
+load(fullfile(folder_name, 'B_mu'),'B_mu');
 load(fullfile(folder_name, sprintf('Mesh%d.mat', refin_level)), 'mesh');
 load(fullfile(folder_name, sprintf('Matrices%d.mat', refin_level)), 'matrices');
 
@@ -29,23 +31,25 @@ phi(ii_fix1)  = 1;
 
 p = 1;
 coil = 1;
-nonlinear = 0;
+nonlinear = 1;
 
 %% Compute derivatives
 
-[F, A, B, B_ele, Sloc_mu] = Valve_GetJ(phi, mesh, matrices, params, p, coil, nonlinear);
-dJ = Valve_GetdJ(phi, Sloc_mu, A, B, B_ele, mesh, matrices, params, p, nonlinear);
+%% Newton–Raphson
 
-f = @(phi) Valve_GetJ(phi, mesh, matrices, params, p, coil, nonlinear);
-g = @(x,y) Valve_GetdJ(phi, Sloc_mu, A, B, B_ele, mesh, matrices, params, p, nonlinear);
+[A, B, B_ele, mu_fe, dmu_fe, Sloc_mu] = Valve_nonlinearJ(phi, mesh, matrices, params, B_mu, p, coil);
+%Get dJ
+df_x = Valve_GetdJ(phi, Sloc_mu, A, B, B_ele, mesh, matrices, params, p, nonlinear, mu_fe, dmu_fe, B_mu);
+
+f = @(phi) Valve_nonlinearJ(phi, mesh, matrices, params, B_mu, p, coil);
 
 for i = 1:2
     if i == 1
-        dir = dJ;
+        dir = df_x;
     else
         dir = sin(mesh.x_mid + mesh.y_mid);
     end
-    err = Diff_Derivatives(f, g, phi, dir);
+    err = Diff_Derivatives(f, df_x, phi, dir);
 
     fprintf('The relative error (dJ) = %1.3e\n', err);
 end

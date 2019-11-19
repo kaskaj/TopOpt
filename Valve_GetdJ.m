@@ -1,4 +1,4 @@
-function dJ = Valve_GetdJ(phi, Sloc_mu, A, B, mesh, matrices, params, p, nonlinear, mu_fe)
+function dJ = Valve_GetdJ(phi, Sloc_mu, A, B, B_ele, mesh, matrices, params, p, nonlinear, mu_fe, dmu_fe, B_mu)
 
 id     = ~mesh.id_dirichlet;
 npoint = mesh.npoint;
@@ -20,9 +20,17 @@ gamma = -(1/params.mu0) * (matrices.Mloc\Cp_y);
 
 f         = matrices.Clocy'*beta - matrices.Clocx'*gamma;
 alpha     = zeros(npoint,1);
-alpha(id) = Sloc_mu(id,id)\f(id);
 
-dmu_inv = repmat((mu1 - p*mu2*phi.^(p-1))./((1-phi)*mu1 + (phi.^p)*mu2).^2, 1, 9);
+if nonlinear == 1
+    dSA = Valve_GetdSA(A, B_ele, phi, mesh, matrices, params, B_mu, p, mu_fe, dmu_fe);
+    dSAf = Sloc_mu(id,id) + dSA(id,id);
+    
+    alpha(id) = dSAf\f(id);    
+else
+    alpha(id) = Sloc_mu(id,id)\f(id);
+end
+
+dmu_inv = repmat((mu1 - p.*mu2.*phi.^(p-1))./((1-phi)*mu1 + (phi.^p).*mu2).^2, 1, 9);
 dmu_inv = reshape(dmu_inv', [], 1);
 
 x1 = A(mesh.elems2nodes);
