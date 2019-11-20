@@ -101,5 +101,47 @@ J_4 &= \gamma^{\top} \left(M B_y \left( \varphi \right) + C_x A \left( \varphi \
 \partial_{\varphi_i} J = \alpha^{\top} \partial_{\varphi_i} S A 
 \end{equation}
 
+In the linear case the term $\mu_{Fe}$ corresponds to $\mu_0 \mu_r$, in nonlinear case, $\mu_{Fe}$ is function of $A$ and BH curve of the material. Matrix $\hat{S}$ is no longer dependent on $\varphi$.
+
+\begin{equation} \label{eq:60} 
+S = \frac{1}{\mu} \hat{S}  = \left(\left(1 - \varphi\right)\mu_0 + \varphi^p \mu_{Fe} \right)^{-1} \hat{S}
+\end{equation}
+
+\noindent Linear case:
+
+\begin{equation} \label{eq:61} 
+\partial_{\varphi_i} S = \partial_{\varphi_i} \frac{1}{\mu} \hat{S} = \frac{ \mu_0 - p \varphi_i^{p-1} \mu_{Fe}} {\left(\left(1 - \varphi\right)\mu_0 + \varphi^p \mu_{Fe} \right)^{2}} \hat{S}
+\end{equation}
+
+\noindent If matrix $S$ is dependent on $A$, the expression (\ref{eq:50}) must be extended. We modify the formula to  differentiate with respect to $A$, which we will use in the future.
+
+\begin{equation} \label{eq:63} 
+\partial_{\varphi_i} J_2 = \alpha^{\top} \partial_{\varphi_i} \left(S A\right) = \alpha^{\top} \partial_{A\left(\varphi_i\right)} \left( S A \right) \partial_{\varphi_i} A + \alpha^{\top} \partial_{\varphi_i} S A
+\end{equation}
+
+
+\begin{equation} \label{eq:64} 
+\partial_{A} \left(S A\right) = \partial_{A} S A + S \partial_{A} A =  \partial_{A} S A + S
+\end{equation}
+
+\noindent In this case, the BH curve is the curve that returns $\mu_{Fe}$ for the given $||B||$. To avoid square root in $||B|| = \sqrt{B_x^2 + B_y^2}$, the curve is defined directly for $B_x^2 + B_y^2$. The magnetic flux density $B_x$ is equal to $C_y A$ and $B_y$ is equal to $C_x A$, then:
+
+\begin{equation} \label{eq:65} 
+\partial_{A} S = \frac{-\varphi^p \partial_{A} \mu_{Fe} 
+\left(2 C_y A C_y + 2 C_x A C_x \right) } {\left(\left(1 - \varphi\right)\mu_0 + \varphi^p \mu_{Fe} \right)^{2}} \hat{S}
+\end{equation}
+
+\noindent New $\alpha$:
+
+\begin{align*}
+\partial_{\varphi_i} A: \quad \partial_{A} S A \partial_{\varphi_i} A + S \partial_{\varphi_i} A  - \beta^{\top} C_y \partial_{\varphi_i} A + \gamma^{\top} C_x \partial_{\varphi_i} A  \numberthis \label{eq:66} \\
+\alpha = \left(\partial_{A} S A + S \right)^{-1} \left( C_y^{\top} \beta - C_x^{\top} \gamma \right)
+\end{align*}
+
+
+
+
+
+
 
 

@@ -8,4 +8,4 @@
 \contentsline {chapter}{\numberline {3}Topology optimization}{7}% 
 \contentsline {section}{\numberline {3.1}Problem formulation in continuous space}{7}% 
 \contentsline {section}{\numberline {3.2}Problem formulation in discrete space}{7}% 
-\contentsline {chapter}{Appendix}{10}% 
+\contentsline {chapter}{Appendix}{11}% 
