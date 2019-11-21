@@ -1,0 +1,2563 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6930 64-bit) (preloaded format=pdflatex 2019.1.23)  1 NOV 2019 11:39
+entering extended mode
+**./chapter3.tex
+(chapter3.tex
+LaTeX2e <2018-12-01>
+! Undefined control sequence.
+l.2 \chapter
+            {Topology optimization}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2 \chapter{T
+              opology optimization}
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no T in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no g in font nullfont!
+Missing character: There is no y in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no z in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no n in font nullfont!
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 2--3
+[]
+ []
+
+! Undefined control sequence.
+l.4 \section
+            {Problem formulation in continuous space}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.4 \section{P
+              roblem formulation in continuous space}
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no P in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no b in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no f in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no e in font nullfont!
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 4--5
+[]
+ []
+
+
+! LaTeX Error: Environment align* undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.6 \begin{align*}
+                  
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: \mathrm allowed only in math mode.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.7 \mathrm
+           {minimize}\quad  &  F_y^p \quad \mathrm{(p\,-\,plunger)} \\
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.7 \mathrm{m
+             inimize}\quad  &  F_y^p \quad \mathrm{(p\,-\,plunger)} \\
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no m in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no z in font nullfont!
+Missing character: There is no e in font nullfont!
+! Misplaced alignment tab character &.
+l.7 \mathrm{minimize}\quad  &
+                               F_y^p \quad \mathrm{(p\,-\,plunger)} \\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no F in font nullfont!
+! Missing $ inserted.
+<inserted text> 
+                $
+l.7 \mathrm{minimize}\quad  &  F_
+                                 y^p \quad \mathrm{(p\,-\,plunger)} \\
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 7.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 7.
+! Misplaced alignment tab character &.
+l.8 \mathrm{subject \, to}\quad  &
+                                    \nabla \times \left( \frac{1}{\mu} \left...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+<recently read> &
+                 
+l.9 &
+       B_x = \partial_y A \\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+<recently read> &
+                 
+l.10 &
+        B_y = - \partial_x A
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+
+! LaTeX Error: \begin{document} ended by \end{align*}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.11 \end{align*}
+                 
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.11 \end{align*}
+                 
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 7--12
+[]
+ []
+
+
+Overfull \hbox (66.50114pt too wide) in paragraph at lines 7--12
+[] [][] 
+ []
+
+
+Overfull \hbox (58.11119pt too wide) in paragraph at lines 7--12
+[] \OMS/cmsy/m/n/10 r 
+ []
+
+
+Overfull \hbox (67.26222pt too wide) in paragraph at lines 7--12
+[] \OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (6.50694pt too wide) in paragraph at lines 7--12
+\OML/cmm/m/it/10 J[] 
+ []
+
+
+Overfull \hbox (23.17532pt too wide) in paragraph at lines 7--12
+\OML/cmm/m/it/10 B[] \OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (17.6158pt too wide) in paragraph at lines 7--12
+\OML/cmm/m/it/10 @[]A[] 
+ []
+
+
+Overfull \hbox (22.94734pt too wide) in paragraph at lines 7--12
+\OML/cmm/m/it/10 B[] \OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (25.62158pt too wide) in paragraph at lines 7--12
+\OMS/cmsy/m/n/10  \OML/cmm/m/it/10 @[]A$ 
+ []
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.13 \begin{equation}
+                      \label{eq:43}
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 13--13
+[] 
+ []
+
+! Undefined control sequence.
+l.14 ...int_{\Omega p} \left( \nabla \cdot \mathbb
+                                                  {T} \right) \,\mathrm{d}S ...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Overfull \hbox (359.85124pt too wide) detected at line 15
+[]\OML/cmm/m/it/10 F[] \OT1/cmr/m/n/10 = [] [][] []  d\OML/cmm/m/it/10 S \OT1/c
+mr/m/n/10 = [][] [] []  d\OML/cmm/m/it/10 S
+ []
+
+! Undefined control sequence.
+l.17 \section
+             {Problem formulation in discrete space}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.17 \section{P
+               roblem formulation in discrete space}
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no P in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no b in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no f in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no e in font nullfont!
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 17--18
+[]
+ []
+
+
+! LaTeX Error: Environment align* undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.19 \begin{align*}
+                   
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: \mathrm allowed only in math mode.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.20 \mathrm
+            {minimize}\quad  &  F_y^p \\
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.20 \mathrm{m
+              inimize}\quad  &  F_y^p \\
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no m in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no z in font nullfont!
+Missing character: There is no e in font nullfont!
+! Misplaced alignment tab character &.
+l.20 \mathrm{minimize}\quad  &
+                                F_y^p \\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no F in font nullfont!
+! Missing $ inserted.
+<inserted text> 
+                $
+l.20 \mathrm{minimize}\quad  &  F_
+                                  y^p \\
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Misplaced alignment tab character &.
+l.21 \mathrm{subject \, to}\quad  &
+                                     S A = M J \\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+<recently read> &
+                 
+l.22 &
+        M B_x = C_y A \\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+<recently read> &
+                 
+l.23 &
+        M B_y = -C_x A
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+
+! LaTeX Error: \begin{document} ended by \end{align*}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.24 \end{align*}
+                 
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.24 \end{align*}
+                 
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 20--25
+[]
+ []
+
+
+Overfull \hbox (4.80675pt too wide) in paragraph at lines 20--25
+[][] 
+ []
+
+
+Overfull \hbox (66.76387pt too wide) in paragraph at lines 20--25
+[] \OML/cmm/m/it/10 SA \OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (17.2986pt too wide) in paragraph at lines 20--25
+\OML/cmm/m/it/10 MJ[] 
+ []
+
+
+Overfull \hbox (33.96698pt too wide) in paragraph at lines 20--25
+\OML/cmm/m/it/10 MB[] \OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (19.45398pt too wide) in paragraph at lines 20--25
+\OML/cmm/m/it/10 C[]A[] 
+ []
+
+
+Overfull \hbox (33.739pt too wide) in paragraph at lines 20--25
+\OML/cmm/m/it/10 MB[] \OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (27.45976pt too wide) in paragraph at lines 20--25
+\OMS/cmsy/m/n/10  \OML/cmm/m/it/10 C[]A$ 
+ []
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.27 \begin{equation}
+                      \label{eq:44}
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 27--27
+[] 
+ []
+
+
+Overfull \hbox (245.49629pt too wide) detected at line 29
+[]\OML/cmm/m/it/10 F[] \OT1/cmr/m/n/10 = [] []
+ []
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.31 \noindent
+               Lagrange multipliers are $\left(\alpha, \beta, \gamma \right)$.
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no L in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no g in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no g in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no . in font nullfont!
+
+Overfull \hbox (35.01753pt too wide) in paragraph at lines 31--32
+   $[]$ 
+ []
+
+
+! LaTeX Error: Environment align* undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.33 \begin{align*}
+                   
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.34 S
+       A = M J \quad &\rightarrow \quad \alpha \\
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no S in font nullfont!
+Missing character: There is no A in font nullfont!
+Missing character: There is no = in font nullfont!
+Missing character: There is no M in font nullfont!
+Missing character: There is no J in font nullfont!
+! Misplaced alignment tab character &.
+l.34 S A = M J \quad &
+                      \rightarrow \quad \alpha \\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.34 S A = M J \quad &\rightarrow
+                                  \quad \alpha \\
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Misplaced alignment tab character &.
+l.35 M B_x = C_y A \quad &
+                          \rightarrow \quad \beta \\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+l.36 M B_y = -C_x A \quad &
+                           \rightarrow \quad \gamma \\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+
+! LaTeX Error: \begin{document} ended by \end{align*}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.37 \end{align*}
+                 
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.37 \end{align*}
+                 
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 34--38
+[]
+ []
+
+
+Overfull \hbox (10.00002pt too wide) in paragraph at lines 34--38
+\OMS/cmsy/m/n/10 !
+ []
+
+
+Overfull \hbox (6.43404pt too wide) in paragraph at lines 34--38
+\OML/cmm/m/it/10 [] 
+ []
+
+
+Overfull \hbox (33.96698pt too wide) in paragraph at lines 34--38
+\OML/cmm/m/it/10 MB[] \OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (32.2317pt too wide) in paragraph at lines 34--38
+\OML/cmm/m/it/10 C[]A  \OMS/cmsy/m/n/10 !
+ []
+
+
+Overfull \hbox (6.18402pt too wide) in paragraph at lines 34--38
+\OML/cmm/m/it/10 [] 
+ []
+
+
+Overfull \hbox (33.739pt too wide) in paragraph at lines 34--38
+\OML/cmm/m/it/10 MB[] \OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (40.23749pt too wide) in paragraph at lines 34--38
+\OMS/cmsy/m/n/10  \OML/cmm/m/it/10 C[]A  \OMS/cmsy/m/n/10 !
+ []
+
+
+Overfull \hbox (5.73285pt too wide) in paragraph at lines 34--38
+\OML/cmm/m/it/10 [] 
+ []
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.39 \noindent
+               The $\varphi$ is the topology function.
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no T in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no g in font nullfont!
+Missing character: There is no y in font nullfont!
+Missing character: There is no f in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no . in font nullfont!
+
+Overfull \hbox (6.54167pt too wide) in paragraph at lines 39--40
+ $\OML/cmm/m/it/10 '$
+ []
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.41 \begin{equation}
+                      \label{eq:46}
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 41--41
+[] 
+ []
+
+
+Overfull \hbox (163.22913pt too wide) detected at line 43
+[]\OML/cmm/m/it/10 J [] \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 J[] [] \OT1/cmr/m/n/
+10 + \OML/cmm/m/it/10 J[] [] \OT1/cmr/m/n/10 + \OML/cmm/m/it/10 J[] [] \OT1/cmr
+/m/n/10 + \OML/cmm/m/it/10 J[] []
+ []
+
+
+! LaTeX Error: Environment align* undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.45 \begin{align*}
+                   
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.46 J
+      _1 &= \frac{1}{\mu_0} \left(B_y^{\top} C_y^p B_y - B_x^{\top} C_y^p B_...
+
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no J in font nullfont!
+! Missing $ inserted.
+<inserted text> 
+                $
+l.46 J_
+       1 &= \frac{1}{\mu_0} \left(B_y^{\top} C_y^p B_y - B_x^{\top} C_y^p B_...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Misplaced alignment tab character &.
+l.46 J_1 &
+          = \frac{1}{\mu_0} \left(B_y^{\top} C_y^p B_y - B_x^{\top} C_y^p B_...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+l.46 ...+ B_x^{\top} C_x^p B_y \right) \numberthis
+                                                   \label{eq:49} \\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+l.47 J_2 &
+          = \alpha^{\top} \left(S A - M J\right) = 0 \numberthis \label{eq:5...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+l.47 ...op} \left(S A - M J\right) = 0 \numberthis
+                                                   \label{eq:50} \\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+l.48 J_3 &
+          = \beta^{\top} \left(M B_x - C_y A\right) = 0 \numberthis \label{e...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+l.48 ...\left(M B_x - C_y A\right) = 0 \numberthis
+                                                   \label{eq:51} \\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+l.49 J_4 &
+          = \gamma^{\top} \left(M B_y + C_x A\right) = 0 \numberthis \label{...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+l.49 ...\left(M B_y + C_x A\right) = 0 \numberthis
+                                                   \label{eq:51}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! LaTeX Error: \begin{document} ended by \end{align*}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.50 \end{align*}
+                 
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.50 \end{align*}
+                 
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+
+Overfull \hbox (35.04164pt too wide) in paragraph at lines 46--51
+[]$[] \OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (219.64143pt too wide) in paragraph at lines 46--51
+[] [][] [] 
+ []
+
+
+Overfull \hbox (20.58678pt too wide) in paragraph at lines 46--51
+\OML/cmm/m/it/10 J[] \OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (76.91306pt too wide) in paragraph at lines 46--51
+\OML/cmm/m/it/10 [] [] \OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (5.00002pt too wide) in paragraph at lines 46--51
+\OT1/cmr/m/n/10 0[][] 
+ []
+
+
+Overfull \hbox (20.58678pt too wide) in paragraph at lines 46--51
+\OML/cmm/m/it/10 J[] \OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (88.02156pt too wide) in paragraph at lines 46--51
+\OML/cmm/m/it/10 [] [] \OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (5.00002pt too wide) in paragraph at lines 46--51
+\OT1/cmr/m/n/10 0[][] 
+ []
+
+
+Overfull \hbox (20.58678pt too wide) in paragraph at lines 46--51
+\OML/cmm/m/it/10 J[] \OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (87.57039pt too wide) in paragraph at lines 46--51
+\OML/cmm/m/it/10 [] [] \OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (5.00002pt too wide) in paragraph at lines 46--51
+\OT1/cmr/m/n/10 0[]$ 
+ []
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.53 \begin{equation}
+                      \label{eq:48}
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 53--53
+[] 
+ []
+
+
+Overfull \hbox (218.57306pt too wide) detected at line 55
+[]\OML/cmm/m/it/10 @[]J [] \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 @[]J[] [] \OT1/cm
+r/m/n/10 + \OML/cmm/m/it/10 @[]J[] [] \OT1/cmr/m/n/10 + \OML/cmm/m/it/10 @[]J[]
+ [] \OT1/cmr/m/n/10 + \OML/cmm/m/it/10 @[]J[] []
+ []
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.58 \begin{equation}
+                      \label{eq:49}
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 58--58
+[] 
+ []
+
+
+Overfull \hbox (315.19672pt too wide) detected at line 60
+[]\OML/cmm/m/it/10 []@[]J[] \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 @[] [] \OMS/cms
+y/m/n/10   \OML/cmm/m/it/10 @[] [] \OT1/cmr/m/n/10 + \OML/cmm/m/it/10 @[] [] \O
+T1/cmr/m/n/10 + \OML/cmm/m/it/10 @[] []
+ []
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.62 \begin{equation}
+                      \label{eq:50}
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 62--62
+[] 
+ []
+
+
+Overfull \hbox (326.21674pt too wide) detected at line 64
+[]\OML/cmm/m/it/10 @[] [] \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 @[]B[]C[]B[] \OT1/
+cmr/m/n/10 + \OML/cmm/m/it/10 B[]C[]@[]B[] \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 B
+[] [][] @[]B[] \OT1/cmr/m/n/10 + \OML/cmm/m/it/10 B[]C[]@[]B[]
+ []
+
+
+! LaTeX Error: Environment align* undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.67 \begin{align*}
+                   
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.68 \partial
+             _\varphi J_1 = &\frac{1}{\mu_0} \left(B_x^{\top}, B_y^{\top}\ri...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.68 \partial
+             _\varphi J_1 = &\frac{1}{\mu_0} \left(B_x^{\top}, B_y^{\top}\ri...
+
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Misplaced alignment tab character &.
+l.68 \partial_\varphi J_1 = &
+                             \frac{1}{\mu_0} \left(B_x^{\top}, B_y^{\top}\ri...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+l.68 ...gin{pmatrix} -\left(C_y^p\right)^{\top}  &
+                                                   -C_y^p \\ \left(C_x^p\rig...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+l.68 ...  & -C_y^p \\ \left(C_x^p\right)^{\top}  &
+                                                   C_x^p \\ \end{pmatrix} \b...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+<recently read> &
+                 
+l.69 &
+      + \frac{1}{\mu_0} \left(B_x^{\top}, B_y^{\top}\right) \begin{pmatrix} ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Missing delimiter (. inserted).
+<to be read again> 
+                   $
+l.69 ...}, B_y^{\top}\right) \begin{pmatrix} \left
+                                                  (C_x^p\right)^{\top}  & C_...
+I was expecting to see something like `(' or `\{' or
+`\}' here. If you typed, e.g., `{' instead of `\{', you
+should probably delete the `{' by typing `1' now, so that
+braces don't get unbalanced. Otherwise just proceed.
+Acceptable delimiters are characters whose \delcode is
+nonnegative, or you can use `\delimiter <delimiter code>'.
+
+! Missing \right. inserted.
+<inserted text> 
+                \right .
+l.69 ...}, B_y^{\top}\right) \begin{pmatrix} \left
+                                                  (C_x^p\right)^{\top}  & C_...
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing \endgroup inserted.
+<inserted text> 
+                \endgroup 
+l.69 ...}\right) \begin{pmatrix} \left(C_x^p\right
+                                                  )^{\top}  & C_x^p \\ \left...
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Extra \right.
+l.69 ...\right) \begin{pmatrix} \left(C_x^p\right)
+                                                  ^{\top}  & C_x^p \\ \left(...
+I'm ignoring a \right that had no matching \left.
+
+! Double superscript.
+l.69 ...right) \begin{pmatrix} \left(C_x^p\right)^
+                                                  {\top}  & C_x^p \\ \left(C...
+I treat `x^1^2' essentially like `x^1{}^2'.
+
+! Misplaced alignment tab character &.
+l.69 ...egin{pmatrix} \left(C_x^p\right)^{\top}  &
+                                                   C_x^p \\ \left(C_y^p\righ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+l.69 ...}  & C_x^p \\ \left(C_y^p\right)^{\top}  &
+                                                   C_y^p \\ \end{pmatrix} \b...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+
+! LaTeX Error: \begin{document} ended by \end{pmatrix}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.69 ...^p\right)^{\top}  & C_y^p \\ \end{pmatrix}
+                                                   \begin{pmatrix} \partial_...
+
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.69 ...^p\right)^{\top}  & C_y^p \\ \end{pmatrix}
+                                                   \begin{pmatrix} \partial_...
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.69 ... \\ \end{pmatrix} \begin{pmatrix} \partial
+                                                  _\varphi B_y \\ \partial_\...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.69 ...y \\ \partial_\varphi B_y \\ \end{pmatrix}
+                                                   \numberthis \label{eq:49} \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Undefined control sequence.
+l.69 ...l_\varphi B_y \\ \end{pmatrix} \numberthis
+                                                   \label{eq:49} \\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! LaTeX Error: \begin{document} ended by \end{align*}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.70 \end{align*}
+                 
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Extra \endgroup.
+<recently read> \endgroup 
+                          
+l.70 \end{align*}
+                 
+Things are pretty mixed up, but I think the worst is over.
+
+
+Overfull \hbox (51.65556pt too wide) in paragraph at lines 68--71
+[]$\OML/cmm/m/it/10 @[]J[] \OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (114.51802pt too wide) in paragraph at lines 68--71
+[] [] [] [][] \OMS/cmsy/m/n/10  
+ []
+
+
+Overfull \hbox (12.48483pt too wide) in paragraph at lines 68--71
+\OML/cmm/m/it/10 C[][] 
+ []
+
+
+Overfull \hbox (41.16411pt too wide) in paragraph at lines 68--71
+[][] \OML/cmm/m/it/10 C[][] 
+ []
+
+
+Overfull \hbox (37.02182pt too wide) in paragraph at lines 68--71
+[][] \OML/cmm/m/it/10 B[][] 
+ []
+
+
+Overfull \hbox (23.6886pt too wide) in paragraph at lines 68--71
+\OML/cmm/m/it/10 @[]B[][] 
+ []
+
+
+Overfull \hbox (7.7778pt too wide) in paragraph at lines 68--71
+\OT1/cmr/m/n/10 +
+ []
+
+
+Overfull \hbox (108.56943pt too wide) in paragraph at lines 68--71
+[] [] [] \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 C[][]C[][] 
+ []
+
+
+Overfull \hbox (42.55302pt too wide) in paragraph at lines 68--71
+[][] \OML/cmm/m/it/10 C[][] 
+ []
+
+
+Overfull \hbox (36.79384pt too wide) in paragraph at lines 68--71
+[][] \OML/cmm/m/it/10 B[][] 
+ []
+
+
+Overfull \hbox (23.46062pt too wide) in paragraph at lines 68--71
+\OML/cmm/m/it/10 @[]B[][] 
+ []
+
+
+! LaTeX Error: Environment align* undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.73 \begin{align*}
+                   
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.74 \partial
+             _\varphi J_2 &= \alpha^{\top} \partial_\varphi \left(S A\right)...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.74 \partial
+             _\varphi J_2 &= \alpha^{\top} \partial_\varphi \left(S A\right)...
+
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Misplaced alignment tab character &.
+l.74 \partial_\varphi J_2 &
+                           = \alpha^{\top} \partial_\varphi \left(S A\right)...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+l.74 ...ha^{\top} S \partial_\varphi A \numberthis
+                                                   \label{eq:50} \\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+l.75 \partial_\varphi J_3 &
+                           = \beta^{\top} M \partial_\varphi B_x - \beta^{\t...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+l.75 ...^{\top} C_y \partial_\varphi A \numberthis
+                                                   \label{eq:51} \\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+l.76 \partial_\varphi J_4 &
+                           = \gamma^{\top} M \partial_\varphi B_y + \gamma^{...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+l.76 ...^{\top} C_x \partial_\varphi A \numberthis
+                                                   \label{eq:51}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! LaTeX Error: \begin{document} ended by \end{align*}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.77 \end{align*}
+                 
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.77 \end{align*}
+                 
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+
+Overfull \hbox (51.65556pt too wide) in paragraph at lines 74--78
+[]$\OML/cmm/m/it/10 @[]J[] \OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (55.6834pt too wide) in paragraph at lines 74--78
+\OML/cmm/m/it/10 []@[] [] \OMS/cmsy/m/n/10  
+ []
+
+
+Overfull \hbox (61.55138pt too wide) in paragraph at lines 74--78
+\OML/cmm/m/it/10 []@[] [] \OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (46.23897pt too wide) in paragraph at lines 74--78
+\OML/cmm/m/it/10 []@[]SA \OT1/cmr/m/n/10 +
+ []
+
+
+Overfull \hbox (38.46117pt too wide) in paragraph at lines 74--78
+\OML/cmm/m/it/10 []S@[]A[][] 
+ []
+
+
+Overfull \hbox (31.65556pt too wide) in paragraph at lines 74--78
+\OML/cmm/m/it/10 @[]J[] \OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (55.1921pt too wide) in paragraph at lines 74--78
+\OML/cmm/m/it/10 []M@[]B[] \OMS/cmsy/m/n/10  
+ []
+
+
+Overfull \hbox (43.4568pt too wide) in paragraph at lines 74--78
+\OML/cmm/m/it/10 []C[]@[]A[][] 
+ []
+
+
+Overfull \hbox (31.65556pt too wide) in paragraph at lines 74--78
+\OML/cmm/m/it/10 @[]J[] \OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (54.51294pt too wide) in paragraph at lines 74--78
+\OML/cmm/m/it/10 []M@[]B[] \OT1/cmr/m/n/10 +
+ []
+
+
+Overfull \hbox (43.23361pt too wide) in paragraph at lines 74--78
+\OML/cmm/m/it/10 []C[]@[]A[]$ 
+ []
+
+
+! LaTeX Error: Environment align* undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.79 \begin{align*}
+                   
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.80 \partial
+             _\varphi B_x:& \quad \frac{1}{\mu_0} \left(B_x^{\top}, B_y^{\to...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.80 \partial
+             _\varphi B_x:& \quad \frac{1}{\mu_0} \left(B_x^{\top}, B_y^{\to...
+
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Misplaced alignment tab character &.
+l.80 \partial_\varphi B_x:&
+                            \quad \frac{1}{\mu_0} \left(B_x^{\top}, B_y^{\to...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+l.80 ...gin{pmatrix} -\left(C_y^p\right)^{\top}  &
+                                                   -C_y^p \\ \left(C_x^p\rig...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+l.80 ...  & -C_y^p \\ \left(C_x^p\right)^{\top}  &
+                                                   C_x^p \\ \end{pmatrix} \b...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+l.80 ...^{\top} M \partial_\varphi B_x \numberthis
+                                                   \label{eq:52}  \\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+l.81 \partial_\varphi B_y:&
+                            \quad \frac{1}{\mu_0} \left(B_x^{\top}, B_y^{\to...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Missing delimiter (. inserted).
+<to be read again> 
+                   $
+l.81 ...}, B_y^{\top}\right) \begin{pmatrix} \left
+                                                  (C_x^p\right)^{\top}  & C_...
+I was expecting to see something like `(' or `\{' or
+`\}' here. If you typed, e.g., `{' instead of `\{', you
+should probably delete the `{' by typing `1' now, so that
+braces don't get unbalanced. Otherwise just proceed.
+Acceptable delimiters are characters whose \delcode is
+nonnegative, or you can use `\delimiter <delimiter code>'.
+
+! Missing \right. inserted.
+<inserted text> 
+                \right .
+l.81 ...}, B_y^{\top}\right) \begin{pmatrix} \left
+                                                  (C_x^p\right)^{\top}  & C_...
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing \endgroup inserted.
+<inserted text> 
+                \endgroup 
+l.81 ...}\right) \begin{pmatrix} \left(C_x^p\right
+                                                  )^{\top}  & C_x^p \\ \left...
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Extra \right.
+l.81 ...\right) \begin{pmatrix} \left(C_x^p\right)
+                                                  ^{\top}  & C_x^p \\ \left(...
+I'm ignoring a \right that had no matching \left.
+
+! Double superscript.
+l.81 ...right) \begin{pmatrix} \left(C_x^p\right)^
+                                                  {\top}  & C_x^p \\ \left(C...
+I treat `x^1^2' essentially like `x^1{}^2'.
+
+! Misplaced alignment tab character &.
+l.81 ...egin{pmatrix} \left(C_x^p\right)^{\top}  &
+                                                   C_x^p \\ \left(C_y^p\righ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+l.81 ...}  & C_x^p \\ \left(C_y^p\right)^{\top}  &
+                                                   C_y^p \\ \end{pmatrix} \b...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+
+! LaTeX Error: \begin{document} ended by \end{pmatrix}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.81 ...^p\right)^{\top}  & C_y^p \\ \end{pmatrix}
+                                                   \begin{pmatrix} \partial_...
+
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.81 ...^p\right)^{\top}  & C_y^p \\ \end{pmatrix}
+                                                   \begin{pmatrix} \partial_...
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.81 ... \\ \end{pmatrix} \begin{pmatrix} \partial
+                                                  _\varphi B_y \\ \partial_\...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.81 ...y \\ \partial_\varphi B_y \\ \end{pmatrix}
+                                                   + \gamma^{\top} M \partia...
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+Missing character: There is no + in font nullfont!
+! Missing $ inserted.
+<inserted text> 
+                $
+l.81 ...tial_\varphi B_y \\ \end{pmatrix} + \gamma
+                                                  ^{\top} M \partial_\varphi...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Undefined control sequence.
+l.81 ...{\top} M \partial_\varphi B_y  \numberthis
+                                                   \label{eq:53} \\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+l.82 \partial_\varphi A:&
+                          \quad \alpha^{\top} S \partial_\varphi A - \beta^{...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+l.82 ...{\top} C_x \partial_\varphi A  \numberthis
+                                                   \label{eq:54} \\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+l.83 \partial_\varphi S:&
+                          \quad \alpha^{\top} \partial_\varphi S A  \numbert...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+l.83 ...a^{\top} \partial_\varphi S A  \numberthis
+                                                   \label{eq:55}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! LaTeX Error: \begin{document} ended by \end{align*}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.84 \end{align*}
+                 
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.84 \end{align*}
+                 
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Extra \endgroup.
+<recently read> \endgroup 
+                          
+l.84 \end{align*}
+                 
+Things are pretty mixed up, but I think the worst is over.
+
+
+Overfull \hbox (49.2441pt too wide) in paragraph at lines 80--85
+[]$\OML/cmm/m/it/10 @[]B[] \OT1/cmr/m/n/10 :
+ []
+
+
+Overfull \hbox (114.51802pt too wide) in paragraph at lines 80--85
+[] [] [] [][] \OMS/cmsy/m/n/10  
+ []
+
+
+Overfull \hbox (12.48483pt too wide) in paragraph at lines 80--85
+\OML/cmm/m/it/10 C[][] 
+ []
+
+
+Overfull \hbox (41.16411pt too wide) in paragraph at lines 80--85
+[][] \OML/cmm/m/it/10 C[][] 
+ []
+
+
+Overfull \hbox (37.02182pt too wide) in paragraph at lines 80--85
+[][] \OML/cmm/m/it/10 B[][] 
+ []
+
+
+Overfull \hbox (23.6886pt too wide) in paragraph at lines 80--85
+\OML/cmm/m/it/10 @[]B[][] 
+ []
+
+
+Overfull \hbox (7.7778pt too wide) in paragraph at lines 80--85
+\OT1/cmr/m/n/10 +
+ []
+
+
+Overfull \hbox (47.41429pt too wide) in paragraph at lines 80--85
+\OML/cmm/m/it/10 []M@[]B[][][] 
+ []
+
+
+Overfull \hbox (29.01611pt too wide) in paragraph at lines 80--85
+\OML/cmm/m/it/10 @[]B[] \OT1/cmr/m/n/10 :
+ []
+
+
+Overfull \hbox (108.56943pt too wide) in paragraph at lines 80--85
+[] [] [] \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 C[][]C[][] 
+ []
+
+
+Overfull \hbox (42.55302pt too wide) in paragraph at lines 80--85
+[][] \OML/cmm/m/it/10 C[][] 
+ []
+
+
+Overfull \hbox (36.79384pt too wide) in paragraph at lines 80--85
+[][] \OML/cmm/m/it/10 B[][] 
+ []
+
+
+Overfull \hbox (23.46062pt too wide) in paragraph at lines 80--85
+\OML/cmm/m/it/10 @[]B[][] 
+ []
+
+
+Overfull \hbox (46.73514pt too wide) in paragraph at lines 80--85
+\OML/cmm/m/it/10 []M@[]B[][][] 
+ []
+
+
+Overfull \hbox (24.1243pt too wide) in paragraph at lines 80--85
+\OML/cmm/m/it/10 @[]A \OT1/cmr/m/n/10 :
+ []
+
+
+Overfull \hbox (46.23897pt too wide) in paragraph at lines 80--85
+\OML/cmm/m/it/10 []S@[]A \OMS/cmsy/m/n/10  
+ []
+
+
+Overfull \hbox (51.2346pt too wide) in paragraph at lines 80--85
+\OML/cmm/m/it/10 []C[]@[]A \OT1/cmr/m/n/10 +
+ []
+
+
+Overfull \hbox (43.23361pt too wide) in paragraph at lines 80--85
+\OML/cmm/m/it/10 []C[]@[]A[][] 
+ []
+
+
+Overfull \hbox (23.3326pt too wide) in paragraph at lines 80--85
+\OML/cmm/m/it/10 @[]S \OT1/cmr/m/n/10 :
+ []
+
+
+Overfull \hbox (38.46117pt too wide) in paragraph at lines 80--85
+\OML/cmm/m/it/10 []@[]SA[]$ 
+ []
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.87 \noindent
+               From (\ref{eq:52}):
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no F in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no ( in font nullfont!
+! Undefined control sequence.
+<write> ...ng: Reference `eq:52' on page \thepage 
+                                                  \space undefined\on@line .
+l.87 \noindent From (\ref{eq:52}
+                                ):
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+LaTeX Warning: Reference `eq:52' on page  undefined on input line 87.
+
+Missing character: There is no ) in font nullfont!
+Missing character: There is no : in font nullfont!
+
+Overfull \hbox (10.86105pt too wide) in paragraph at lines 87--88
+ [] 
+ []
+
+! Misplaced alignment tab character &.
+l.89 ...gin{pmatrix} -\left(C_y^p\right)^{\top}  &
+                                                   -C_y^p \\ \left(C_x^p\rig...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+l.89 ...  & -C_y^p \\ \left(C_x^p\right)^{\top}  &
+                                                   C_x^p \\ \end{pmatrix}
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+
+Overfull \hbox (237.98625pt too wide) detected at line 90
+[]\OML/cmm/m/it/10  \OT1/cmr/m/n/10 = \OMS/cmsy/m/n/10  [] [][] [] [] [][]   \
+OML/cmm/m/it/10 C[][]  [][] C[][] 
+ []
+
+
+! LaTeX Error: The font size command \normalsize is not defined:
+               there is probably something wrong with the class file.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.90 \end{equation}
+                   
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+[1{C:/Users/Kasi/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
+! Undefined control sequence.
+<write> \newlabel{eq:43}{{1}{\thepage 
+                                      }}
+l.90 \end{equation}
+                   
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+\newlabel{eq:43}{{1}{}}
+! Undefined control sequence.
+<write> \newlabel{eq:44}{{2}{\thepage 
+                                      }}
+l.90 \end{equation}
+                   
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+\newlabel{eq:44}{{2}{}}
+! Undefined control sequence.
+<write> \newlabel{eq:46}{{3}{\thepage 
+                                      }}
+l.90 \end{equation}
+                   
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+\newlabel{eq:46}{{3}{}}
+! Undefined control sequence.
+<write> \newlabel{eq:49}{{}{\thepage 
+                                     }}
+l.90 \end{equation}
+                   
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+\newlabel{eq:49}{{}{}}
+! Undefined control sequence.
+<write> \newlabel{eq:50}{{}{\thepage 
+                                     }}
+l.90 \end{equation}
+                   
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+\newlabel{eq:50}{{}{}}
+! Undefined control sequence.
+<write> \newlabel{eq:51}{{}{\thepage 
+                                     }}
+l.90 \end{equation}
+                   
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+\newlabel{eq:51}{{}{}}
+! Undefined control sequence.
+<write> \newlabel{eq:51}{{}{\thepage 
+                                     }}
+l.90 \end{equation}
+                   
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+\newlabel{eq:51}{{}{}}
+! Undefined control sequence.
+<write> \newlabel{eq:48}{{4}{\thepage 
+                                      }}
+l.90 \end{equation}
+                   
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+\newlabel{eq:48}{{4}{}}
+! Undefined control sequence.
+<write> \newlabel{eq:49}{{5}{\thepage 
+                                      }}
+l.90 \end{equation}
+                   
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+\newlabel{eq:49}{{5}{}}
+! Undefined control sequence.
+<write> \newlabel{eq:50}{{6}{\thepage 
+                                      }}
+l.90 \end{equation}
+                   
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+\newlabel{eq:50}{{6}{}}
+! Undefined control sequence.
+<write> \newlabel{eq:49}{{}{\thepage 
+                                     }}
+l.90 \end{equation}
+                   
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+\newlabel{eq:49}{{}{}}
+! Undefined control sequence.
+<write> \newlabel{eq:50}{{}{\thepage 
+                                     }}
+l.90 \end{equation}
+                   
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+\newlabel{eq:50}{{}{}}
+! Undefined control sequence.
+<write> \newlabel{eq:51}{{}{\thepage 
+                                     }}
+l.90 \end{equation}
+                   
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+\newlabel{eq:51}{{}{}}
+! Undefined control sequence.
+<write> \newlabel{eq:51}{{}{\thepage 
+                                     }}
+l.90 \end{equation}
+                   
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+\newlabel{eq:51}{{}{}}
+! Undefined control sequence.
+<write> \newlabel{eq:52}{{}{\thepage 
+                                     }}
+l.90 \end{equation}
+                   
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+\newlabel{eq:52}{{}{}}
+! Undefined control sequence.
+<write> \newlabel{eq:53}{{}{\thepage 
+                                     }}
+l.90 \end{equation}
+                   
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+\newlabel{eq:53}{{}{}}
+! Undefined control sequence.
+<write> \newlabel{eq:54}{{}{\thepage 
+                                     }}
+l.90 \end{equation}
+                   
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+\newlabel{eq:54}{{}{}}
+]
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.92 \noindent
+               From (\ref{eq:53}):
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no F in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no ( in font nullfont!
+! Undefined control sequence.
+<write> ...ng: Reference `eq:53' on page \thepage 
+                                                  \space undefined\on@line .
+l.92 \noindent From (\ref{eq:53}
+                                ):
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+LaTeX Warning: Reference `eq:53' on page  undefined on input line 92.
+
+Missing character: There is no ) in font nullfont!
+Missing character: There is no : in font nullfont!
+
+Overfull \hbox (10.86105pt too wide) in paragraph at lines 92--93
+ [] 
+ []
+
+! Missing delimiter (. inserted).
+<to be read again> 
+                   $
+l.94 ...}, B_y^{\top}\right) \begin{pmatrix} \left
+                                                  (C_x^p\right)^{\top}  & C_...
+I was expecting to see something like `(' or `\{' or
+`\}' here. If you typed, e.g., `{' instead of `\{', you
+should probably delete the `{' by typing `1' now, so that
+braces don't get unbalanced. Otherwise just proceed.
+Acceptable delimiters are characters whose \delcode is
+nonnegative, or you can use `\delimiter <delimiter code>'.
+
+! Missing \right. inserted.
+<inserted text> 
+                \right .
+l.94 ...}, B_y^{\top}\right) \begin{pmatrix} \left
+                                                  (C_x^p\right)^{\top}  & C_...
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing \endgroup inserted.
+<inserted text> 
+                \endgroup 
+l.94 ...}\right) \begin{pmatrix} \left(C_x^p\right
+                                                  )^{\top}  & C_x^p \\ \left...
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Extra \right.
+l.94 ...\right) \begin{pmatrix} \left(C_x^p\right)
+                                                  ^{\top}  & C_x^p \\ \left(...
+I'm ignoring a \right that had no matching \left.
+
+! Double superscript.
+l.94 ...right) \begin{pmatrix} \left(C_x^p\right)^
+                                                  {\top}  & C_x^p \\ \left(C...
+I treat `x^1^2' essentially like `x^1{}^2'.
+
+! Misplaced alignment tab character &.
+l.94 ...egin{pmatrix} \left(C_x^p\right)^{\top}  &
+                                                   C_x^p \\ \left(C_y^p\righ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+l.94 ...}  & C_x^p \\ \left(C_y^p\right)^{\top}  &
+                                                   C_y^p \\ \end{pmatrix}
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+
+! LaTeX Error: \begin{equation} on input line 93 ended by \end{pmatrix}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.94 ...^p\right)^{\top}  & C_y^p \\ \end{pmatrix}
+                                                  
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.94 ...^p\right)^{\top}  & C_y^p \\ \end{pmatrix}
+                                                  
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Display math should end with $$.
+<to be read again> 
+                   \endgroup 
+l.94 ...^p\right)^{\top}  & C_y^p \\ \end{pmatrix}
+                                                  
+The `$' that I just saw supposedly matches a previous `$$'.
+So I shall assume that you typed `$$' both times.
+
+
+Overfull \hbox (220.49057pt too wide) detected at line 94
+[]\OML/cmm/m/it/10  \OT1/cmr/m/n/10 = \OMS/cmsy/m/n/10  [] [][] [] [] \OT1/cmr
+/m/n/10 (\OML/cmm/m/it/10 C[][]C[][]  [][] C[][] 
+ []
+
+! You can't use `\eqno' in horizontal mode.
+\endequation ->\eqno 
+                     \hbox {\@eqnnum }$$\@ignoretrue 
+l.95 \end{equation}
+                   
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+
+Overfull \hbox (12.77782pt too wide) in paragraph at lines 94--95
+ [] 
+ []
+
+
+! LaTeX Error: \begin{document} ended by \end{equation}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.95 \end{equation}
+                   
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.95 \end{equation}
+                   
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Display math should end with $$.
+<to be read again> 
+                   \endgroup 
+l.95 \end{equation}
+                   
+The `$' that I just saw supposedly matches a previous `$$'.
+So I shall assume that you typed `$$' both times.
+
+! Extra \endgroup.
+<recently read> \endgroup 
+                          
+l.95 \end{equation}
+                   
+Things are pretty mixed up, but I think the worst is over.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.97 \noindent
+               From (\ref{eq:54}):
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no F in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no ( in font nullfont!
+! Undefined control sequence.
+<write> ...ng: Reference `eq:54' on page \thepage 
+                                                  \space undefined\on@line .
+l.97 \noindent From (\ref{eq:54}
+                                ):
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+LaTeX Warning: Reference `eq:54' on page  undefined on input line 97.
+
+Missing character: There is no ) in font nullfont!
+Missing character: There is no : in font nullfont!
+
+Overfull \hbox (10.86105pt too wide) in paragraph at lines 97--98
+ [] 
+ []
+
+
+Overfull \hbox (138.74257pt too wide) detected at line 100
+[]\OML/cmm/m/it/10  \OT1/cmr/m/n/10 = [][] \OML/cmm/m/it/10 C[] \OMS/cmsy/m/n
+/10   [][] \OML/cmm/m/it/10 C[]
+ []
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.102 \noindent
+                If we choose $\alpha, \beta, \gamma$ such that  (\ref{eq:52}...
+
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no I in font nullfont!
+Missing character: There is no f in font nullfont!
+Missing character: There is no w in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no ( in font nullfont!
+! Undefined control sequence.
+<write> ...ng: Reference `eq:52' on page \thepage 
+                                                  \space undefined\on@line .
+l.102 ...a, \beta, \gamma$ such that  (\ref{eq:52}
+                                                  ), (\ref{eq:53}) and (\ref...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+LaTeX Warning: Reference `eq:52' on page  undefined on input line 102.
+
+Missing character: There is no ) in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no ( in font nullfont!
+! Undefined control sequence.
+<write> ...ng: Reference `eq:53' on page \thepage 
+                                                  \space undefined\on@line .
+l.102 ...a$ such that  (\ref{eq:52}), (\ref{eq:53}
+                                                  ) and (\ref{eq:54}) are eq...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+LaTeX Warning: Reference `eq:53' on page  undefined on input line 102.
+
+Missing character: There is no ) in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no ( in font nullfont!
+! Undefined control sequence.
+<write> ...ng: Reference `eq:54' on page \thepage 
+                                                  \space undefined\on@line .
+l.102 ...f{eq:52}), (\ref{eq:53}) and (\ref{eq:54}
+                                                  ) are equal to $0$, then:
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+LaTeX Warning: Reference `eq:54' on page  undefined on input line 102.
+
+Missing character: There is no ) in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no q in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no : in font nullfont!
+
+Overfull \hbox (27.23973pt too wide) in paragraph at lines 102--103
+   $\OML/cmm/m/it/10 ; ; $
+ []
+
+
+Overfull \hbox (10.86105pt too wide) in paragraph at lines 102--103
+[]
+ []
+
+
+Overfull \hbox (10.86105pt too wide) in paragraph at lines 102--103
+[]
+ []
+
+
+Overfull \hbox (10.86105pt too wide) in paragraph at lines 102--103
+[]
+ []
+
+
+Overfull \hbox (5.00002pt too wide) in paragraph at lines 102--103
+\OT1/cmr/m/n/10 0$
+ []
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.104 \begin{equation}
+                       \label{eq:59}
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 104--104
+[] 
+ []
+
+
+Overfull \hbox (69.37012pt too wide) detected at line 106
+[]\OML/cmm/m/it/10 @[]J \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 []@[]SA
+ []
+
+)
+! Emergency stop.
+<*> ./chapter3.tex
+                  
+*** (job aborted, no legal \end found)
+
+ 
+Here is how much of TeX's memory you used:
+ 19 strings out of 492946
+ 291 string characters out of 3126710
+ 71597 words of memory out of 3000000
+ 4013 multiletter control sequences out of 15000+200000
+ 3948 words of font info for 15 fonts, out of 3000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 18i,11n,14p,362b,121s stack positions out of 5000i,500n,10000p,200000b,50000s
+!  ==> Fatal error occurred, no output PDF file produced!

@@ -29,6 +29,7 @@ model.p         = 1;
 model.coil      = 1;
 model.nonlinear = 1;
 model.B_mu      = B_mu;
+model.aprox     = 'Exponential';
 
 %% Compute derivatives
 
@@ -45,7 +46,7 @@ for i = 1:2
     end
     err = Diff_Derivatives(f, df_x, phi, dir);
 
-    fprintf('The relative error (dJ) = %1.3e\n', err);
+    fprintf('The relative error (dJ) - nonlinear = %1.3e\n', err);
 end
 
 

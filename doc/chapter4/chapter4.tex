@@ -1,0 +1,27 @@
+\newpage
+\chapter{Nonlinear solver}
+
+\noindent Linearization:
+
+\begin{equation} \label{eq:67} 
+y = \partial_x f \left(x - x_n \right) + f \left(x_n\right)
+\end{equation}
+
+\begin{equation} \label{eq:68} 
+0 = S A - M J - C B_r = S A - f
+\end{equation}
+
+\begin{align*} 
+0 &= \partial_A \left(S A_n - f\right) \left(A_{n+1} - A_n \right) + \left(S A_n - f\right) \\
+A_{n+1} &=  A_n  - \partial_A \left(S A_n - f\right)^{-1}  \left(S A_n - f\right)
+\end{align*}
+
+\noindent Right hand side $f$ is not dependent on $A$, $\partial_A f = 0$. 
+
+\begin{equation} \label{eq:69} 
+A_{n+1} = A_n - \partial_A \left(S A_n \right)^{-1}  \left(S A_n - f\right)
+\end{equation}
+
+\noindent Derivative $\partial_A \left(S A \right)$ was already derived in chapter 3, (\ref{eq:64}) and (\ref{eq:65}).
+
+

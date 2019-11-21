@@ -28,6 +28,7 @@ model.p         = 1;
 model.coil      = 1;
 model.nonlinear = 1;
 model.B_mu      = B_mu;
+model.aprox     = 'Exponential';
 
 tic;
 [~, A1] = Valve_GetJ(phi, mesh, matrices, params, model);
