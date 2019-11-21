@@ -19,6 +19,8 @@ model.p         = 1;
 model.coil      = 1;
 model.nonlinear = 1;
 model.B_mu      = B_mu;
+%model.aprox     = 'Exponential';
+model.aprox     = 'Weibull';
 
 %% Prescribe fixed Air and Iron domains
 
@@ -50,9 +52,9 @@ F_round = nan(steps,1);
 A = [];
 
 for i = 1:steps
-    tic
+    
     [F(i), A, B, B_ele, Sloc_mu, mu_fe, dmu_fe, f] = Valve_GetJ(phi(:,i), mesh, matrices, params, model, A);
-    toc;
+    
     dJ = Valve_GetdJ(phi(:,i), A, B, B_ele, Sloc_mu, mu_fe, dmu_fe, mesh, matrices, params, model);
     
     phi(ii_fix0,i+1) = 0;

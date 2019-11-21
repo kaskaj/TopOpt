@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6930 64-bit) (preloaded format=pdflatex 2019.1.23)  20 NOV 2019 09:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6930 64-bit) (preloaded format=pdflatex 2019.1.23)  21 NOV 2019 13:10
 entering extended mode
 **./main.tex
 (main.tex
@@ -940,25 +940,33 @@ Chapter 2.
 Chapter 3.
 [7
 
-] [8] [9]) (appendix/appendix.tex [10] [11
+] [8] [9]) (chapter4/chapter4.tex [10]
+Chapter 4.
+) (chapter5/chapter5.tex [11
 
-] [12] [13] [14]
+]
+Chapter 5.
+) (appendix/appendix.tex [12
+
+] [13
+
+] [14] [15] [16]
 LaTeX Font Info:    Try loading font information for T1+cmtt on input line 201.
 
 
 ("C:\Users\Kasi\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\t1cmtt.fd"
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 ))
-[15] (main.aux)
+[17] (main.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 19969 strings out of 492946
- 372840 string characters out of 3126710
- 418703 words of memory out of 3000000
- 23560 multiletter control sequences out of 15000+200000
+ 19984 strings out of 492946
+ 373143 string characters out of 3126710
+ 418752 words of memory out of 3000000
+ 23565 multiletter control sequences out of 15000+200000
  553450 words of font info for 86 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  53i,16n,92p,494b,914s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -984,9 +992,9 @@ s/cm/cmr8.pfb><C:/Users/Kasi/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/publ
 ic/amsfonts/cm/cmsy10.pfb><C:/Users/Kasi/AppData/Local/Programs/MiKTeX 2.9/font
 s/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/Kasi/AppData/Local/Programs/MiKT
 eX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (15 pages, 227030 bytes).
+Output written on main.pdf (17 pages, 236813 bytes).
 PDF statistics:
- 335 PDF objects out of 1000 (max. 8388607)
+ 353 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

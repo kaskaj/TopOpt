@@ -72,6 +72,7 @@ if model.nonlinear == 1
         B_ele  = [matrices.Clocy_ele*A,-matrices.Clocx_ele*A];
         
     end
+        %fprintf('%d Newton iterations\n',i);
     
     if i == maxsteps
         warning('Newton method did not converge.');
