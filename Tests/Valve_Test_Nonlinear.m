@@ -28,15 +28,15 @@ model.p         = 1;
 model.coil      = 1;
 model.nonlinear = 1;
 model.B_mu      = B_mu;
-model.aprox     = 'Exponential';
-%model.aprox     = 'Weibull';
+% model.aprox     = 'Exponential';
+model.aprox     = 'Weibull';
 
 
 [F, A, B, ~, ~, ~] = Valve_GetJ(phi, mesh, matrices, params, model);
 
 fprintf('Force for nonlinear model: Fy = %d\n',F);
 
-% PlotData(mesh.x,mesh.y,mesh.elems2nodes,A);
-% Valve_PlotEdges(params,max(A));
+PlotData(mesh.x,mesh.y,mesh.elems2nodes,A);
+Valve_PlotEdges(params,max(A));
 
 

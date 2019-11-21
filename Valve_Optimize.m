@@ -19,8 +19,8 @@ model.p         = 1;
 model.coil      = 1;
 model.nonlinear = 1;
 model.B_mu      = B_mu;
-%model.aprox     = 'Exponential';
-model.aprox     = 'Weibull';
+model.aprox     = 'Exponential';
+% model.aprox     = 'Weibull';
 
 %% Prescribe fixed Air and Iron domains
 

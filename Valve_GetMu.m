@@ -5,8 +5,8 @@ B    = (B_ele(:,1).^2) + (B_ele(:,2).^2);
 
 if strcmp(model.aprox,'Weibull') == 1
     
-    mu = params.mu0+B_mu.a_w(4).*(((B-B_mu.a_w(1))./B_mu.a_w(2)).^(B_mu.a_w(3)-1)).*exp(-(((B-B_mu.a_w(1))./B_mu.a_w(2)).^(B_mu.a_w(3))));
-    dMu = (B_mu.a_w(4)./B_mu.a_w(2)).*exp(-((B-B_mu.a_w(1))./B_mu.a_w(2)).^B_mu.a_w(3)).*((B_mu.a_w(3)-1).*((B-B_mu.a_w(1))./B_mu.a_w(2)).^(B_mu.a_w(3)-2) - B_mu.a_w(3).*((B-B_mu.a_w(1))./B_mu.a_w(2)).^(2*B_mu.a_w(3)-2));
+    mu = params.mu0 + B_mu.a_w(3).*(B-B_mu.a_w(1)).^(B_mu.a_w(2)-1).*exp(-(B-B_mu.a_w(1)).^B_mu.a_w(2));
+    dMu = B_mu.a_w(3).*exp(-(B-B_mu.a_w(1)).^B_mu.a_w(2)).*((B_mu.a_w(2)-1).*(B-B_mu.a_w(1)).^(B_mu.a_w(2)-2) - B_mu.a_w(2).*(B-B_mu.a_w(1)).^(2*B_mu.a_w(2)-2));
 
 elseif strcmp(model.aprox,'Exponential') == 1
         
