@@ -35,6 +35,9 @@ if model.nonlinear == 1
     SAf = zeros(mesh.npoint,1);
     
     maxsteps = 100;
+    
+    convergence = zeros(maxsteps,2);    
+    
     for i = 1:maxsteps
         
         % Update mu
@@ -71,8 +74,17 @@ if model.nonlinear == 1
         A(~id) = 0;
         B_ele  = [matrices.Clocy_ele*A,-matrices.Clocx_ele*A];
         
+        convergence(i,1) = step;
+        convergence(i,2) = mean(A);
+        
     end
-        %fprintf('%d Newton iterations\n',i);
+%         fprintf('%d Newton iterations\n',i);
+%         hold on;       
+%         ax = plotyy(1:(i-1),convergence(1:(i-1),2),1:(i-1),convergence(1:(i-1),1));        
+%         title('Convergence plot');
+%         xlabel('steps');
+%         ylabel(ax(1),'mean(A)');    
+%         ylabel(ax(2),'Stepsize');        
     
     if i == maxsteps
         warning('Newton method did not converge.');

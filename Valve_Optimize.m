@@ -48,6 +48,7 @@ phi(ii_fix1, 1)  = 1;
 %% Optimization LOOP
 
 F = zeros(steps,1);
+dJdp = zeros(steps,3);
 F_round = nan(steps,1);
 A = [];
 
@@ -56,6 +57,7 @@ for i = 1:steps
     [F(i), A, B, B_ele, Sloc_mu, mu_fe, dmu_fe, f] = Valve_GetJ(phi(:,i), mesh, matrices, params, model, A);
     
     dJ = Valve_GetdJ(phi(:,i), A, B, B_ele, Sloc_mu, mu_fe, dmu_fe, mesh, matrices, params, model);
+    dJdp(i,:) = Valve_GetdJdp(phi(:,i), A, B, B_ele, Sloc_mu, mu_fe, dmu_fe, mesh, matrices, params, model);
     
     phi(ii_fix0,i+1) = 0;
     phi(ii_fix1,i+1) = 1;
@@ -89,6 +91,18 @@ SubPlotPhi(mesh, params, phi(:,end));
 
 PlotData(mesh.x,mesh.y,mesh.elems2nodes,A)
 Valve_PlotEdges(params,max(A))
+
+normB = sqrt(B(:,1).^2 + B(:,2).^2);
+PlotData(mesh.x,mesh.y,mesh.elems2nodes,normB);
+Valve_PlotEdges(params,max(normB));
+quiver3(mesh.x(1:50:end), mesh.y(1:50:end),max(normB)*ones(length(mesh.x(1:50:end)),1),B(1:50:end,1),B(1:50:end,2),zeros(length(mesh.x(1:50:end)),1),'white');
+
+figure;
+plot(1:steps,dJdp(:,1));
+figure;
+plot(1:steps,dJdp(:,2));
+figure;
+plot(1:steps,dJdp(:,3));
 
 % Save results
 % file_name = fullfile('Valve_Results', 'Fy2.mat');

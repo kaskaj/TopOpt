@@ -1,35 +1,27 @@
 \newpage
 \chapter{Robustness}
 
-\noindent Weibull distribution approximation of $B-\mu$ curve:
+\noindent Approximation of $B-\mu$ curve by Weibull distribution :
 
 \begin{equation} \label{eq:70} 
-\mu = \mu_0 + a_4 N^{\left(a_3 - 1\right)} e^{-N^{a_3}}
+\mu = \mu_0 + a_3 \left( B - a_1 \right)^{a_2 - 1} e^{-\left( B - a_1 \right)^{a_2}}
 \end{equation}
 
 \begin{equation} \label{eq:71} 
-N = \left( \frac{B - a_1}{a_2} \right)
+\partial_B \mu = a_3 e^{-\left( B - a_1 \right)^{a_2}} \left(\left(a_2 -1\right) \left( B - a_1 \right)^{a_2 - 2} - a_2 \left( B - a_1 \right)^{2a_2 - 2} \right) 
 \end{equation}
 
-\noindent Derivative:
+\noindent Derivatives of $S$ with respect to parameters of Weibull distribution:
 
-\begin{align*}
-&\partial_B \mu = a_4 \partial_B N^{\left(a_3 - 1\right)} e^{-N^{a_3}} + a_4 N^{\left(a_3 - 1\right)} \partial_B e^{-N^{a_3}}\\
-&= a_4 \left(a_3 - 1\right) N^{\left(a_3 - 2\right)}  e^{-N^{a_3}} \partial_B N - a_4 N^{\left(a_3 - 1\right)} a_3 N^{\left(a_3 - 1\right)} e^{-N^{a_3}} \partial_B N \\
-&= \frac{a_4}{a_2} e^{-N^{a_3}} \left(\left(a_3 -1\right) N^{\left(a_3 - 2\right)} - a_3 N^{\left(2a_3 - 2\right)} \right) 
+\begin{equation} \label{eq:72}
+\partial_{a_i} S = \frac{-\varphi^p \partial_{a_i}  \mu_{Fe}}{ \left( \left(1 - \varphi\right) \mu_0 + \varphi^p \mu_{Fe}\right)^2} \hat{S}
+\end{equation}
+
+\begin{align*} 
+\partial_{a_1} \mu_{Fe} &= a_3 e^{-\left(B - a_1\right)^{a_2}} \left( a_2 \left(B - a_1\right)^{2 a_2 - 2} - \left(a_2 - 1\right) \left(B - a_1\right)^{a_2-2}\right) \\
+\partial_{a_2} \mu_{Fe} &=  \mathrm{ln}\left(B - a_1\right) a_3 e^{-\left(B - a_1\right)^{a_2}} \left( \left(B - a_1\right)^{a_2 - 1} - \left(x - a_1\right)^{2 a_2 - 1}\right) \\
+\partial_{a_3} \mu_{Fe} &= e^{-\left(B - a_1\right)^{a_2}}  \left(B - a_1\right)^{a_2 - 1}
 \end{align*}
-
-\noindent Simplified version:
-
-\begin{equation} \label{eq:70} 
-\mu = \mu_0 + a_3 \left( B - a_1 \right)^{\left(a_2 - 1\right)} e^{-\left( B - a_1 \right)^{a_2}}
-\end{equation}
-
-\begin{equation} \label{eq:71} 
-\partial_B \mu = a_3 e^{-\left( B - a_1 \right)^{a_2}} \left(\left(a_2 -1\right) \left( B - a_1 \right)^{\left(a_2 - 2\right)} - a_2 \left( B - a_1 \right)^{\left(2a_2 - 2\right)} \right) 
-\end{equation}
-
-
 
 
 

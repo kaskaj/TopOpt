@@ -1,4 +1,4 @@
-function dP = Valve_GetdP(phi, A, B, B_ele, Sloc_mu, mu_fe, dmu_fe, mesh, matrices, params, model)
+function dP = Valve_GetdJdp(phi, A, B, B_ele, Sloc_mu, mu_fe, dmu_fe, mesh, matrices, params, model)
 
 id     = ~mesh.id_dirichlet;
 npoint = mesh.npoint;
@@ -29,9 +29,9 @@ alpha(id) = dSAf\f(id);
 
 B0    = (B_ele(:,1).^2) + (B_ele(:,2).^2);
 
-da1 = (phi.^p).*(B_mu.a_w(3).*exp(-(B0-B_mu.a_w(1)).^B_mu.a_w(2)).*(B_mu.a_w(2).*(B0-B_mu.a_w(1)).^(2*B_mu.a_w(2)-2) - (B_mu.a_w(2)-1).*(B0-B_mu.a_w(1)).^(B_mu.a_w(2)-2)))./((1-phi)*mu_air + (phi.^p).*mu_fe).^2;
-da2 = (phi.^p).*(B_mu.a_w(3).*exp(-(B0-B_mu.a_w(1)).^B_mu.a_w(2)).*(log(B0-B_mu.a_w(1)).*(B0-B_mu.a_w(1)).^(B_mu.a_w(2)-1) - log(B0-B_mu.a_w(1)).*(B0-B_mu.a_w(1)).^(2*B_mu.a_w(2)-1)))./((1-phi)*mu_air + (phi.^p).*mu_fe).^2;
-da3 = (phi.^p).*((B0-B_mu.a_w(1)).^(B_mu.a_w(2)-1).*exp(-(B0-B_mu.a_w(1)).^B_mu.a_w(2)))./((1-phi)*mu_air + (phi.^p).*mu_fe).^2;
+da1 = -(phi.^p).*(B_mu.a_w(3).*exp(-(B0-B_mu.a_w(1)).^B_mu.a_w(2)).*(B_mu.a_w(2).*(B0-B_mu.a_w(1)).^(2*B_mu.a_w(2)-2) - (B_mu.a_w(2)-1).*(B0-B_mu.a_w(1)).^(B_mu.a_w(2)-2)))./((1-phi)*mu_air + (phi.^p).*mu_fe).^2;
+da2 = -(phi.^p).*(B_mu.a_w(3).*exp(-(B0-B_mu.a_w(1)).^B_mu.a_w(2)).*(log(B0-B_mu.a_w(1)).*(B0-B_mu.a_w(1)).^(B_mu.a_w(2)-1) - log(B0-B_mu.a_w(1)).*(B0-B_mu.a_w(1)).^(2*B_mu.a_w(2)-1)))./((1-phi)*mu_air + (phi.^p).*mu_fe).^2;
+da3 = -(phi.^p).*((B0-B_mu.a_w(1)).^(B_mu.a_w(2)-1).*exp(-(B0-B_mu.a_w(1)).^B_mu.a_w(2)))./((1-phi)*mu_air + (phi.^p).*mu_fe).^2;
 
 da1 = reshape(repmat(da1,1,9)', [], 1);
 da2 = reshape(repmat(da2,1,9)', [], 1);
@@ -46,11 +46,12 @@ dP1 = reshape(matrices.sloc_aa', [], 1) .* y1 .* y2 .* da1;
 dP2 = reshape(matrices.sloc_aa', [], 1) .* y1 .* y2 .* da2;
 dP3 = reshape(matrices.sloc_aa', [], 1) .* y1 .* y2 .* da3;
 
-dP1 = sum(reshape(dP1, 9, []))';
-dP2 = sum(reshape(dP2, 9, []))';
-dP3 = sum(reshape(dP3, 9, []))';
+dP1 = -sum(reshape(dP1, 9, []))';
+dP2 = -sum(reshape(dP2, 9, []))';
+dP3 = -sum(reshape(dP3, 9, []))';
 
-dP = [dP1,dP2,dP3];
+%dP = [dP1,dP2,dP3];
+dP = [sum(dP1),sum(dP2),sum(dP3)];
 
 end
 
