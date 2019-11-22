@@ -12,7 +12,8 @@ load(fullfile(folder_name, 'B_mu_weib'),'B_mu_weib');
 load(fullfile(folder_name, sprintf('Mesh%d.mat', refin_level)), 'mesh');
 load(fullfile(folder_name, sprintf('Matrices%d.mat', refin_level)), 'matrices');
 
-steps  = 10;
+steps  = 100;
+steps_robust = 2;
 lambda = 1e-2;
 
 model = [];
@@ -50,11 +51,23 @@ F = zeros(steps,1);
 F_round = nan(steps,1);
 A = [];
 
+dir = zeros(1,3);
+eps = [1e-2,1e-1,1e-4];
+model_new = model;
+
 for i = 1:steps
     
-    [F(i), A, B, B_ele, Sloc_mu, mu_fe, dmu_fe, f] = Valve_GetJ(phi(:,i), mesh, matrices, params, model, A);
+    [F(i), A, B, B_ele, Sloc_mu, mu_fe, dmu_fe, f] = Valve_GetJ(phi(:,i), mesh, matrices, params, model_new, A);
+    [dJdphi,dJdp] = Valve_GetdJ(phi(:,i), A, B, B_ele, Sloc_mu, mu_fe, dmu_fe, mesh, matrices, params, model_new);
     
-    [dJdphi,dJdp] = Valve_GetdJ(phi(:,i), A, B, B_ele, Sloc_mu, mu_fe, dmu_fe, mesh, matrices, params, model);
+    %Worse dicretion for B-mu parameters
+    a = model.B_mu.a_w;
+    for j = 1:steps_robust
+        dir(dJdp > 0) = 1;
+        dir(dJdp < 0) = -1;
+        a = a + dir.*eps;
+        model_new.B_mu.a_w = a;        
+    end
     
     phi(ii_fix0,i+1) = 0;
     phi(ii_fix1,i+1) = 1;
@@ -62,7 +75,7 @@ for i = 1:steps
     phi(ii_opt,i+1)  = max(min(phi(ii_opt,i+1), 1), 0);
     
     if mod(i, 10) == 0
-        F_round(i) = Valve_GetJ(round(phi(:,i+1)), mesh, matrices, params, model);
+        F_round(i) = Valve_GetJ(round(phi(:,i+1)), mesh, matrices, params, model_new);
         fprintf('step%d: Fy = %d, Fy_round = %d.\n',i, F(i), F_round(i));
     else
         fprintf('step%d: Fy = %d\n',i,F(i));
@@ -71,6 +84,7 @@ end
 
 model_true   = model;
 model_true.p = 1;
+model.B_mu.a_w = model.B_mu.a_w;
 
 phi_final = round(phi(:,end));
 
