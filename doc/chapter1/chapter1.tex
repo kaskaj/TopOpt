@@ -35,12 +35,12 @@ Divergence of vector field $\left(\nabla \cdot \bm{B}\right)$ is also scalar fie
 
 \section{Boundary conditions}
 \noindent Dirichlet condition:
-\begin{equation} \label{eq:6} 
+\begin{equation} \label{eq:8} 
 A\bigg\rvert_{\partial \Omega_1} = f_1\left(x,y\right)
 \end{equation}
 
 \noindent Neumann condition:
-\begin{equation} \label{eq:7} 
+\begin{equation} \label{eq:9} 
 \partial_{\bm{n}} A\bigg\rvert_{\partial \Omega_2} = f_2\left(x,y\right)
 \end{equation}
 
@@ -68,7 +68,7 @@ B_x^2 + B_y^2 & 0 \\
 \end{pmatrix}
 \end{equation}
 
-\begin{equation} \label{eq:12} 
+\begin{equation} \label{eq:13} 
 \bm{F}\left(x,y\right) = L \oint_{\partial \Omega} \mathbb{T} \bm{n} \,\mathrm{d}l = L \int_{\Omega} \left( \nabla \cdot \mathbb{T} \right) \,\mathrm{d}S
 \end{equation}
 
@@ -76,5 +76,17 @@ B_x^2 + B_y^2 & 0 \\
 
 \begin{align*}
 \nabla \cdot \mathbb{T} &= \frac{1}{\mu_0} \begin{pmatrix} \frac{1}{2} \partial_x \left(B_x^2 - B_y^2 \right) + \partial_y \left( B_y B_x \right) \\ \frac{1}{2} \partial_y \left(B_y^2 - B_x^2 \right) + \partial_x \left( B_x B_y \right) \\ \end{pmatrix} \\
-&= \frac{1}{\mu_0} \begin{pmatrix} \partial_x B_x B_x - \partial_x B_y B_y + \partial_y B_y B_x + \partial_y B_x B_y \\ \partial_y B_y B_y - \partial_y B_x B_x + \partial_x B_x B_y + \partial_x B_y B_x \\ \end{pmatrix} \numberthis \label{eq:13} \\
+&= \frac{1}{\mu_0} \begin{pmatrix} \partial_x B_x B_x - \partial_x B_y B_y + \partial_y B_y B_x + \partial_y B_x B_y \\ \partial_y B_y B_y - \partial_y B_x B_x + \partial_x B_x B_y + \partial_x B_y B_x \\ \end{pmatrix} \numberthis \label{eq:14} \\
 \end{align*}
+
+\section{Permanent magnets}
+
+\begin{equation} \label{eq:15}
+\nabla \times \left( \frac{1}{\mu} \left( \nabla \times A \right) - \frac{1}{\mu} \bm{B_r} \right) + \gamma \frac{\partial A}{\partial t} - \gamma \left( \bm{v} \times \left( \nabla \times A \right) \right) = J
+\end{equation}
+
+\noindent Permanent magnets are usually considered as a source of magnetic field, so it is better to move them to the right hand side of the equation.
+
+\begin{equation} \label{eq:16}
+\nabla \times \left( \frac{1}{\mu} \left( \nabla \times A \right) \right) + \gamma \frac{\partial A}{\partial t} - \gamma \left( \bm{v} \times \left( \nabla \times A \right) \right) = J + \frac{1}{\mu} \left( \nabla \times \bm{B_r} \right)
+\end{equation}

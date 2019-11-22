@@ -179,6 +179,7 @@ C_x &= \sum_{n=1}^{N} \frac{1}{6} \vert \mathrm{det} \left(\nabla \Phi \right) \
 C_y &= - \sum_{n=1}^{N} \frac{1}{6} \vert \mathrm{det} \left(\nabla \Phi \right) \vert \left(1,0\right) \nabla \Phi^{-\top} \nabla \beta \numberthis \label{eq:ap45} 
 \end{align*}
 
+\noindent This matrix is also used when permanent magnets are considered as a another magnetic field source. Magnets are represented by their remanent magnetic field density $\bm{B_r}$ and in the magnetic field equation they appear as $\nabla \times \bm{B_r}$. The right hand side of the equation with both coils and permanent magnets is then: $M J + \left( C_y B_{r_x} + C_x B_{r_y} \right)$.
 
 
 
@@ -196,28 +197,26 @@ C_y &= - \sum_{n=1}^{N} \frac{1}{6} \vert \mathrm{det} \left(\nabla \Phi \right)
 
 
 
-\noindent LocalMatrices.m
 
-\verb|edet| = $\vert \mathrm{det} \left(\nabla \Phi \right) \vert$
+%\noindent LocalMatrices.m
+%
+%\verb|edet| = $\vert \mathrm{det} \left(\nabla \Phi \right) \vert$
+%
+%\verb|dFinv| = $\nabla \Phi^{-1}$
+%
+%\verb|dphi| = $\nabla \Phi^{-\top} \nabla \beta$
+%
+%\verb|slocx|  = $3C_{T_k,x}$ = \verb|1/2 *  dphi(1,:) * edet|                        
+%
+%\verb|slocy|  = $3C_{T_k,y}$ = \verb|1/2 *  dphi(2,:) * edet|                       
+%
+%\verb|slocxx| = $\mu S_{T_k,x}$ = \verb|1/2 * dphi(1,:)' * dphi(1,:) * edet|
+%
+%\verb|slocyy| = $\mu S_{T_k,y}$ = \verb|1/2 * dphi(2,:)' * dphi(2,:) * edet|
+%
+%\verb|mloc| = $M_{T_k}$ = \verb|[1 1/2 1/2;1/2 1 1/2;1/2 1/2 1]/12 * edet|
+%
+%\verb|clocx|  = $C_{T_k,x}$ =  \verb|[slocx;slocx;slocx]/3|                   
+%
+%\verb|clocy|  = $C_{T_k,y}$ =  \verb|[slocy;slocy;slocy]/3|                   
 
-\verb|dFinv| = $\nabla \Phi^{-1}$
-
-\verb|dphi| = $\nabla \Phi^{-\top} \nabla \beta$
-
-\verb|slocx|  = $3C_{T_k,x}$ = \verb|1/2 *  dphi(1,:) * edet|                        
-
-\verb|slocy|  = $3C_{T_k,y}$ = \verb|1/2 *  dphi(2,:) * edet|                       
-
-\verb|slocxx| = $\mu S_{T_k,x}$ = \verb|1/2 * dphi(1,:)' * dphi(1,:) * edet|
-
-\verb|slocyy| = $\mu S_{T_k,y}$ = \verb|1/2 * dphi(2,:)' * dphi(2,:) * edet|
-
-\verb|mloc| = $M_{T_k}$ = \verb|[1 1/2 1/2;1/2 1 1/2;1/2 1/2 1]/12 * edet|
-
-\verb|clocx|  = $C_{T_k,x}$ =  \verb|[slocx;slocx;slocx]/3|                   
-
-\verb|clocy|  = $C_{T_k,y}$ =  \verb|[slocy;slocy;slocy]/3|                   
-
-
-
-%mloc   = edet*[1/12 1/24 1/24;1/24 1/12 1/24;1/24 1/24 1]/12;

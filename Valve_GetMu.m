@@ -3,12 +3,12 @@ function [mu, dMu] = Valve_GetMu(B_ele, params, model)
 B_mu = model.B_mu;
 B    = (B_ele(:,1).^2) + (B_ele(:,2).^2);
 
-if strcmp(model.aprox,'Weibull') == 1
+if strcmp(B_mu.approx,'Weibull') == 1
     
     mu = params.mu0 + B_mu.a_w(3).*(B-B_mu.a_w(1)).^(B_mu.a_w(2)-1).*exp(-(B-B_mu.a_w(1)).^B_mu.a_w(2));
     dMu = B_mu.a_w(3).*exp(-(B-B_mu.a_w(1)).^B_mu.a_w(2)).*((B_mu.a_w(2)-1).*(B-B_mu.a_w(1)).^(B_mu.a_w(2)-2) - B_mu.a_w(2).*(B-B_mu.a_w(1)).^(2*B_mu.a_w(2)-2));
 
-elseif strcmp(model.aprox,'Exponential') == 1
+elseif strcmp(B_mu.approx,'Exponential') == 1
         
     ii_linear = (B < B_mu.max_B);
     ii_exp = ~ii_linear;

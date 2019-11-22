@@ -2,7 +2,7 @@ function err = Diff_Derivatives(f, df_x, x, dir)
 
 fun   = f(x);
 der1  = df_x'*dir;
-s_all = 10.^(linspace(-10,-5,6));
+s_all = 10.^(linspace(-12,-5,8));
 
 err = Inf;
 for i=1:length(s_all)

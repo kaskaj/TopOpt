@@ -43,8 +43,10 @@ for i = 1:2
     end
     err = Diff_Derivatives(f, df_x, phi, dir);
 
-    fprintf('The relative error (dJ) - linear = %1.3e\n', err);
+    fprintf('The relative error (dJdphi) - linear = %1.3e\n', err);
 end
+
+
 
 
 

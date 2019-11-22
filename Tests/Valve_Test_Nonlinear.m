@@ -5,7 +5,8 @@ refin_level = 4;
 folder_name = 'Valve_Data';
 
 load(fullfile(folder_name, 'Param'), 'params');
-load(fullfile(folder_name, 'B_mu'),'B_mu');
+load(fullfile(folder_name, 'B_mu_weib'),'B_mu_weib');
+load(fullfile(folder_name, 'B_mu_exp'),'B_mu_exp');
 load(fullfile(folder_name, sprintf('Mesh%d.mat', refin_level)), 'mesh');
 load(fullfile(folder_name, sprintf('Matrices%d.mat', refin_level)), 'matrices');
 
@@ -27,16 +28,13 @@ model = [];
 model.p         = 1;
 model.coil      = 1;
 model.nonlinear = 1;
-model.B_mu      = B_mu;
-% model.aprox     = 'Exponential';
-model.aprox     = 'Weibull';
-
+model.B_mu      = B_mu_weib;
 
 [F, A, B, ~, ~, ~] = Valve_GetJ(phi, mesh, matrices, params, model);
 
 fprintf('Force for nonlinear model: Fy = %d\n',F);
 
-PlotData(mesh.x,mesh.y,mesh.elems2nodes,A);
-Valve_PlotEdges(params,max(A));
+% PlotData(mesh.x,mesh.y,mesh.elems2nodes,A);
+% Valve_PlotEdges(params,max(A));
 
 

@@ -37,7 +37,7 @@ solv = pred' - repmat(y, size(a,1), 1);
 
 fprintf('Fitting error (Weibull) = %d\n',m);
 
-%weib = a(ii,:)
+weib = a(ii,:);
 
 %% Plot
 
@@ -55,12 +55,18 @@ axis([0,B(end),0,2e-3]);
 legend('Comsol','Exponential','Weibull');
 grid on;
 
-B_mu.max_mu = max(mu);
-B_mu.min_mu = min(mu);
-B_mu.max_B = B(2)^2;
-B_mu.min_B = B(end)^2;
-B_mu.a_e = expo;
-B_mu.a_w = weib;
+B_mu_exp.max_mu = max(mu);
+B_mu_exp.min_mu = min(mu);
+B_mu_exp.max_B = B(2)^2;
+B_mu_exp.min_B = B(end)^2;
+B_mu_exp.a_e = expo;
+B_mu_exp.approx = 'Exponential';
 
-file_name   = fullfile('Valve_Data', 'B_mu.mat');
-save(file_name,'B_mu');
+B_mu_weib.a_w = weib;
+B_mu_weib.approx = 'Weibull';
+
+file_name   = fullfile('Valve_Data', 'B_mu_exp.mat');
+save(file_name,'B_mu_exp');
+
+file_name   = fullfile('Valve_Data', 'B_mu_weib.mat');
+save(file_name,'B_mu_weib');
