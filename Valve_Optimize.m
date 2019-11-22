@@ -7,20 +7,19 @@ refin_level = 4;
 folder_name = 'Valve_Data';
 
 load(fullfile(folder_name, 'Param'), 'params');
-load(fullfile(folder_name, 'B_mu'),'B_mu');
+load(fullfile(folder_name, 'B_mu_exp'),'B_mu_exp');
+load(fullfile(folder_name, 'B_mu_weib'),'B_mu_weib');
 load(fullfile(folder_name, sprintf('Mesh%d.mat', refin_level)), 'mesh');
 load(fullfile(folder_name, sprintf('Matrices%d.mat', refin_level)), 'matrices');
 
-steps  = 1000;
+steps  = 10;
 lambda = 1e-2;
 
 model = [];
 model.p         = 1;
 model.coil      = 1;
 model.nonlinear = 1;
-model.B_mu      = B_mu;
-model.aprox     = 'Exponential';
-% model.aprox     = 'Weibull';
+model.B_mu      = B_mu_weib;
 
 %% Prescribe fixed Air and Iron domains
 
@@ -48,7 +47,6 @@ phi(ii_fix1, 1)  = 1;
 %% Optimization LOOP
 
 F = zeros(steps,1);
-dJdp = zeros(steps,3);
 F_round = nan(steps,1);
 A = [];
 
@@ -56,12 +54,11 @@ for i = 1:steps
     
     [F(i), A, B, B_ele, Sloc_mu, mu_fe, dmu_fe, f] = Valve_GetJ(phi(:,i), mesh, matrices, params, model, A);
     
-    dJ = Valve_GetdJ(phi(:,i), A, B, B_ele, Sloc_mu, mu_fe, dmu_fe, mesh, matrices, params, model);
-    dJdp(i,:) = Valve_GetdJdp(phi(:,i), A, B, B_ele, Sloc_mu, mu_fe, dmu_fe, mesh, matrices, params, model);
+    [dJdphi,dJdp] = Valve_GetdJ(phi(:,i), A, B, B_ele, Sloc_mu, mu_fe, dmu_fe, mesh, matrices, params, model);
     
     phi(ii_fix0,i+1) = 0;
     phi(ii_fix1,i+1) = 1;
-    phi(ii_opt,i+1)  = phi(ii_opt,i) - lambda*dJ(ii_opt);
+    phi(ii_opt,i+1)  = phi(ii_opt,i) - lambda*dJdphi(ii_opt);
     phi(ii_opt,i+1)  = max(min(phi(ii_opt,i+1), 1), 0);
     
     if mod(i, 10) == 0
@@ -96,13 +93,6 @@ normB = sqrt(B(:,1).^2 + B(:,2).^2);
 PlotData(mesh.x,mesh.y,mesh.elems2nodes,normB);
 Valve_PlotEdges(params,max(normB));
 quiver3(mesh.x(1:50:end), mesh.y(1:50:end),max(normB)*ones(length(mesh.x(1:50:end)),1),B(1:50:end,1),B(1:50:end,2),zeros(length(mesh.x(1:50:end)),1),'white');
-
-figure;
-plot(1:steps,dJdp(:,1));
-figure;
-plot(1:steps,dJdp(:,2));
-figure;
-plot(1:steps,dJdp(:,3));
 
 % Save results
 % file_name = fullfile('Valve_Results', 'Fy2.mat');
