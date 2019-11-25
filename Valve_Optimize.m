@@ -12,8 +12,7 @@ load(fullfile(folder_name, 'B_mu_weib'),'B_mu_weib');
 load(fullfile(folder_name, sprintf('Mesh%d.mat', refin_level)), 'mesh');
 load(fullfile(folder_name, sprintf('Matrices%d.mat', refin_level)), 'matrices');
 
-steps  = 100;
-steps_robust = 2;
+steps  = 30;
 lambda = 1e-2;
 
 model = [];
@@ -52,22 +51,23 @@ F_round = nan(steps,1);
 A = [];
 
 dir = zeros(1,3);
-eps = [1e-2,1e-1,1e-4];
+eps = [1e-2,1e-2,1e-4];
 model_new = model;
-
+der = zeros(steps,3);
 for i = 1:steps
     
     [F(i), A, B, B_ele, Sloc_mu, mu_fe, dmu_fe, f] = Valve_GetJ(phi(:,i), mesh, matrices, params, model_new, A);
     [dJdphi,dJdp] = Valve_GetdJ(phi(:,i), A, B, B_ele, Sloc_mu, mu_fe, dmu_fe, mesh, matrices, params, model_new);
     
-    %Worse dicretion for B-mu parameters
-    a = model.B_mu.a_w;
-    for j = 1:steps_robust
-        dir(dJdp > 0) = 1;
-        dir(dJdp < 0) = -1;
-        a = a + dir.*eps;
-        model_new.B_mu.a_w = a;        
-    end
+    der(i,:) = dJdp;
+    
+    %Modify B-mu parameters
+    a = model.B_mu.a_w;    
+    dir(dJdp > 0) = 1;
+    dir(dJdp < 0) = -1;
+    a = a + dir.*eps;
+    model_new.B_mu.a_w = a;
+
     
     phi(ii_fix0,i+1) = 0;
     phi(ii_fix1,i+1) = 1;
