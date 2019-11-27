@@ -6,51 +6,33 @@ end
 
 %% Modify the required edges inside
 
-edge = [params.edg1; params.edg2; params.edg3; params.edg4; params.edg5; params.edg6; params.edg7; params.edg8; params.edg9; params.edg10];
-node = [params.nod1; params.nod2; params.nod3; params.nod4; params.nod5; params.nod6; params.nod7; params.nod8; params.nod9; params.nod10];
+part{1} = params.edges{1}(:,1);     %Stator (upper part)
+part{2} = params.edges{2}(:,1);     %Stator (lower part)
+part{3} = [...                      %Rotor with hole
+           params.edges{3}(:,1)
+           params.edges{6}(:,1)
+          ];
+part{4} = params.edges{4}(:,1);     %Airgap
+part{5} = params.edges{5}(:,1);     %Shaft
+part{6} = params.edges{6}(:,1);     %Hole
 
-part{1} = [ ...
-    find(edge(:,3) == 0)
-    find(edge(:,3) == 1)
-    find(edge(:,3) == 2)
-    find(edge(:,3) == 3)
-    find(edge(:,3) == 4)
-    find(edge(:,3) == 5)
-    find(edge(:,3) == 6)
-    ] ;
-part{2} = [ ...
-    find(edge(:,3) == 1)
-    ] ;
-part{3} = [ ...
-    find(edge(:,3) == 2)
-    ] ;
-part{4} = [ ...
-    find(edge(:,3) == 3)
-    ];
-part{5} = [ ...
-    find(edge(:,3) == 4)
-    ] ;
-part{6} = [ ...
-    find(edge(:,3) == 5)
-    ] ;
-part{7} = [ ...
-    find(edge(:,3) == 6)
-    ] ;
-part{8} = [ ...
-    find(edge(:,3) == 7)
-    ] ;
-part{9} = [ ...
-    find(edge(:,3) == 8)
-    ] ;
-part{10} = [ ...
-    find(edge(:,3) == 9)
-    ] ;
-edge = edge(:,1:2) ;
+for i = 7:length(params.edges)    %Slots
+    part{i} = params.edges{i}(:,1);
+end
 
+edge = params.edges{1}(:,1:2);
+node = params.nodes{1};
+
+for i = 2:length(params.edges)
+    edge = [edge;params.edges{i}(:,1:2)];    
+end
+
+for i = 2:length(params.edges)
+    node = [node;params.nodes{i}];    
+end
 %% Add these edges and create mesh
 
 hmax = +1e-3;
-
 [vlfs,tlfs,hlfs] = lfshfn2(node,edge,part) ;
 
 hlfs = min(hmax,hlfs);
@@ -59,10 +41,12 @@ hfun = @trihfn2;
 
 [nodes2coord,bedges2nodes,elems2nodes,tnum] = refine2(node,edge,part,[],hfun,vlfs,tlfs,slfs,hlfs);
 
+
 %% Possibly show mesh
 
 if show
     show_mesh(elems2nodes,nodes2coord);
+    Motor_PlotEdges(params, 0, 'r', 2);
 end
 
 %% Save mesh

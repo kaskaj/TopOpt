@@ -42,31 +42,51 @@ for i_level=1:max(refin_level)
         end
         
         %% Set boundary conditions
-        
-        tol = 5e-1*1e-3;
+
+        tol = 5e-4;
         R = params.D2/2;          
         id_dirichlet = (y >= sqrt(R^2 - x.^2)-tol)  | (x >= sqrt(R^2 - y.^2)-tol);
+        id_s1 = (x <= min(x)+tol);
+        id_s2 = (y <= min(y)+tol);  
         
+        %Deselect point 0
+        id_s3 = x == 0 & y==0;        
+        id_s1(id_s3) = 0;
+        id_s2(id_s3) = 0;
+        
+        %Plot boundaries
+        figure;
         plot(x,y,'o');
         hold on;
         plot(x(id_dirichlet),y(id_dirichlet),'ro');
+        
+        figure;
+        plot(x,y,'o');
+        hold on;
+        plot(x(id_s1),y(id_s1),'ro');
+        
+        figure;
+        plot(x,y,'o');
+        hold on;
+        plot(x(id_s2),y(id_s2),'ro');       
         
         %% Prescribe current density
         
         J_ele = zeros(nelement,1);
         J     = zeros(npoint,1);
         
-        ii_a = ismember(tnum, [2,3]);
-        ii_b = ismember(tnum, [4,5]);
-        ii_c = ismember(tnum, [6,7]);
-        
+       
+        ii_a = ismember(tnum, [7:9,13:15]);
+        ii_b = ismember(tnum, [19:21,25:27]);
+        ii_c = ismember(tnum, [31:33,37:39]);       
+            
         J_ele(ii_a)  = 1;
         J_ele(ii_b)  = 2;
         J_ele(ii_c)  = 3;
         
-        J(elems2nodes(J_ele == 1)) = params.Ja;
-        J(elems2nodes(J_ele == 2)) = params.Jb;
-        J(elems2nodes(J_ele == 3)) = params.Jc;
+        J(elems2nodes(J_ele == 1)) =  params.Ja;
+        J(elems2nodes(J_ele == 2)) = -params.Jc;
+        J(elems2nodes(J_ele == 3)) =  params.Jb;
         
         
         %% Transformation for Triangulation
@@ -129,6 +149,9 @@ for i_level=1:max(refin_level)
         mesh.elems2nodes  = elems2nodes;
         mesh.tnum         = tnum;
         mesh.id_dirichlet = id_dirichlet;
+        mesh.id_s1        = id_s1;
+        mesh.id_s2        = id_s2;
+        mesh.id_s3        = id_s3;
         
         matrices = [];
         matrices.ii            = ii;
