@@ -70,25 +70,6 @@ for i_level=1:max(refin_level)
         hold on;
         plot(x(id_s2),y(id_s2),'ro');       
         
-        %% Prescribe current density
-        
-        J_ele = zeros(nelement,1);
-        J     = zeros(npoint,1);
-        
-       
-        ii_a = ismember(tnum, [7:9,13:15]);
-        ii_b = ismember(tnum, [19:21,25:27]);
-        ii_c = ismember(tnum, [31:33,37:39]);       
-            
-        J_ele(ii_a)  = 1;
-        J_ele(ii_b)  = 2;
-        J_ele(ii_c)  = 3;
-        
-        J(elems2nodes(J_ele == 1)) =  params.Ja;
-        J(elems2nodes(J_ele == 2)) = -params.Jc;
-        J(elems2nodes(J_ele == 3)) =  params.Jb;
-        
-        
         %% Transformation for Triangulation
         
         ii        = zeros(nelement,9);
@@ -166,8 +147,6 @@ for i_level=1:max(refin_level)
         matrices.Clocy         = Clocy;
         matrices.Clocy_ele     = Clocy_ele;
         matrices.clocy_ele_aa  = clocy_ele_aa;
-        matrices.J             = J;
-        
         
         file_name_mesh   = fullfile('Motor_Data', sprintf('Mesh%d.mat', i_level));
         file_name_matrix = fullfile('Motor_Data', sprintf('Matrices%d.mat', i_level));
