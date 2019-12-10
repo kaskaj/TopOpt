@@ -13,7 +13,19 @@ tnum         = mesh0.tnum;
 
 for i_level=1:max(refin_level)
     
-    fprintf('Creating mesh level %d.\n', i_level);
+     fprintf('Creating mesh level %d.\n', i_level);
+        
+        %% Refine mesh
+        
+               
+        if i_level > 2       
+            ii_refine = ismember(tnum,4);
+        else
+            ii_refine = ismember(tnum,6)| ismember(tnum,4);
+        end
+     
+        [nodes2coord,bedges2nodes,elems2nodes,tnum] = tridiv2(nodes2coord,bedges2nodes,elems2nodes,tnum,ii_refine);
+        [nodes2coord,bedges2nodes,elems2nodes,tnum] = smooth2(nodes2coord,bedges2nodes,elems2nodes,tnum);
     
     
     if any(i_level == refin_level)
@@ -42,17 +54,22 @@ for i_level=1:max(refin_level)
         end
         
         %% Set boundary conditions
-
-        tol = 5e-4;
+        
+        tol1 = 1e-5;
+        tol2 =  1e-10;
         R = params.D2/2;          
-        id_dirichlet = (y >= sqrt(R^2 - x.^2)-tol)  | (x >= sqrt(R^2 - y.^2)-tol);
-        id_s1 = (x <= min(x)+tol);
-        id_s2 = (y <= min(y)+tol);  
+        id_dirichlet = (y >= sqrt(R^2 - x.^2)-tol1)  | (x >= sqrt(R^2 - y.^2)-tol1);
+        id_s1 = (x <= min(x)+tol2);
+        id_s2 = (y <= min(y)+tol2);  
         
         %Deselect point 0
         id_s3 = x == 0 & y==0;        
         id_s1(id_s3) = 0;
         id_s2(id_s3) = 0;
+        
+        %Deselect common points
+        id_s1(id_dirichlet) = 0;
+        id_s2(id_dirichlet) = 0;
         
         %Plot boundaries
         figure;

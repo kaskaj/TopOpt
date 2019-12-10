@@ -8,25 +8,21 @@ D3	= D1 - (2*d);       %Rotor (outer)
 Dh	= 22e-3;            %Shaft
 Dc  = 10e-3;            %Hole diameter
 
-Im = 4*sqrt(2);
+Im = 4*sqrt(2)*1e6;
 w0 = 2*pi*50;
 t = 0;
-Ia  = Im*cos(w0*t);                   % supply current - coil 1
-Ib  = Im*cos(w0*t - 2*pi/3);          % supply current - coil 2
-Ic  = Im*cos(w0*t + 2*pi/3);          % supply current - coil 3
-N   = 470;                            % number of turns
+Ja  = Im*cos(w0*t);                   % supply current - coil 1
+Jb  = Im*cos(w0*t - 2*pi/3);          % supply current - coil 2
+Jc  = Im*cos(w0*t + 2*pi/3);          % supply current - coil 3
 mu0 = 4*pi*1e-7;
-mur = 700;
-S = 1.0271e2;                        %Slot area
 nslots = 36;
+mur = 700;
 alpha = (90/nslots)*(pi/180);
+gamma = pi/600;
 
 tol1 = 3e-3;
 tol2 = 1e-3;
-
-Ja = (N*Ia)*S;
-Jb = (N*Ib)*S;
-Jc = (N*Ic)*S;
+tol3 = 0.25e-3;
 
 params = [];
 params.D1        = D1;
@@ -41,8 +37,6 @@ params.Jb        = Jb;
 params.Jc        = Jc;
 params.w0        = w0;
 params.Im        = Im;
-params.N         = N;
-params.S         = S;
 params.mu0       = mu0;
 params.mur       = mur;
 params.nslots    = nslots;
@@ -52,7 +46,6 @@ params.nslots    = nslots;
 points = 50;
 points0 = nslots;
 points2 = points/5;
-
 
 phi0 = linspace(0,pi/2,nslots+1);
 phi = linspace(0,pi/2,points);
@@ -135,6 +128,21 @@ for i=1:length(phi0)-1
                         R2*cos(phi0(i)),R2*sin(phi0(i));              
                        ]; 
    params.edges{6+i} = [e1',e2'];
+end
+
+%Slots - smaller
+R1 = params.D1/2+tol2+tol3;
+R2 = params.D2/2-tol1-tol3;
+e1 = (1:4);
+e2 = [(2:4),1];
+
+for i=1:length(phi0)-1
+   params.nodes{6+length(phi0)-1+i} = [R1*cos(phi0(i)+gamma),R1*sin(phi0(i)+gamma);
+                                       R1*cos(phi0(i+1)-gamma),R1*sin(phi0(i+1)-gamma);
+                                       R2*cos(phi0(i+1)-gamma),R2*sin(phi0(i+1)-gamma);
+                                       R2*cos(phi0(i)+gamma),R2*sin(phi0(i)+gamma);              
+                                       ]; 
+   params.edges{6+length(phi0)-1+i} = [e1',e2'];
 end
 
 
