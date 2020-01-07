@@ -18,7 +18,7 @@ lambda = 1e-2;
 model = [];
 model.p         = 1;
 model.coil      = 1;
-model.nonlinear = 1;
+model.nonlinear = 0;
 model.B_mu      = B_mu_weib;
 
 %% Prescribe fixed Air and Iron domains

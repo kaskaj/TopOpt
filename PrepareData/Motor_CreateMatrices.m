@@ -56,11 +56,15 @@ for i_level=1:max(refin_level)
         %% Set boundary conditions
         
         tol1 = 1e-5;
-        tol2 =  1e-10;
-        R = params.D2/2;          
-        id_dirichlet = (y >= sqrt(R^2 - x.^2)-tol1)  | (x >= sqrt(R^2 - y.^2)-tol1);
+        tol2 = 1e-10;
+        tol3 = 1e-5;    
+        R1 = params.D2/2; 
+        R2 = params.D3/2; 
+        
+        id_dirichlet = (y >= sqrt(R1^2 - tol1 - x.^2))  | (x - tol1 >= sqrt(R1^2 - y.^2));              
         id_s1 = (x <= min(x)+tol2);
         id_s2 = (y <= min(y)+tol2);  
+        id_cloc = x_mid <= sqrt(R2^2 + tol3 - y_mid.^2);  
         
         %Deselect point 0
         id_s3 = x == 0 & y==0;        
@@ -85,7 +89,13 @@ for i_level=1:max(refin_level)
         figure;
         plot(x,y,'o');
         hold on;
-        plot(x(id_s2),y(id_s2),'ro');       
+        plot(x(id_s2),y(id_s2),'ro');           
+        
+        figure;
+        plot(x_mid,y_mid,'o');
+        hold on;
+        plot(x_mid(id_cloc),y_mid(id_cloc),'ro');
+        Motor_PlotEdges(params,1);
         
         %% Transformation for Triangulation
         
@@ -103,6 +113,8 @@ for i_level=1:max(refin_level)
         clocy_aa  = zeros(nelement,9);
         clocx_ele_aa  = zeros(nelement,3);
         clocy_ele_aa  = zeros(nelement,3);
+        clocx_aa_rotor = zeros(nelement,9);
+        clocy_aa_rotor = zeros(nelement,9);
         
         for k = 1:nelement
             [edet,dFinv,Cinv] = GenerateTransformation(k,elems2nodes,x,y);
@@ -121,8 +133,12 @@ for i_level=1:max(refin_level)
             clocx_aa(k,:)    = clocx(:);
             clocy_aa(k,:)    = clocy(:);
             clocx_ele_aa(k,:)    = clocx_ele(:);
-            clocy_ele_aa(k,:)    = clocy_ele(:);
+            clocy_ele_aa(k,:)    = clocy_ele(:);                                 
             
+            if  x_mid(k) <= sqrt(R2^2 + tol3 - y_mid(k)^2)                 
+                clocx_aa_rotor(k,:) = clocx(:);
+                clocy_aa_rotor(k,:) = clocy(:);
+            end          
         end
         %% Assemble matrices
         
@@ -132,6 +148,8 @@ for i_level=1:max(refin_level)
         Clocy   = sparse(ii(:),jj(:),clocy_aa(:));
         Clocx_ele = sparse(ii_ele(:),jj_ele(:),clocx_ele_aa(:));
         Clocy_ele = sparse(ii_ele(:),jj_ele(:),clocy_ele_aa(:));
+        Clocx_rotor = sparse(ii(:),jj(:),clocx_aa_rotor(:));
+        Clocy_rotor = sparse(ii(:),jj(:),clocy_aa_rotor(:));
         
         %% Save results
         
@@ -164,6 +182,9 @@ for i_level=1:max(refin_level)
         matrices.Clocy         = Clocy;
         matrices.Clocy_ele     = Clocy_ele;
         matrices.clocy_ele_aa  = clocy_ele_aa;
+        matrices.Clocx_rotor   = Clocx_rotor;
+        matrices.Clocy_rotor   = Clocy_rotor;
+
         
         file_name_mesh   = fullfile('Motor_Data', sprintf('Mesh%d.mat', i_level));
         file_name_matrix = fullfile('Motor_Data', sprintf('Matrices%d.mat', i_level));

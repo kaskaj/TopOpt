@@ -16,10 +16,13 @@ rpm = 1500;
 Tp = (pi/6)/((2*pi*rpm)/60);
 
 time = (0:3*Tp/36:2*Tp);
-% Force = zeros(length(time),1);
+Force_x1 = zeros(length(time),1);
+Force_y1 = zeros(length(time),1);
+Force_x2 = zeros(length(time),1);
+Force_y2 = zeros(length(time),1);
 
-% for i = 1:length(time)
-for i = 1:1
+for i = 1:length(time)
+% for i = 1:1
     
 [J,phi] = Motor_MoveCurrent(mesh, params, i-1, time(i));
 
@@ -33,20 +36,27 @@ for i = 1:1
 % PlotData(mesh.x,mesh.y,mesh.elems2nodes,J);
 % Motor_PlotEdges(params,max(J));
 
-[A, B, F] = Motor_GetJ(phi, J,  mesh, matrices, params, model);
-% Force(i) = F;
+[A, B, Fx1, Fy1, Fx2, Fy2] = Motor_GetJ(phi, J,  mesh, matrices, params, model);
+Force_x1(i) = Fx1;
+Force_y1(i) = Fy1;
+Force_x2(i) = Fx2;
+Force_y2(i) = Fy2;
 
-PlotData(mesh.x,mesh.y,mesh.elems2nodes,A);
+% PlotData(mesh.x,mesh.y,mesh.elems2nodes,A);
 % caxis([-5e-4,5e-4]);
-Motor_PlotEdges(params,max(A));
+% Motor_PlotEdges(params,max(A));
 
-normB = sqrt(B(:,1).^2 + B(:,2).^2);
-PlotData(mesh.x,mesh.y,mesh.elems2nodes,normB);
-Motor_PlotEdges(params,max(normB));
+% normB = sqrt(B(:,1).^2 + B(:,2).^2);
+% PlotData(mesh.x,mesh.y,mesh.elems2nodes,normB);
+% Motor_PlotEdges(params,max(normB));
 
 end
 
-% plot(time(2:end),Force(2:end))
-% axis([0,time(end), -1e-8,1e-8]
+figure
+plot(time,Force_x1,time,Force_y1)
+
+figure
+plot(time,Force_x2,time,Force_y2)
+
 
 
