@@ -1,14 +1,14 @@
 %% Set parameters
 
-d	= 1e-3;             %Airgap
-L	= 81e-3;            %Length
+d	= 0.2e-3;           %Airgap
+L	= 1;                %Length
 D1	= 72e-3;            %Stator (inner)
 D2	= 110e-3;           %Stator (outer)
 D3	= D1 - (2*d);       %Rotor (outer)
 Dh	= 22e-3;            %Shaft
-Dc  = 10e-3;            %Hole diameter
+Dc  = 20e-3;            %Hole diameter
 
-Im = 4*sqrt(2)*1e6;
+Im = 4*sqrt(2)*1e6*10;
 w0 = 2*pi*50;
 t = 0;
 Ja  = Im*cos(w0*t);                   % supply current - coil 1
@@ -106,8 +106,8 @@ params.nodes{5} = [x',y'] ;
 params.edges{5} = [e1',e2'];
 
 %Hole
-x0 = 15e-3;
-y0 = 15e-3;
+x0 = 17e-3;
+y0 = 17e-3;
 x = [x0+(params.Dc/2)*cos(phi3),x0-(params.Dc/2)*cos(phi3)];
 y = [y0+(params.Dc/2)*sin(phi3),y0-(params.Dc/2)*sin(phi3)];
 e1 = (1:2*points2);

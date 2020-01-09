@@ -16,12 +16,20 @@ for i_level=1:max(refin_level)
      fprintf('Creating mesh level %d.\n', i_level);
         
         %% Refine mesh
+                  
+        x = nodes2coord(:,1);
+        y = nodes2coord(:,2);
+        
+        x_mid = (1/3)*(nodes2coord(elems2nodes(:,1),1) + nodes2coord(elems2nodes(:,2),1) + nodes2coord(elems2nodes(:,3),1));
+        y_mid = (1/3)*(nodes2coord(elems2nodes(:,1),2) + nodes2coord(elems2nodes(:,2),2) + nodes2coord(elems2nodes(:,3),2));
         
                
-        if i_level > 2       
-            ii_refine = ismember(tnum,4);
+        if i_level > 2
+            tol4 = 2e-3;
+            ii_refine = x_mid >= sqrt((params.D3/2 - tol4)^2 - y_mid.^2) & ...
+                        x_mid <= sqrt((params.D1/2 + tol4)^2 - y_mid.^2);            
         else
-            ii_refine = ismember(tnum,6)| ismember(tnum,4);
+            ii_refine = ismember(tnum,3)| ismember(tnum,4) | ismember(tnum,2);
         end
      
         [nodes2coord,bedges2nodes,elems2nodes,tnum] = tridiv2(nodes2coord,bedges2nodes,elems2nodes,tnum,ii_refine);
@@ -57,14 +65,14 @@ for i_level=1:max(refin_level)
         
         tol1 = 1e-5;
         tol2 = 1e-10;
-        tol3 = 1e-5;    
+        tol3 = 1e-7;            
         R1 = params.D2/2; 
         R2 = params.D3/2; 
         
         id_dirichlet = (y >= sqrt(R1^2 - tol1 - x.^2))  | (x - tol1 >= sqrt(R1^2 - y.^2));              
         id_s1 = (x <= min(x)+tol2);
         id_s2 = (y <= min(y)+tol2);  
-        id_cloc = x_mid <= sqrt(R2^2 + tol3 - y_mid.^2);  
+        id_cloc_rot  = x_mid <= sqrt((R2+tol3)^2 - y_mid.^2);  
         
         %Deselect point 0
         id_s3 = x == 0 & y==0;        
@@ -94,9 +102,9 @@ for i_level=1:max(refin_level)
         figure;
         plot(x_mid,y_mid,'o');
         hold on;
-        plot(x_mid(id_cloc),y_mid(id_cloc),'ro');
+        plot(x_mid(id_cloc_rot),y_mid(id_cloc_rot),'ro');
         Motor_PlotEdges(params,1);
-        
+                
         %% Transformation for Triangulation
         
         ii        = zeros(nelement,9);
@@ -138,7 +146,8 @@ for i_level=1:max(refin_level)
             if  x_mid(k) <= sqrt(R2^2 + tol3 - y_mid(k)^2)                 
                 clocx_aa_rotor(k,:) = clocx(:);
                 clocy_aa_rotor(k,:) = clocy(:);
-            end          
+            end  
+            
         end
         %% Assemble matrices
         

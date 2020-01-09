@@ -3,7 +3,7 @@ clear all;
 addpath(genpath('3rd_party'));
 addpath('PrepareData');
 
-levels_max = 3;
+levels_max = 4;
 
 % Set parameters
 Motor_SetParameters;
@@ -15,7 +15,7 @@ load(file_name, 'params');
 
 % Create mesh
 % Valve_MeshGen(params);
-Motor_MeshGen(params);
+Motor_MeshGen(params,1);
 
 % Load mesh
 % file_name = fullfile('Valve_Data', 'Mesh0.mat');
