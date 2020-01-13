@@ -1,6 +1,6 @@
 %% Set parameters
 
-d	= 0.2e-3;           %Airgap
+d	= 0.5e-3;           %Airgap
 L	= 1;                %Length
 D1	= 72e-3;            %Stator (inner)
 D2	= 110e-3;           %Stator (outer)

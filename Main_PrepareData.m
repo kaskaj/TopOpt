@@ -3,7 +3,7 @@ clear all;
 addpath(genpath('3rd_party'));
 addpath('PrepareData');
 
-levels_max = 4;
+levels_max = 5;
 
 % Set parameters
 Motor_SetParameters;

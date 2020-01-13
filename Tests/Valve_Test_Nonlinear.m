@@ -1,6 +1,6 @@
 %% Load data
 
-refin_level = 4;
+refin_level = 3;
 
 folder_name = 'Valve_Data';
 

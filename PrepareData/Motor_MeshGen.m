@@ -32,7 +32,7 @@ for i = 2:length(params.edges)
 end
 %% Add these edges and create mesh
 
-hmax = +1e-2;
+hmax = +0.5e-1;
 [vlfs,tlfs,hlfs] = lfshfn2(node,edge,part) ;
 
 hlfs = min(hmax,hlfs);

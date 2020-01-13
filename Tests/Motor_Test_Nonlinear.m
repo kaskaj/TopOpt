@@ -1,6 +1,6 @@
 %% Load data
 clear all;
-refin_level = 4;
+refin_level = 5;
 
 folder_name = 'Motor_Data';
 
@@ -13,17 +13,18 @@ load(fullfile(folder_name, sprintf('Matrices%d.mat', refin_level)), 'matrices');
 model = [];
 model.p         = 1;
 model.nonlinear = 1;
-model.B_mu      = B_mu_exp;
+model.B_mu      = B_mu_weib;
 
 rpm = 1500;
 Tp = (pi/6)/((2*pi*rpm)/60);
 
 time = (0:3*Tp/36:2*Tp);
-Torque = zeros(length(time),1);
+Torque = zeros(length(time),4);
 
+tic
 for i = 1:length(time)
-% for i = 1:3
-    
+% for i = 1:1
+fprintf('Step: %d of %d\n',i,length(time));      
 [J,phi] = Motor_MoveCurrent(mesh, params, i-1, time(i));
 
 % Plot prescribed domains
@@ -36,8 +37,8 @@ for i = 1:length(time)
 % PlotData(mesh.x,mesh.y,mesh.elems2nodes,J);
 % Motor_PlotEdges(params,max(J));
 
-[A, B, T] = Motor_GetJ(phi, J,  mesh, matrices, params, model);
-Torque(i) = T;
+[A, B, T1, T2, T3, T4] = Motor_GetJ(phi, J,  mesh, matrices, params, model);
+Torque(i,:) = [T1,T2,T3,T4];
 
 % PlotData(mesh.x,mesh.y,mesh.elems2nodes,A);
 % Motor_PlotEdges(params,max(A));
@@ -47,9 +48,8 @@ Torque(i) = T;
 % Motor_PlotEdges(params,max(normB));
 
 end
+toc
 
-plot(time, Torque/10);
+figure
+plot(time, Torque);
 grid on;
-
-
-

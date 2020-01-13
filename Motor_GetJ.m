@@ -1,4 +1,4 @@
-function [A, B, T] = Motor_GetJ(phi, J, mesh, matrices, params, model, A0)
+function [A, B, T1, T2, T3, T4] = Motor_GetJ(phi, J, mesh, matrices, params, model, A0)
 
 id     = ~mesh.id_dirichlet & ~mesh.id_s1 & ~mesh.id_s2 & ~mesh.id_s3;
 id2    = ~mesh.id_dirichlet & ~mesh.id_s3;
@@ -134,24 +134,6 @@ end
 B     = [matrices.Mloc\(matrices.Clocy*A),-matrices.Mloc\(matrices.Clocx*A)];
 % B_ele = [matrices.Clocy_ele*A,-matrices.Clocx_ele*A];
 
-%% Compute F
-
-% tol3 = 1e-5; 
-% R2 = params.D3/2; 
-% 
-% ii = mesh.x <= sqrt(R2^2 + tol3 - mesh.y.^2); 
-% 
-% F_x_aux =  B(:,1)'*matrices.Clocx_rotor*B(:,1) - B(:,2)'*matrices.Clocx_rotor*B(:,2) + B(:,2)'*matrices.Clocy_rotor*B(:,1) + B(:,1)'*matrices.Clocy_rotor*B(:,2);
-% F_y_aux = -B(:,1)'*matrices.Clocy_rotor*B(:,1) + B(:,2)'*matrices.Clocy_rotor*B(:,2) + B(:,2)'*matrices.Clocx_rotor*B(:,1) + B(:,1)'*matrices.Clocx_rotor*B(:,2);
-% % 
-% % F_x_aux =  B(ii,1)'*matrices.Clocx(ii,ii)*B(ii,1) - B(ii,2)'*matrices.Clocx(ii,ii)*B(ii,2) + B(ii,2)'*matrices.Clocy(ii,ii)*B(ii,1) + B(ii,1)'*matrices.Clocy(ii,ii)*B(ii,2);
-% % F_y_aux = -B(ii,1)'*matrices.Clocy(ii,ii)*B(ii,1) + B(ii,2)'*matrices.Clocy(ii,ii)*B(ii,2) + B(ii,2)'*matrices.Clocx(ii,ii)*B(ii,1) + B(ii,1)'*matrices.Clocx(ii,ii)*B(ii,2);
-% 
-% F       = 1/params.mu0*[F_x_aux; F_y_aux];
-% 
-% Fx = F(1);   %force in x direction
-% Fy = F(2);   %force in y direction
-
 %% Arrkio's method
 
 r      =  sqrt(mesh.x.^2 + mesh.y.^2);
@@ -165,15 +147,58 @@ Bphi   =  (-B(:,1).*mesh.y + B(:,2).*mesh.x)./r;
 % Bphi(ii_nan_phi) = 0;
 
 R1 = params.D3/2;
-R2 = params.D1/2 - params.d/2;
-tol = 0;
-ii = mesh.x >= sqrt((R1^2 + tol) - mesh.y.^2) & mesh.x <= sqrt((R2^2 - tol) - mesh.y.^2 ) ; 
+R2 = params.D1/2 - params.d/4;
+d1 = R2 - R1;
+tol = 1e-6;
+ii1 = mesh.x > sqrt((R1^2 + tol) - mesh.y.^2) & mesh.x <= sqrt((R2^2 - tol) - mesh.y.^2 ) ; 
 
+R1 = params.D3/2;
+R2 = params.D1/2 - params.d/2;
+d2 = R2 - R1;
+tol = 1e-6;
+ii2 = mesh.x > sqrt((R1^2 + tol) - mesh.y.^2) & mesh.x <= sqrt((R2^2 - tol) - mesh.y.^2 ) ; 
+
+R1 = params.D3/2;
+R2 = params.D1/2 - 3*params.d/4;
+d3 = R2 - R1;
+tol = 1e-6;
+ii3 = mesh.x > sqrt((R1^2 + tol) - mesh.y.^2) & mesh.x <= sqrt((R2^2 - tol) - mesh.y.^2 ) ;
+
+R1 = params.D3/2;
+R2 = params.D1/2;
+d4 = R2 - R1;
+tol = 1e-6;
+ii4 = mesh.x > sqrt((R1^2 + tol) - mesh.y.^2) & mesh.x <= sqrt((R2^2 - tol) - mesh.y.^2 ) ;
+
+% figure;
 % plot(mesh.x,mesh.y,'o');
 % hold on;
-% plot(mesh.x(ii),mesh.y(ii),'ro');
+% plot(mesh.x(ii1),mesh.y(ii1),'ro');
+% Motor_PlotEdges(params,1);
+% 
+% figure;
+% plot(mesh.x,mesh.y,'o');
+% hold on;
+% plot(mesh.x(ii2),mesh.y(ii2),'ro');
+% Motor_PlotEdges(params,1);
+% 
+% figure;
+% plot(mesh.x,mesh.y,'o');
+% hold on;
+% plot(mesh.x(ii3),mesh.y(ii3),'ro');
+% Motor_PlotEdges(params,1);
+% 
+% figure;
+% plot(mesh.x,mesh.y,'o');
+% hold on;
+% plot(mesh.x(ii4),mesh.y(ii4),'ro');
+% Motor_PlotEdges(params,1);
 
-T = params.L*((r(ii).*Br(ii))'*matrices.Mloc(ii,ii)*Bphi(ii))*(1/params.mu0)*(1/(params.d/2));
+
+T1 = params.L*((r(ii1).*Br(ii1))'*matrices.Mloc(ii1,ii1)*Bphi(ii1))*(1/params.mu0)*(1/d1);
+T2 = params.L*((r(ii2).*Br(ii2))'*matrices.Mloc(ii2,ii2)*Bphi(ii2))*(1/params.mu0)*(1/d2);
+T3 = params.L*((r(ii3).*Br(ii3))'*matrices.Mloc(ii3,ii3)*Bphi(ii3))*(1/params.mu0)*(1/d3);
+T4 = params.L*((r(ii4).*Br(ii4))'*matrices.Mloc(ii4,ii4)*Bphi(ii4))*(1/params.mu0)*(1/d4);
 
 
 end

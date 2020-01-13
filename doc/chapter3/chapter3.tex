@@ -138,6 +138,54 @@ S = \frac{1}{\mu} \hat{S}  = \left(\left(1 - \varphi\right)\mu_0 + \varphi^p \mu
 \alpha = \left(\partial_{A} S A + S \right)^{-1} \left( C_y^{\top} \beta - C_x^{\top} \gamma \right)
 \end{align*}
 
+\noindent Motor:
+
+\section{Problem formulation in continuous space}
+
+\begin{align*} 
+\mathrm{minimize}\quad  &  T^r \quad \mathrm{(r\,-\,rotor)} \\
+\mathrm{subject \, to}\quad  & - \frac{1}{\mu} \Delta A = J \\
+&  B_x = \partial_y A \\
+&  B_y = - \partial_x A
+\end{align*}
+
+\begin{equation} \label{eq:43} 
+T^r = \frac{L}{\mu_0\,\left(r_{out} - r_{in}\right)}\, \int_{\Omega_d} r \left(  B_x \,\frac{x}{r} + B_y \,\frac{y}{r} \right) \left( - B_x \,\frac{y}{r} + B_y \,\frac{x}{r} \right) \,\mathrm{d}S
+\end{equation}
+
+\section{Problem formulation in discrete space}
+
+\begin{align*} 
+\mathrm{minimize}\quad  &  T^r \\
+\mathrm{subject \, to}\quad  &  S A = M J \\
+&  M B_x = C_y A \\
+&  M B_y = -C_x A 
+\end{align*}
+
+
+\begin{equation} \label{eq:44} 
+T^r = \frac{L}{\mu_0\,\left(r_{out} - r_{in}\right)} \, r \, \left( \left(  B_x \,\frac{x}{r} + B_y \,\frac{y}{r} \right)^\top M^r \left( - B_x \,\frac{y}{r} + B_y \,\frac{x}{r} \right) \right)
+\end{equation}
+
+
+\begin{equation}
+J_1 =\frac{L}{\mu_0\,\left(r_{out} - r_{in}\right)} \, r \, \left( \left(  B_x \left(\varphi\right) \,\frac{x}{r} + B_y \left(\varphi\right) \,\frac{y}{r} \right)^\top M^r \left( - B_x \left(\varphi\right) \,\frac{y}{r} + B_y \left(\varphi\right) \,\frac{x}{r} \right) \right)
+\end{equation}
+
+\begin{align*}
+&\frac{\mu_0\,\left(r_{out} - r_{in}\right)}{L\,r} J_1 =  \left(  B_x \left(\varphi\right) \,\frac{x}{r} + B_y \left(\varphi\right) \,\frac{y}{r} \right)^\top M^r \left( - B_x \left(\varphi\right) \,\frac{y}{r} + B_y \left(\varphi\right) \,\frac{x}{r} \right) = \\
+ - &\left(B_x \frac{x}{r}\right)^\top M^r \left(B_x \frac{y}{r}\right) + \left(B_x \frac{x}{r}\right)^\top M^r \left(B_y \frac{x}{r}\right) - \\
+&\left(B_y \frac{y}{r}\right)^\top M^r \left(B_x \frac{y}{r}\right) + \left(B_y \frac{y}{r}\right)^\top M^r \left(B_y \frac{x}{r}\right) = \\
+ - &\left(\frac{x}{r}\right)^\top B_x^\top  M^r \left(\frac{y}{r}\right) B_x  + \left(\frac{x}{r}\right)^\top B_x^\top  M^r \left( \frac{x}{r}\right) B_y  - \\
+&\left(\frac{y}{r}\right)^\top B_y^\top  M^r \left(\frac{y}{r}\right) B_x  + \left(\frac{y}{r}\right)^\top B_y^\top M^r \left( \frac{x}{r}\right) B_y 
+\end{align*}
+
+\begin{align*}
+&\frac{\mu_0\,\left(r_{out} - r_{in}\right)}{L\,r} \partial_{\varphi_i} J_1 = - \left(\frac{x}{r}\right)^\top \partial_{\varphi_i} B_x^\top  M^r \left(\frac{y}{r}\right) B_x  - \left(\frac{x}{r}\right)^\top  B_x^\top  M^r \left(\frac{y}{r}\right) \partial_{\varphi_i} B_x  + \\
+&\left(\frac{x}{r}\right)^\top  \partial_{\varphi_i} B_x^\top  M^r \left( \frac{x}{r}\right) B_y   + \left(\frac{x}{r}\right)^\top B_x^\top  M^r \left( \frac{x}{r}\right)  \partial_{\varphi_i} B_y  - \\
+&\left(\frac{y}{r}\right)^\top \partial_{\varphi_i} B_y^\top  M^r \left(\frac{y}{r}\right) B_x  - \left(\frac{y}{r}\right)^\top B_y^\top  M^r \left(\frac{y}{r}\right) \partial_{\varphi_i} B_x  + \\
+&\left(\frac{y}{r}\right)^\top \partial_{\varphi_i} B_y^\top M^r \left( \frac{x}{r}\right) B_y  + \left(\frac{y}{r}\right)^\top B_y^\top M^r \left( \frac{x}{r}\right) \partial_{\varphi_i} B_y 
+\end{align*}
 
 
 
