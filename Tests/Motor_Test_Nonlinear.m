@@ -1,6 +1,6 @@
 %% Load data
 clear all;
-refin_level = 5;
+refin_level = 6;
 
 folder_name = 'Motor_Data';
 
@@ -18,7 +18,7 @@ model.B_mu      = B_mu_weib;
 rpm = 1500;
 Tp = (pi/6)/((2*pi*rpm)/60);
 
-time = (0:3*Tp/36:2*Tp);
+time = (0:3*Tp/36:Tp/2);
 Torque = zeros(length(time),4);
 
 tic
@@ -37,8 +37,8 @@ fprintf('Step: %d of %d\n',i,length(time));
 % PlotData(mesh.x,mesh.y,mesh.elems2nodes,J);
 % Motor_PlotEdges(params,max(J));
 
-[A, B, T1, T2, T3, T4] = Motor_GetJ(phi, J,  mesh, matrices, params, model);
-Torque(i,:) = [T1,T2,T3,T4];
+[T, A, B] = Motor_GetJ(phi, J,  mesh, matrices, params, model);
+Torque(i,:) = T;
 
 % PlotData(mesh.x,mesh.y,mesh.elems2nodes,A);
 % Motor_PlotEdges(params,max(A));
@@ -50,6 +50,6 @@ Torque(i,:) = [T1,T2,T3,T4];
 end
 toc
 
-figure
-plot(time, Torque);
+figure;
+plot(time,Torque);
 grid on;

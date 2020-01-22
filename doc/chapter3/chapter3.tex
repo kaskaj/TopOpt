@@ -164,28 +164,43 @@ T^r = \frac{L}{\mu_0\,\left(r_{out} - r_{in}\right)}\, \int_{\Omega_d} r \left( 
 
 
 \begin{equation} \label{eq:44} 
-T^r = \frac{L}{\mu_0\,\left(r_{out} - r_{in}\right)} \, r \, \left( \left(  B_x \,\frac{x}{r} + B_y \,\frac{y}{r} \right)^\top M^r \left( - B_x \,\frac{y}{r} + B_y \,\frac{x}{r} \right) \right)
+T^r = \frac{L}{\mu_0\,\left(r_{out} - r_{in}\right)} \, r^\top \, \left( \left(  B_x \,\frac{x}{r} + B_y \,\frac{y}{r} \right)^\top M^r \left( - B_x \,\frac{y}{r} + B_y \,\frac{x}{r} \right) \right)
 \end{equation}
 
 
 \begin{equation}
-J_1 =\frac{L}{\mu_0\,\left(r_{out} - r_{in}\right)} \, r \, \left( \left(  B_x \left(\varphi\right) \,\frac{x}{r} + B_y \left(\varphi\right) \,\frac{y}{r} \right)^\top M^r \left( - B_x \left(\varphi\right) \,\frac{y}{r} + B_y \left(\varphi\right) \,\frac{x}{r} \right) \right)
+J_1 =\frac{L \, r^\top}{\mu_0\,\left(r_{out} - r_{in}\right)} \left( \left(  B_x \left(\varphi\right) \,\frac{x}{r} + B_y \left(\varphi\right) \,\frac{y}{r} \right)^\top M^r \left( - B_x \left(\varphi\right) \,\frac{y}{r} + B_y \left(\varphi\right) \,\frac{x}{r} \right) \right)
 \end{equation}
 
 \begin{align*}
-&\frac{\mu_0\,\left(r_{out} - r_{in}\right)}{L\,r} J_1 =  \left(  B_x \left(\varphi\right) \,\frac{x}{r} + B_y \left(\varphi\right) \,\frac{y}{r} \right)^\top M^r \left( - B_x \left(\varphi\right) \,\frac{y}{r} + B_y \left(\varphi\right) \,\frac{x}{r} \right) = \\
- - &\left(B_x \frac{x}{r}\right)^\top M^r \left(B_x \frac{y}{r}\right) + \left(B_x \frac{x}{r}\right)^\top M^r \left(B_y \frac{x}{r}\right) - \\
-&\left(B_y \frac{y}{r}\right)^\top M^r \left(B_x \frac{y}{r}\right) + \left(B_y \frac{y}{r}\right)^\top M^r \left(B_y \frac{x}{r}\right) = \\
+&\frac{\mu_0\,\left(r_{out} - r_{in}\right)}{L\,r^\top} J_1 =  \left(  B_x \left(\varphi\right) \,\frac{x}{r} + B_y \left(\varphi\right) \,\frac{y}{r} \right)^\top M^r \left( - B_x \left(\varphi\right) \,\frac{y}{r} + B_y \left(\varphi\right) \,\frac{x}{r} \right) = \\
  - &\left(\frac{x}{r}\right)^\top B_x^\top  M^r \left(\frac{y}{r}\right) B_x  + \left(\frac{x}{r}\right)^\top B_x^\top  M^r \left( \frac{x}{r}\right) B_y  - \\
 &\left(\frac{y}{r}\right)^\top B_y^\top  M^r \left(\frac{y}{r}\right) B_x  + \left(\frac{y}{r}\right)^\top B_y^\top M^r \left( \frac{x}{r}\right) B_y 
 \end{align*}
 
 \begin{align*}
-&\frac{\mu_0\,\left(r_{out} - r_{in}\right)}{L\,r} \partial_{\varphi_i} J_1 = - \left(\frac{x}{r}\right)^\top \partial_{\varphi_i} B_x^\top  M^r \left(\frac{y}{r}\right) B_x  - \left(\frac{x}{r}\right)^\top  B_x^\top  M^r \left(\frac{y}{r}\right) \partial_{\varphi_i} B_x  + \\
-&\left(\frac{x}{r}\right)^\top  \partial_{\varphi_i} B_x^\top  M^r \left( \frac{x}{r}\right) B_y   + \left(\frac{x}{r}\right)^\top B_x^\top  M^r \left( \frac{x}{r}\right)  \partial_{\varphi_i} B_y  - \\
-&\left(\frac{y}{r}\right)^\top \partial_{\varphi_i} B_y^\top  M^r \left(\frac{y}{r}\right) B_x  - \left(\frac{y}{r}\right)^\top B_y^\top  M^r \left(\frac{y}{r}\right) \partial_{\varphi_i} B_x  + \\
-&\left(\frac{y}{r}\right)^\top \partial_{\varphi_i} B_y^\top M^r \left( \frac{x}{r}\right) B_y  + \left(\frac{y}{r}\right)^\top B_y^\top M^r \left( \frac{x}{r}\right) \partial_{\varphi_i} B_y 
+&\frac{\mu_0\,\left(r_{out} - r_{in}\right)}{L\,r^\top} \partial_{\varphi_i} J_1 = - \left(\frac{x}{r}\right)^\top \partial_{\varphi_i} B_x^\top  M^r \left(\frac{y}{r}\right) B_x  - \left(\frac{x}{r}\right)^\top  B_x^\top  M^r \left(\frac{y}{r}\right) \partial_{\varphi_i} B_x  + \\
+&\left(\frac{x}{r}\right)^\top  \partial_{\varphi_i} B_x^\top  M^r \left( \frac{x}{r}\right) B_y   + \left(\frac{x}{r}\right)^\top B_x^\top  M^r \left( \frac{x}{r}\right)  \partial_{\varphi_i} B_y  - \ldots = \\
+&\left(B_x^\top, B_y^\top\right)\begin{pmatrix}
+-\left(\frac{y}{r}\right)^\top M^r \left(\frac{x}{r}\right) - \left(\frac{x}{r}\right)^\top M^r \left(\frac{y}{r}\right) \\
+\left(\frac{x}{r}\right)^\top M^r \left(\frac{x}{r}\right) - \left(\frac{y}{r}\right)^\top M^r \left(\frac{y}{r}\right) \end{pmatrix} \partial_{\varphi_i} B_x + \\
+&\left(B_x^\top, B_y^\top\right)\begin{pmatrix}
+\left(\frac{x}{r}\right)^\top M^r \left(\frac{x}{r}\right) - \left(\frac{y}{r}\right)^\top M^r \left(\frac{y}{r}\right) \\
+\left(\frac{x}{r}\right)^\top M^r \left(\frac{y}{r}\right) + \left(\frac{y}{r}\right)^\top M^r \left(\frac{x}{r}\right) \end{pmatrix} \partial_{\varphi_i} B_y \\
 \end{align*}
+
+
+\begin{equation} \label{eq:56} 
+\beta = -\frac{L\,r^\top}{\mu_0\,\left(r_{out} - r_{in}\right)} M^{-1} \begin{pmatrix}
+-\left(\frac{y}{r}\right)^\top M^r \left(\frac{x}{r}\right) - \left(\frac{x}{r}\right)^\top M^r \left(\frac{y}{r}\right) \\
+\left(\frac{x}{r}\right)^\top M^r \left(\frac{x}{r}\right) - \left(\frac{y}{r}\right)^\top M^r \left(\frac{y}{r}\right) \end{pmatrix}^{\top} \begin{pmatrix} B_x \\ B_y  \end{pmatrix}
+\end{equation}
+
+\begin{equation} \label{eq:57} 
+\gamma = -\frac{L\,r^\top}{\mu_0\,\left(r_{out} - r_{in}\right)} M^{-1} \begin{pmatrix}
+\left(\frac{x}{r}\right)^\top M^r \left(\frac{x}{r}\right) - \left(\frac{y}{r}\right)^\top M^r \left(\frac{y}{r}\right) \\
+\left(\frac{x}{r}\right)^\top M^r \left(\frac{y}{r}\right) + \left(\frac{y}{r}\right)^\top M^r \left(\frac{x}{r}\right) \end{pmatrix}^{\top} \begin{pmatrix} B_x \\ B_y \end{pmatrix}
+\end{equation}
 
 
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6930 64-bit) (preloaded format=pdflatex 2019.1.23)  13 JAN 2020 16:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6930 64-bit) (preloaded format=pdflatex 2019.1.23)  21 JAN 2020 15:13
 entering extended mode
 **./main.tex
 (main.tex
@@ -687,6 +687,12 @@ LaTeX Warning: Label `eq:43' multiply defined.
 LaTeX Warning: Label `eq:44' multiply defined.
 
 
+LaTeX Warning: Label `eq:56' multiply defined.
+
+
+LaTeX Warning: Label `eq:57' multiply defined.
+
+
 LaTeX Warning: Label `eq:ap5' multiply defined.
 
 )
@@ -955,7 +961,7 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  19972 strings out of 492946
  372556 string characters out of 3126710
- 418821 words of memory out of 3000000
+ 420823 words of memory out of 3000000
  23557 multiletter control sequences out of 15000+200000
  553137 words of font info for 85 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -981,7 +987,7 @@ sers/Kasi/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8
 ts/cm/cmsy10.pfb><C:/Users/Kasi/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/p
 ublic/amsfonts/cm/cmsy8.pfb><C:/Users/Kasi/AppData/Local/Programs/MiKTeX 2.9/fo
 nts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (18 pages, 232844 bytes).
+Output written on main.pdf (18 pages, 233736 bytes).
 PDF statistics:
  323 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

@@ -1,6 +1,6 @@
 %% Load data
 clear all;
-refin_level = 3;
+refin_level = 6;
 
 folder_name = 'Motor_Data';
 
@@ -15,12 +15,12 @@ model.nonlinear = 0;
 rpm = 1500;
 Tp = (pi/6)/((2*pi*rpm)/60);
 
-time = (0:3*Tp/36:2*Tp);
-Torque = zeros(length(time),1);
+time = (0:3*Tp/36:Tp/2);
+Torque = zeros(length(time),4);
 
 
-% for i = 1:length(time)
-for i = 1:1
+for i = 1:length(time)
+% for i = 1:1
 fprintf('Step: %d of %d\n',i,length(time));    
 [J,phi] = Motor_MoveCurrent(mesh, params, i-1, time(i));
 
@@ -34,12 +34,12 @@ fprintf('Step: %d of %d\n',i,length(time));
 % PlotData(mesh.x,mesh.y,mesh.elems2nodes,J);
 % Motor_PlotEdges(params,max(J));
 
-[A, B, T] = Motor_GetJ(phi, J,  mesh, matrices, params, model);
-Torque(i) = T;
+[T, A, B] = Motor_GetJ(phi, J,  mesh, matrices, params, model);
+Torque(i,:) = T;
 
-PlotData(mesh.x,mesh.y,mesh.elems2nodes,A);
+% PlotData(mesh.x,mesh.y,mesh.elems2nodes,A);
 % caxis([-0.2,0.2]);
-Motor_PlotEdges(params,max(A));
+% Motor_PlotEdges(params,max(A));
 
 % normB = sqrt(B(:,1).^2 + B(:,2).^2);
 % PlotData(mesh.x,mesh.y,mesh.elems2nodes,normB);

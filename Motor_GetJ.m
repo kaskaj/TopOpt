@@ -1,4 +1,4 @@
-function [A, B, T1, T2, T3, T4] = Motor_GetJ(phi, J, mesh, matrices, params, model, A0)
+function [T, A, B, B_ele, Sloc_mu, mu_fe, dmu_fe, f] = Motor_GetJ(phi, J, mesh, matrices, params, model, A0)
 
 id     = ~mesh.id_dirichlet & ~mesh.id_s1 & ~mesh.id_s2 & ~mesh.id_s3;
 id2    = ~mesh.id_dirichlet & ~mesh.id_s3;
@@ -132,7 +132,7 @@ end
 %% Compute B
 
 B     = [matrices.Mloc\(matrices.Clocy*A),-matrices.Mloc\(matrices.Clocx*A)];
-% B_ele = [matrices.Clocy_ele*A,-matrices.Clocx_ele*A];
+B_ele = [matrices.Clocy_ele*A,-matrices.Clocx_ele*A];
 
 %% Arrkio's method
 
@@ -140,66 +140,34 @@ r      =  sqrt(mesh.x.^2 + mesh.y.^2);
 Br     =  ( B(:,1).*mesh.x + B(:,2).*mesh.y)./r;
 Bphi   =  (-B(:,1).*mesh.y + B(:,2).*mesh.x)./r;
 
-% ii_nan_r = find(isnan(Br));
-% ii_nan_phi = find(isnan(Bphi));
-% 
-% Br(ii_nan_r) = 0;
-% Bphi(ii_nan_phi) = 0;
+ii_nan_r   = find(isnan(Br));
+ii_nan_phi = find(isnan(Bphi));
 
-R1 = params.D3/2;
-R2 = params.D1/2 - params.d/4;
-d1 = R2 - R1;
-tol = 1e-6;
-ii1 = mesh.x > sqrt((R1^2 + tol) - mesh.y.^2) & mesh.x <= sqrt((R2^2 - tol) - mesh.y.^2 ) ; 
+Br(ii_nan_r)     = 0;
+Bphi(ii_nan_phi) = 0;
 
-R1 = params.D3/2;
-R2 = params.D1/2 - params.d/2;
-d2 = R2 - R1;
-tol = 1e-6;
-ii2 = mesh.x > sqrt((R1^2 + tol) - mesh.y.^2) & mesh.x <= sqrt((R2^2 - tol) - mesh.y.^2 ) ; 
+R1_gap0 = params.D3/2;
+R2_gap0 = params.D1/2;
+d0 = R2_gap0 - R1_gap0;
 
-R1 = params.D3/2;
-R2 = params.D1/2 - 3*params.d/4;
-d3 = R2 - R1;
-tol = 1e-6;
-ii3 = mesh.x > sqrt((R1^2 + tol) - mesh.y.^2) & mesh.x <= sqrt((R2^2 - tol) - mesh.y.^2 ) ;
+R1_gap1 = params.D3/2;
+R2_gap1 = params.D1/2 - params.d/4;
+d1 = R2_gap1 - R1_gap1;
 
-R1 = params.D3/2;
-R2 = params.D1/2;
-d4 = R2 - R1;
-tol = 1e-6;
-ii4 = mesh.x > sqrt((R1^2 + tol) - mesh.y.^2) & mesh.x <= sqrt((R2^2 - tol) - mesh.y.^2 ) ;
+R1_gap2 = params.D3/2;
+R2_gap2 = params.D1/2 - params.d/2;
+d2 = R2_gap2 - R1_gap2;
 
-% figure;
-% plot(mesh.x,mesh.y,'o');
-% hold on;
-% plot(mesh.x(ii1),mesh.y(ii1),'ro');
-% Motor_PlotEdges(params,1);
-% 
-% figure;
-% plot(mesh.x,mesh.y,'o');
-% hold on;
-% plot(mesh.x(ii2),mesh.y(ii2),'ro');
-% Motor_PlotEdges(params,1);
-% 
-% figure;
-% plot(mesh.x,mesh.y,'o');
-% hold on;
-% plot(mesh.x(ii3),mesh.y(ii3),'ro');
-% Motor_PlotEdges(params,1);
-% 
-% figure;
-% plot(mesh.x,mesh.y,'o');
-% hold on;
-% plot(mesh.x(ii4),mesh.y(ii4),'ro');
-% Motor_PlotEdges(params,1);
+R1_gap3 = params.D3/2;
+R2_gap3 = params.D1/2 - 3*params.d/4;
+d3 = R2_gap3 - R1_gap3;
 
+T0 = params.L*(r'.*Br'*matrices.Mloc_rot0*Bphi)*(1/params.mu0)*(1/d0);
+T1 = params.L*(r'.*Br'*matrices.Mloc_rot1*Bphi)*(1/params.mu0)*(1/d1);
+T2 = params.L*(r'.*Br'*matrices.Mloc_rot2*Bphi)*(1/params.mu0)*(1/d2);
+T3 = params.L*(r'.*Br'*matrices.Mloc_rot3*Bphi)*(1/params.mu0)*(1/d3);
 
-T1 = params.L*((r(ii1).*Br(ii1))'*matrices.Mloc(ii1,ii1)*Bphi(ii1))*(1/params.mu0)*(1/d1);
-T2 = params.L*((r(ii2).*Br(ii2))'*matrices.Mloc(ii2,ii2)*Bphi(ii2))*(1/params.mu0)*(1/d2);
-T3 = params.L*((r(ii3).*Br(ii3))'*matrices.Mloc(ii3,ii3)*Bphi(ii3))*(1/params.mu0)*(1/d3);
-T4 = params.L*((r(ii4).*Br(ii4))'*matrices.Mloc(ii4,ii4)*Bphi(ii4))*(1/params.mu0)*(1/d4);
-
+T = [T0,T1,T2,T3];
 
 end
 

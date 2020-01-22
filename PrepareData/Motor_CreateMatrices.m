@@ -68,14 +68,28 @@ for i_level=1:max(refin_level)
         
         tol1 = 1e-5;
         tol2 = 1e-10;
-        tol3 = 1e-7;            
+        tol3 = 1e-5;         
+%         tol3 = 1e-6;  
         R1 = params.D2/2; 
-        R2 = params.D3/2; 
         
         id_dirichlet = (y >= sqrt(R1^2 - tol1 - x.^2))  | (x - tol1 >= sqrt(R1^2 - y.^2));              
         id_s1 = (x <= min(x)+tol2);
         id_s2 = (y <= min(y)+tol2);  
         
+        %Select parts of airgap
+        R1_gap0 = params.D3/2; 
+        R2_gap0 = params.D1/2 - params.d/8;
+        
+        R1_gap1 = params.D3/2;
+        R2_gap1 = params.D1/2 - params.d/4;
+        
+        R1_gap2 = params.D3/2;
+        R2_gap2 = params.D1/2 - params.d/2;
+        
+        R1_gap3 = params.D3/2;
+        R2_gap3 = params.D1/2 - 3*params.d/4;
+    
+      
         %Deselect point 0
         id_s3 = x == 0 & y==0;        
         id_s1(id_s3) = 0;
@@ -117,6 +131,10 @@ for i_level=1:max(refin_level)
         clocy_aa  = zeros(nelement,9);
         clocx_ele_aa  = zeros(nelement,3);
         clocy_ele_aa  = zeros(nelement,3);
+        mloc_rot0_aa = zeros(nelement,9);
+        mloc_rot1_aa = zeros(nelement,9);
+        mloc_rot2_aa = zeros(nelement,9);
+        mloc_rot3_aa = zeros(nelement,9);
         
         for k = 1:nelement
             [edet,dFinv,Cinv] = GenerateTransformation(k,elems2nodes,x,y);
@@ -135,15 +153,35 @@ for i_level=1:max(refin_level)
             clocx_aa(k,:)    = clocx(:);
             clocy_aa(k,:)    = clocy(:);
             clocx_ele_aa(k,:)    = clocx_ele(:);
-            clocy_ele_aa(k,:)    = clocy_ele(:);                                 
+            clocy_ele_aa(k,:)    = clocy_ele(:);
+            
+            if x_mid(k) > sqrt(R1_gap0^2 - y_mid(k)^2) && x_mid(k) <= sqrt(R2_gap0^2 - y_mid(k)^2)
+               mloc_rot0_aa(k,:) = mloc(:);
+            end
+            
+            if x_mid(k) > sqrt(R1_gap1^2 - y_mid(k)^2) && x_mid(k) <= sqrt(R2_gap1^2 - y_mid(k)^2)
+                mloc_rot1_aa(k,:) = mloc(:);
+            end
+            
+            if x_mid(k) > sqrt(R1_gap2^2 - y_mid(k)^2) && x_mid(k) <= sqrt(R2_gap2^2 - y_mid(k)^2)
+                mloc_rot2_aa(k,:) = mloc(:);
+            end
+            
+            if x_mid(k) > sqrt(R1_gap3^2 - y_mid(k)^2) && x_mid(k) <= sqrt(R2_gap3^2 - y_mid(k)^2)
+                mloc_rot3_aa(k,:) = mloc(:);
+            end
             
         end
         %% Assemble matrices
         
-        Mloc    = sparse(ii(:),jj(:),mloc_aa(:));
-        Sloc    = sparse(ii(:),jj(:),(slocxx_aa(:)+slocyy_aa(:)));
-        Clocx   = sparse(ii(:),jj(:),clocx_aa(:));
-        Clocy   = sparse(ii(:),jj(:),clocy_aa(:));
+        Mloc     = sparse(ii(:),jj(:),mloc_aa(:));
+        Mloc_rot0 = sparse(ii(:),jj(:),mloc_rot0_aa(:));
+        Mloc_rot1 = sparse(ii(:),jj(:),mloc_rot1_aa(:));
+        Mloc_rot2 = sparse(ii(:),jj(:),mloc_rot2_aa(:));
+        Mloc_rot3 = sparse(ii(:),jj(:),mloc_rot3_aa(:));
+        Sloc     = sparse(ii(:),jj(:),(slocxx_aa(:)+slocyy_aa(:)));
+        Clocx    = sparse(ii(:),jj(:),clocx_aa(:));
+        Clocy    = sparse(ii(:),jj(:),clocy_aa(:));
         Clocx_ele = sparse(ii_ele(:),jj_ele(:),clocx_ele_aa(:));
         Clocy_ele = sparse(ii_ele(:),jj_ele(:),clocy_ele_aa(:));
         
@@ -169,6 +207,10 @@ for i_level=1:max(refin_level)
         matrices.ii            = ii;
         matrices.jj            = jj;
         matrices.Mloc          = Mloc;
+        matrices.Mloc_rot0     = Mloc_rot0;
+        matrices.Mloc_rot1     = Mloc_rot1;
+        matrices.Mloc_rot2     = Mloc_rot2;
+        matrices.Mloc_rot3     = Mloc_rot3;
         matrices.mloc_aa       = mloc_aa;
         matrices.Sloc          = Sloc;
         matrices.sloc_aa       = slocxx_aa + slocyy_aa;
